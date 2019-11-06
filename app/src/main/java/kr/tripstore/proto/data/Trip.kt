@@ -17,8 +17,8 @@ data class TripPackagePage(
 )
 
 data class TripPackagePageFilter(
-    val disable: Boolean?,
-    val isAdmin: Boolean?
+    val disable: String?,
+    val isAdmin: String?
 )
 
 data class TripPackage(

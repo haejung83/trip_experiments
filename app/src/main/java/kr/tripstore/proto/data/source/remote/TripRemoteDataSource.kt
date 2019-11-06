@@ -11,8 +11,7 @@ class TripRemoteDataSource : TripDataSource {
     override suspend fun getTripPackagePage(): Result<TripPackagePage> {
         val response = tripPackagePageAPI.getTripPackagePage()
         return if (response.isSuccessful) {
-            val body = response.body()
-            body?.let {
+            response.body()?.let {
                 Result.Success(it)
             } ?: Result.Error(Exception("No Data"))
         } else {

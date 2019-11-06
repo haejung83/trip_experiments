@@ -14,7 +14,7 @@ interface TripPackagePageAPI {
     companion object {
         private const val BASE_URL = "https://api.tripstore.kr"
 
-        fun create() =
+        fun create(): TripPackagePageAPI =
             Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(MoshiConverterFactory.create())
