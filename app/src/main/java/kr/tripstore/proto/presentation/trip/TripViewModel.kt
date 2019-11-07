@@ -14,9 +14,9 @@ class TripViewModel(
         viewModelScope.launch {
             val tripPackagePageResult = getTripPackagePageUseCase()
             if (tripPackagePageResult is Result.Success) {
-                println("Success: ${tripPackagePageResult}")
+                println("Success: $tripPackagePageResult")
             } else {
-                println("Error ${tripPackagePageResult.toString()}")
+                println("Error: $tripPackagePageResult")
             }
         }
     }

@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">TripStoreAndroid</string>
+
+    <string name="application_name">트립스토어 베타</string>
+
+    <string name="menu_trip">여행</string>
+    <string name="menu_search">검색</string>
+    <string name="menu_save">저장</string>
+    <string name="menu_profile">내정보</string>
+
 </resources>
