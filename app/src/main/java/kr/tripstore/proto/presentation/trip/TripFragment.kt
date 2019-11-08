@@ -16,7 +16,7 @@ class TripFragment : DataBindingFragment<TripFragmentBinding>() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewDataBinding.viewmodel = viewModel
+        viewDataBinding.viewModel = viewModel
         viewModel.start()
     }
 

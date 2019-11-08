@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
-    app:startDestination="@id/tripFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_trip">
 
     <fragment
-        android:id="@+id/tripFragment"
+        android:id="@+id/navigation_trip"
         android:name="kr.tripstore.proto.presentation.trip.TripFragment"
-        android:label="TripFragment" />
+        android:label="TripFragment"
+        tools:layout="@layout/trip_fragment" />
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="kr.tripstore.proto.presentation.search.SearchFragment"
+        android:label="SearchFragment"
+        tools:layout="@layout/search_fragment" />
+    <fragment
+        android:id="@+id/navigation_save"
+        android:name="kr.tripstore.proto.presentation.save.SaveFragment"
+        android:label="SaveFragment"
+        tools:layout="@layout/save_fragment" />
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="kr.tripstore.proto.presentation.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/profile_fragment" />
 
 </navigation>

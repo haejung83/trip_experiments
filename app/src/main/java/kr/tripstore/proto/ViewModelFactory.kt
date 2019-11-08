@@ -4,6 +4,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import kr.tripstore.proto.data.source.TripRepository
 import kr.tripstore.proto.domain.GetTripPackagePageUseCase
+import kr.tripstore.proto.presentation.profile.ProfileViewModel
+import kr.tripstore.proto.presentation.save.SaveViewModel
+import kr.tripstore.proto.presentation.search.SearchViewModel
 import kr.tripstore.proto.presentation.trip.TripViewModel
 
 @Suppress("UNCHECKED_CAST")
@@ -17,6 +20,12 @@ class ViewModelFactory constructor(
                     TripViewModel(
                         GetTripPackagePageUseCase(tripRepository)
                     )
+                isAssignableFrom(ProfileViewModel::class.java) ->
+                    ProfileViewModel()
+                isAssignableFrom(SearchViewModel::class.java) ->
+                    SearchViewModel()
+                isAssignableFrom(SaveViewModel::class.java) ->
+                    SaveViewModel()
                 else ->
                     throw IllegalArgumentException("Unknown ViewModel class: ${modelClass.name}")
             }

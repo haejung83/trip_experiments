@@ -1,17 +1,22 @@
 package kr.tripstore.proto.presentation.profile
 
 import android.os.Bundle
-import kr.tripstore.proto.databinding.TripFragmentBinding
+import androidx.fragment.app.viewModels
+import kr.tripstore.proto.R
+import kr.tripstore.proto.databinding.ProfileFragmentBinding
+import kr.tripstore.proto.extension.getViewModelFactory
 import kr.tripstore.proto.presentation.base.DataBindingFragment
 
-class ProfileFragment : DataBindingFragment<TripFragmentBinding>() {
+class ProfileFragment : DataBindingFragment<ProfileFragmentBinding>() {
 
     override val layoutResId: Int
-        get() = TODO()
+        get() = R.layout.profile_fragment
 
+    private val viewModel by viewModels<ProfileViewModel> { getViewModelFactory() }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        viewDataBinding.viewModel = viewModel
     }
 
     companion object {

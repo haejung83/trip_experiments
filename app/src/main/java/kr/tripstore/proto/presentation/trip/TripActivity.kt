@@ -6,7 +6,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import kotlinx.android.synthetic.main.trip_activity.*
 import kr.tripstore.proto.R
-import kr.tripstore.proto.extension.replaceFragmentInActivity
 
 class TripActivity : AppCompatActivity() {
 
@@ -20,6 +19,10 @@ class TripActivity : AppCompatActivity() {
     private fun setupBottomNavigationWithNavController() {
         val navController = findNavController(R.id.nav_host_fragment)
         bottom_navigation_view.setupWithNavController(navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return findNavController(R.id.nav_host_fragment).navigateUp()
     }
 
 }
