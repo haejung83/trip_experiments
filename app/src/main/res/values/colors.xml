@@ -4,4 +4,6 @@
     <color name="primaryLightColor">#ff5131</color>
     <color name="primaryDarkColor">#cb3333</color>
     <color name="primaryTextColor">#ffffff</color>
+
+    <color name="launcherBackground">#FFFFFF</color>
 </resources>
