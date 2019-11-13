@@ -9,21 +9,21 @@
         android:id="@+id/navigation_trip"
         android:name="kr.tripstore.proto.presentation.trip.TripFragment"
         android:label="TripFragment"
-        tools:layout="@layout/trip_fragment" />
+        tools:layout="@layout/fragment_trip" />
     <fragment
         android:id="@+id/navigation_search"
         android:name="kr.tripstore.proto.presentation.search.SearchFragment"
         android:label="SearchFragment"
-        tools:layout="@layout/search_fragment" />
+        tools:layout="@layout/fragment_search" />
     <fragment
         android:id="@+id/navigation_save"
         android:name="kr.tripstore.proto.presentation.save.SaveFragment"
         android:label="SaveFragment"
-        tools:layout="@layout/save_fragment" />
+        tools:layout="@layout/fragment_save" />
     <fragment
         android:id="@+id/navigation_profile"
         android:name="kr.tripstore.proto.presentation.profile.ProfileFragment"
         android:label="ProfileFragment"
-        tools:layout="@layout/profile_fragment" />
+        tools:layout="@layout/fragment_profile" />
 
 </navigation>
