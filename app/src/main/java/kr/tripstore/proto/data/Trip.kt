@@ -17,9 +17,15 @@ data class TripPackagePage(
 )
 
 data class TripPackagePageFilter(
-    val disable: String?,
-    val isAdmin: String?
-)
+    private val disable: String?,
+    private val isAdmin: String?
+) {
+    val isDisabled: Boolean
+        get() = disable?.let { it.isNotEmpty() && it == "true" } ?: false
+
+    val isRunOnAdmin: Boolean
+        get() = isAdmin?.let { it.isNotEmpty() && it == "true" } ?: false
+}
 
 data class TripPackage(
     val id: Int,

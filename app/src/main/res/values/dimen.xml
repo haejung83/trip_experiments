@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Fragment -->
+    <dimen name="padding_top_fragment">3dp</dimen>
+    <dimen name="padding_bottom_fragment">3dp</dimen>
+    <dimen name="padding_start_fragment">12dp</dimen>
+    <dimen name="padding_end_fragment">12dp</dimen>
+
+    <!-- Fragment Title -->
+    <dimen name="padding_top_fragment_title">5dp</dimen>
+    <dimen name="padding_bottom_fragment_title">5dp</dimen>
+</resources>

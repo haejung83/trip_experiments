@@ -17,12 +17,12 @@ class TripActivity : AppCompatActivity() {
     }
 
     private fun setupBottomNavigationWithNavController() {
-        val navController = findNavController(R.id.nav_host_fragment)
-        bottom_navigation_view.setupWithNavController(navController)
+        val navController = findNavController(R.id.navhostfragment_trip)
+        bottomnavigationview_trip.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return findNavController(R.id.nav_host_fragment).navigateUp()
+        return findNavController(R.id.navhostfragment_trip).navigateUp()
     }
 
 }

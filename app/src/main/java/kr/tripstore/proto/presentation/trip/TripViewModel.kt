@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import kr.tripstore.proto.data.Result
 import kr.tripstore.proto.domain.GetTripPackagePageUseCase
+import timber.log.Timber
 
 class TripViewModel(
     private val getTripPackagePageUseCase: GetTripPackagePageUseCase
@@ -14,9 +15,9 @@ class TripViewModel(
         viewModelScope.launch {
             val tripPackagePageResult = getTripPackagePageUseCase()
             if (tripPackagePageResult is Result.Success) {
-                println("Success: $tripPackagePageResult")
+                Timber.d("Success: $tripPackagePageResult")
             } else {
-                println("Error: $tripPackagePageResult")
+                Timber.d("Error: $tripPackagePageResult")
             }
         }
     }
