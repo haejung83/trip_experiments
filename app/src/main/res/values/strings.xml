@@ -7,4 +7,8 @@
     <string name="menu_save">저장</string>
     <string name="menu_profile">내정보</string>
 
+    <!-- Default Values -->
+    <string name="default_theme_title">테마 제목</string>
+    <string name="default_theme_cell_title">여행 테마</string>
+
 </resources>

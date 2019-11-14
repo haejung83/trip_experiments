@@ -1,7 +1,10 @@
 package kr.tripstore.proto.presentation.trip
 
+import android.view.View
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.recyclerview.widget.ListAdapter
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.launch
 import kr.tripstore.proto.data.Result
 import kr.tripstore.proto.domain.GetTripPackagePageUseCase
@@ -21,5 +24,7 @@ class TripViewModel(
             }
         }
     }
+
+
 
 }
