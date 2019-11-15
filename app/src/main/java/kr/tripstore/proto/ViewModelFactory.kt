@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import kr.tripstore.proto.data.source.TripRepository
 import kr.tripstore.proto.domain.GetTripPackagePageUseCase
+import kr.tripstore.proto.domain.GetTripThemesUseCase
 import kr.tripstore.proto.presentation.profile.ProfileViewModel
 import kr.tripstore.proto.presentation.save.SaveViewModel
 import kr.tripstore.proto.presentation.search.SearchViewModel
@@ -18,7 +19,8 @@ class ViewModelFactory constructor(
             when {
                 isAssignableFrom(TripViewModel::class.java) ->
                     TripViewModel(
-                        GetTripPackagePageUseCase(tripRepository)
+                        GetTripPackagePageUseCase(tripRepository),
+                        GetTripThemesUseCase(tripRepository)
                     )
                 isAssignableFrom(ProfileViewModel::class.java) ->
                     ProfileViewModel()

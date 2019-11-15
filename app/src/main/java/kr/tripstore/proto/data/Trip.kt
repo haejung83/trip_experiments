@@ -1,6 +1,7 @@
 package kr.tripstore.proto.data
 
 import com.squareup.moshi.Json
+import kr.tripstore.proto.extension.empty
 
 data class TripPackagePage(
     val time: Double,
@@ -17,30 +18,32 @@ data class TripPackagePage(
 )
 
 data class TripPackagePageFilter(
-    private val disable: String?,
-    private val isAdmin: String?
+    private val disable: String = String.empty,
+    private val isAdmin: String = String.empty
 ) {
     val isDisabled: Boolean
-        get() = disable?.let { it.isNotEmpty() && it == "true" } ?: false
+        get() = disable == "true"
 
     val isRunOnAdmin: Boolean
-        get() = isAdmin?.let { it.isNotEmpty() && it == "true" } ?: false
+        get() = isAdmin == "true"
 }
 
 data class TripPackage(
     val id: Int,
-    val title: String?,
-    val type: String?,
+    val title: String = String.empty,
+    val type: String = String.empty,
     @field:Json(name = "random")
-    val isShowRandom: Boolean?,
+    val isShowRandom: Boolean = false,
     @field:Json(name = "detail")
-    val tripDetails: List<TripDetail>?
+    val tripDetails: List<TripDetail> = emptyList()
 )
 
 data class TripDetail(
     val id: Int,
-    val title: String?,
-    val imageUrl: String?,
-    val subTitle: String?
+    val title: String = String.empty,
+    val imageUrl: String = String.empty,
+    val subTitle: String = String.empty,
+    @field:Json(name = "linkUrl")
+    val openLinkUrl: String = String.empty
 )
 
