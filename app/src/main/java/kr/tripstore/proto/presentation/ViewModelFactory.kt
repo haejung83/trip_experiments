@@ -1,4 +1,4 @@
-package kr.tripstore.proto
+package kr.tripstore.proto.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
