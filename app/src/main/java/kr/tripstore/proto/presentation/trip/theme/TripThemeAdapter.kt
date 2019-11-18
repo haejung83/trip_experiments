@@ -17,7 +17,7 @@ class TripThemeAdapter(
         object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int =
                 when (this@TripThemeAdapter.getItemViewType(position)) {
-                    TripThemeType.TRIP_THEME_TITLE.viewType -> 2
+                    TripThemeType.TRIP_THEME_TITLE.viewType -> 4
                     else -> 1
                 }
         }

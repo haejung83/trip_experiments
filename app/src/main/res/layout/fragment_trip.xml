@@ -17,17 +17,6 @@
         android:paddingEnd="@dimen/padding_end_fragment"
         tools:context="kr.tripstore.proto.presentation.trip.TripFragment">
 
-        <TextView
-            android:id="@+id/textview_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/padding_top_fragment_title"
-            android:paddingBottom="@dimen/padding_bottom_fragment_title"
-            android:text="@string/menu_trip"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_trip"
             android:layout_width="0dp"
@@ -36,7 +25,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_title"
+            app:layout_constraintTop_toTopOf="parent"
             app:viewModel="@{viewModel}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
