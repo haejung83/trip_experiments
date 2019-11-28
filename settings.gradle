@@ -1,2 +1,2 @@
-include ':app'
+include ':app', ':shared', ':model'
 rootProject.name='TripStoreAndroid'

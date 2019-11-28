@@ -1,7 +1,7 @@
 package kr.tripstore.proto
 
 import android.app.Application
-import kr.tripstore.proto.data.source.TripRepository
+import kr.tripstore.proto.shared.data.source.TripRepository
 import timber.log.Timber
 
 class TsApplication : Application() {

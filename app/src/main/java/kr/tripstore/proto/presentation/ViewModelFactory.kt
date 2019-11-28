@@ -2,9 +2,9 @@ package kr.tripstore.proto.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import kr.tripstore.proto.data.source.TripRepository
-import kr.tripstore.proto.domain.GetTripPackagePageUseCase
-import kr.tripstore.proto.domain.GetTripThemesUseCase
+import kr.tripstore.proto.shared.data.source.TripRepository
+import kr.tripstore.proto.shared.domain.GetTripPackagePageUseCase
+import kr.tripstore.proto.shared.domain.GetTripThemesUseCase
 import kr.tripstore.proto.presentation.profile.ProfileViewModel
 import kr.tripstore.proto.presentation.save.SaveViewModel
 import kr.tripstore.proto.presentation.search.SearchViewModel

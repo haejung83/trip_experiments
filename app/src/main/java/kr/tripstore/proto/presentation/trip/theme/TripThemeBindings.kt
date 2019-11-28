@@ -3,7 +3,7 @@ package kr.tripstore.proto.presentation.trip.theme
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kr.tripstore.proto.domain.TripTheme
+import kr.tripstore.proto.model.domain.TripTheme
 import kr.tripstore.proto.presentation.trip.TripViewModel
 
 object TripThemeBindings {

@@ -5,10 +5,10 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import kr.tripstore.proto.data.Result
-import kr.tripstore.proto.domain.GetTripPackagePageUseCase
-import kr.tripstore.proto.domain.GetTripThemesUseCase
-import kr.tripstore.proto.domain.TripTheme
+import kr.tripstore.proto.shared.data.Result
+import kr.tripstore.proto.shared.domain.GetTripPackagePageUseCase
+import kr.tripstore.proto.shared.domain.GetTripThemesUseCase
+import kr.tripstore.proto.model.domain.TripTheme
 import timber.log.Timber
 
 class TripViewModel(
