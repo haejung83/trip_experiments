@@ -15,10 +15,10 @@ class TripFragment : DaggerDataBindingFragment<FragmentTripBinding>() {
     override val layoutResId: Int
         get() = R.layout.fragment_trip
 
-//    @Inject
-//    lateinit var viewModelFactory: ViewModelProvider.Factory
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
-    private val viewModel by viewModels<TripViewModel> { getViewModelFactory() }
+    private val viewModel by viewModels<TripViewModel> { viewModelFactory }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
