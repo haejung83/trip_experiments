@@ -21,7 +21,6 @@ class TripViewModelFactory @Inject constructor(
         } catch (t: Throwable) {
             throw RuntimeException(t)
         }
-
     }
 
 }

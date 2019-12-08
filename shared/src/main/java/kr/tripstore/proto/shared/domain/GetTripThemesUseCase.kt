@@ -4,8 +4,9 @@ import kr.tripstore.proto.model.domain.TripTheme
 import kr.tripstore.proto.model.domain.TripThemeDetail
 import kr.tripstore.proto.shared.data.Result
 import kr.tripstore.proto.shared.data.source.TripRepository
+import javax.inject.Inject
 
-class GetTripThemesUseCase(
+class GetTripThemesUseCase @Inject constructor(
     private val tripRepository: TripRepository
 ) {
 

@@ -1,13 +1,13 @@
 package kr.tripstore.proto.presentation.trip
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
+import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_trip.*
 import kr.tripstore.proto.R
 
-class TripActivity : AppCompatActivity() {
+class TripActivity : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

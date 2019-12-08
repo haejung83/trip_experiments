@@ -4,8 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
+import dagger.android.support.DaggerAppCompatActivity
 
-abstract class DataBindingAppCompatActivity<T : ViewDataBinding> : AppCompatActivity() {
+abstract class DaggerDataBindingAppCompatActivity<T : ViewDataBinding> : DaggerAppCompatActivity() {
 
     protected lateinit var viewDataBinding: T
         private set

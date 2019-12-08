@@ -19,7 +19,6 @@ class ViewModelFactory constructor(
             when {
                 isAssignableFrom(TripViewModel::class.java) ->
                     TripViewModel(
-                        GetTripPackagePageUseCase(tripRepository),
                         GetTripThemesUseCase(tripRepository)
                     )
                 isAssignableFrom(ProfileViewModel::class.java) ->

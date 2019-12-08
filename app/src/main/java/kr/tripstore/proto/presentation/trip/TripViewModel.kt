@@ -5,14 +5,13 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import kr.tripstore.proto.shared.data.Result
-import kr.tripstore.proto.shared.domain.GetTripPackagePageUseCase
-import kr.tripstore.proto.shared.domain.GetTripThemesUseCase
 import kr.tripstore.proto.model.domain.TripTheme
+import kr.tripstore.proto.shared.data.Result
+import kr.tripstore.proto.shared.domain.GetTripThemesUseCase
 import timber.log.Timber
+import javax.inject.Inject
 
-class TripViewModel(
-    private val getTripPackagePageUseCase: GetTripPackagePageUseCase,
+class TripViewModel @Inject constructor(
     private val getTripThemesUseCase: GetTripThemesUseCase
 ) : ViewModel() {
 
