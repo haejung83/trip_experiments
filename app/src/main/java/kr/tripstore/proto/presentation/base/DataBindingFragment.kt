@@ -23,9 +23,4 @@ abstract class DataBindingFragment<T : ViewDataBinding> : Fragment() {
             viewDataBinding = this
         }.root
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
-    }
-
 }

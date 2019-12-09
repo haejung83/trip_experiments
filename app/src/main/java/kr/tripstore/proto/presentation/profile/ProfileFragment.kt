@@ -2,21 +2,30 @@ package kr.tripstore.proto.presentation.profile
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import kr.tripstore.proto.R
 import kr.tripstore.proto.databinding.FragmentProfileBinding
-import kr.tripstore.proto.extension.getViewModelFactory
-import kr.tripstore.proto.presentation.base.DataBindingFragment
+import kr.tripstore.proto.presentation.base.DaggerDataBindingFragment
+import timber.log.Timber
+import javax.inject.Inject
 
-class ProfileFragment : DataBindingFragment<FragmentProfileBinding>() {
+class ProfileFragment : DaggerDataBindingFragment<FragmentProfileBinding>() {
 
     override val layoutResId: Int
         get() = R.layout.fragment_profile
 
-    private val viewModel by viewModels<ProfileViewModel> { getViewModelFactory() }
+    @Inject
+    lateinit var viewModelFactory: ViewModelProvider.Factory
+
+    private val viewModel by viewModels<ProfileViewModel> { viewModelFactory }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewDataBinding.viewModel = viewModel
+        viewDataBinding.viewModel = viewModel.apply {
+            Timber.d("ViewModel: ${this.hashCode()}")
+        }
+        viewDataBinding.lifecycleOwner = this
+        viewModel.start()
     }
 
     companion object {

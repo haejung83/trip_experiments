@@ -5,9 +5,8 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import kr.tripstore.proto.R
 import kr.tripstore.proto.databinding.FragmentTripBinding
-import kr.tripstore.proto.extension.getViewModelFactory
 import kr.tripstore.proto.presentation.base.DaggerDataBindingFragment
-import kr.tripstore.proto.presentation.base.DataBindingFragment
+import timber.log.Timber
 import javax.inject.Inject
 
 class TripFragment : DaggerDataBindingFragment<FragmentTripBinding>() {
@@ -23,7 +22,9 @@ class TripFragment : DaggerDataBindingFragment<FragmentTripBinding>() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewDataBinding.viewModel = viewModel.apply {
+            Timber.d("ViewModel: ${this.hashCode()}")
         }
+        viewDataBinding.lifecycleOwner = this
         viewModel.start()
     }
 

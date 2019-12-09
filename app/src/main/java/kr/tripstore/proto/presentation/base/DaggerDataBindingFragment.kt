@@ -24,9 +24,4 @@ abstract class DaggerDataBindingFragment<T : ViewDataBinding> : DaggerFragment()
             viewDataBinding = this
         }.root
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
-    }
-
 }
