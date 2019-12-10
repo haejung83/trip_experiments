@@ -1,8 +1,7 @@
 package kr.tripstore.proto.shared.data.source
 
-import kr.tripstore.proto.shared.data.Result
 import kr.tripstore.proto.model.TripPackagePage
-import kr.tripstore.proto.shared.data.source.remote.TripRemoteDataSource
+import kr.tripstore.proto.shared.data.Result
 import kr.tripstore.proto.shared.di.RemoteTripDataSource
 import javax.inject.Inject
 import javax.inject.Singleton

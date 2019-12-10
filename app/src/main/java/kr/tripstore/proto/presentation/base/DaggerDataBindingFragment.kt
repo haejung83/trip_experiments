@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
 import dagger.android.support.DaggerFragment
 
 abstract class DaggerDataBindingFragment<T : ViewDataBinding> : DaggerFragment() {
