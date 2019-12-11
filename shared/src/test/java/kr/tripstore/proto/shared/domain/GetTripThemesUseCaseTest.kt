@@ -25,15 +25,23 @@ class GetTripThemesUseCaseTest {
     @Test
     fun getTripThemesUseCase_isNotNull() =
         runBlockingTest {
-            val getTripThemesUseCaseResult = GetTripThemesUseCase(tripRepository).invoke()
+            // Given a trip repository with a FakeRemoteTripDataSource that returns the predefined result at TestData
+            val getTripThemesUseCase = GetTripThemesUseCase(tripRepository)
+            // When getting a result of TripTheme
+            val getTripThemesUseCaseResult = getTripThemesUseCase.invoke()
+            // Then the result is not null
             assertResult(getTripThemesUseCaseResult)
         }
 
     @Test
     fun getTripThemesUseCase_checkResultIsNotEmpty() =
         runBlockingTest {
-            val getTripThemesUseCaseResult = GetTripThemesUseCase(tripRepository).invoke()
+            // Given a trip repository with a FakeRemoteTripDataSource that returns the predefined result at TestData
+            val getTripThemesUseCase = GetTripThemesUseCase(tripRepository)
+            // When getting TripThemes
+            val getTripThemesUseCaseResult = getTripThemesUseCase.invoke()
             val data = (getTripThemesUseCaseResult as Result.Success).data
+            // Then the data is not empty
             assertThat(data.size, IsNot.not(0))
         }
 

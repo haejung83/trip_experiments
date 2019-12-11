@@ -24,18 +24,24 @@ class TripRepositoryTest {
     @Test
     fun getTripPackagePage_isNotNull() =
         runBlockingTest {
-            val tripPackagePageResult = TripRepository(tripRemoteDataSource).getTripPackagePage()
+            // Given a trip data source
+            val tripRepository = TripRepository(tripRemoteDataSource)
+            // When getting a result of TripPackagePage
+            val tripPackagePageResult = tripRepository.getTripPackagePage()
+            // Then the result is not null
             assertResult(tripPackagePageResult)
         }
 
     @Test
     fun getTripPackagePage_isSameAsTestData() =
         runBlockingTest {
-            val tripPackagePageResult = TripRepository(tripRemoteDataSource).getTripPackagePage()
-            assertThat(
-                (tripPackagePageResult as Result.Success).data,
-                IsEqual.equalTo(TestData.tripPackagePage)
-            )
+            // Given a trip data source
+            val tripRepository = TripRepository(tripRemoteDataSource)
+            // When getting a result of TripPackagePage
+            val tripPackagePageResult = tripRepository.getTripPackagePage()
+            val data = (tripPackagePageResult as Result.Success).data
+            // Then the data is equal to the predefined test data
+            assertThat(data, IsEqual.equalTo(TestData.tripPackagePage))
         }
 
 }
