@@ -28,8 +28,10 @@ class TripViewModel @Inject constructor(
         get() = _isError
 
     fun start() {
+        if (_isLoading.value == true) return
+        _isLoading.value = true
+
         viewModelScope.launch {
-            _isLoading.value = true
             val tripThemesResult = getTripThemesUseCase()
             _isLoading.value = false
             if (tripThemesResult is Result.Success) {

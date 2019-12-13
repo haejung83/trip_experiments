@@ -27,7 +27,7 @@ object TestData {
         EMPTY_STRING
     )
     val tripPackage = TripPackage(
-        0,
+        TRIP_PACKAGE_BASE_ID + 1,
         "달나라",
         "TIME_SALE",
         tripDetails = listOf(tripDetail)
@@ -43,6 +43,25 @@ object TestData {
         30,
         tripPackagePageFilter,
         listOf(tripPackage)
+    )
+    val emptyTripPackage = TripPackage(
+        TRIP_PACKAGE_BASE_ID + 0,
+        "없음",
+        "NONE",
+        false,
+        emptyList()
+    )
+    val emptyTripPackagePage = TripPackagePage(
+        RESPONSE_TIME,
+        NO_ERROR,
+        NO_ERRORS,
+        0,
+        0,
+        0,
+        false,
+        0,
+        tripPackagePageFilter,
+        emptyList()
     )
 
 }
