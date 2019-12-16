@@ -1,5 +1,8 @@
 package kr.tripstore.proto.shared.domain
 
+import android.net.Uri
+import kr.tripstore.proto.model.TripLink
+import kr.tripstore.proto.model.TripLinkType
 import kr.tripstore.proto.model.domain.TripTheme
 import kr.tripstore.proto.model.domain.TripThemeDetail
 import kr.tripstore.proto.shared.data.Result
@@ -27,7 +30,7 @@ class GetTripThemesUseCase @Inject constructor(
                                             tripDetail.id,
                                             tripDetail.title,
                                             tripDetail.imageUrl,
-                                            tripDetail.openLinkUrl
+                                            parseOpenLinkUrlToTripLink(tripDetail.openLinkUrl)
                                         )
                                     }
                             )
@@ -37,5 +40,16 @@ class GetTripThemesUseCase @Inject constructor(
             is Result.Error -> Result.Error(tripPackagePage.exception)
             is Result.Loading -> Result.Loading
         }
+
+    private fun parseOpenLinkUrlToTripLink(openLink: String): TripLink {
+        val parsedUri = Uri.parse(openLink)
+        val type = parsedUri.path?.let {
+            TripLinkType.getTripLinkTypeFromString(it)
+        } ?: TripLinkType.UNKNOWN
+        val parameters = parsedUri.queryParameterNames.associateWithTo(
+            mutableMapOf(), { parsedUri.getQueryParameter(it) }
+        )
+        return TripLink(type, parameters)
+    }
 
 }
