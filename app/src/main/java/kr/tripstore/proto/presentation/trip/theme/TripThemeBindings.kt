@@ -52,6 +52,7 @@ object TripThemeBindings {
                     )
                 }.flatten()
             )
+            recyclerView.scheduleLayoutAnimation()
         }
     }
 

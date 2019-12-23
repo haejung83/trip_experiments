@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="kr.tripstore.proto.presentation.trip.TripViewModel" />
@@ -17,10 +18,11 @@
         android:paddingEnd="@dimen/padding_end_fragment"
         tools:context="kr.tripstore.proto.presentation.trip.TripFragment">
 
-        <androidx.recyclerview.widget.RecyclerView
+        <kr.tripstore.proto.presentation.trip.LayoutAnimatedRecyclerView
             android:id="@+id/recyclerview_trip"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layoutAnimation="@anim/grid_layout_animation_from_bottom"
             app:items="@{viewModel.tripThemes}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
