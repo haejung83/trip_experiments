@@ -11,4 +11,14 @@
     <string name="default_theme_title">테마 제목</string>
     <string name="default_theme_cell_title">여행 테마</string>
 
+    <!-- Trip Detail -->
+    <string name="trip_detail_symbol_of_web">W</string>
+    <string name="trip_detail_symbol_of_detail">D</string>
+    <string name="trip_detail_symbol_of_start">A</string>
+    <string name="trip_detail_symbol_of_place">P</string>
+    <string name="trip_detail_symbol_of_calendar">C</string>
+    <string name="trip_detail_symbol_of_theme_calendar">C</string>
+    <string name="trip_detail_symbol_of_search">S</string>
+    <string name="trip_detail_symbol_of_list">L</string>
+
 </resources>

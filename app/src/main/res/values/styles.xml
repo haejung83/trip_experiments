@@ -10,4 +10,42 @@
         <item name="fontFamily">@font/nanum_gothic_font</item>
     </style>
 
+    <!-- Label: Black -->
+    <style name="Base.AppTheme.Label" parent="Base.AppTheme">
+        <item name="android:textColor">@color/all_black</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Base.AppTheme.Label.Big" parent="Base.AppTheme.Label">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Base.AppTheme.Label.Medium" parent="Base.AppTheme.Label">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Base.AppTheme.Label.Small" parent="Base.AppTheme.Label">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- Label: White -->
+    <style name="Base.AppTheme.LabelWhite" parent="Base.AppTheme">
+        <item name="android:textColor">@color/all_white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="Base.AppTheme.LabelWhite.Big" parent="Base.AppTheme.LabelWhite">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="Base.AppTheme.LabelWhite.Medium" parent="Base.AppTheme.LabelWhite">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Base.AppTheme.LabelWhite.Small" parent="Base.AppTheme.LabelWhite">
+        <item name="android:textSize">12sp</item>
+    </style>
+
 </resources>

@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="item"
             type="kr.tripstore.proto.presentation.trip.theme.TripThemeTitleItem" />
@@ -15,12 +16,10 @@
 
         <TextView
             android:id="@+id/textview_theme_title"
+            style="@style/Base.AppTheme.Label.Medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:text="@{item.title}"
-            android:textSize="14sp"
-            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

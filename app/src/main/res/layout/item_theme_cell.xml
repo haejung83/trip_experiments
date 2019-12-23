@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="item"
             type="kr.tripstore.proto.presentation.trip.theme.TripThemeCellItem" />
@@ -29,6 +30,7 @@
 
         <TextView
             android:id="@+id/textview_theme_cell"
+            style="@style/Base.AppTheme.LabelWhite.Small"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
@@ -36,12 +38,28 @@
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:text="@{item.title}"
-            android:textColor="@color/primaryTextColor"
-            android:textSize="12sp"
+            android:gravity="start"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textview_link_symbol"
+            style="@style/Base.AppTheme.LabelWhite.Small"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="1dp"
+            android:layout_marginBottom="1dp"
+            android:background="@drawable/trip_detail_background_link_type"
+            android:paddingStart="4dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="4dp"
+            android:paddingBottom="2dp"
+            android:text="@{item.openLinkSymbol}"
+            android:visibility="@{item.openLinkSymbolVisibility}"
+            app:layout_constraintBottom_toBottomOf="@id/textview_theme_cell"
+            app:layout_constraintEnd_toEndOf="@id/textview_theme_cell" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

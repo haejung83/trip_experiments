@@ -5,5 +5,12 @@
     <color name="primaryDarkColor">#cb3333</color>
     <color name="primaryTextColor">#FFFFFF</color>
 
-    <color name="launcherBackground">#FFFFFF</color>
+    <color name="launcher_background">#FFFFFF</color>
+
+    <color name="all_text_white">#FFFFFF</color>
+    <color name="all_text_gray">#C0C0C0</color>
+    <color name="all_text_black">#000000</color>
+
+    <color name="all_black">#000000</color>
+    <color name="all_white">#FFFFFF</color>
 </resources>
