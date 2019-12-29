@@ -1,4 +1,4 @@
-package kr.tripstore.proto.presentation
+package kr.tripstore.proto.presentation.util
 
 import android.graphics.Bitmap
 import android.net.Uri
