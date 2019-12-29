@@ -40,9 +40,9 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.1.0"
     implementation "androidx.lifecycle:lifecycle-extensions:2.1.0"
     kapt "androidx.lifecycle:lifecycle-compiler:2.1.0"
-    implementation "androidx.room:room-ktx:2.2.2"
-    implementation "androidx.room:room-runtime:2.2.2"
-    kapt "androidx.room:room-compiler:2.2.2"
+    implementation "androidx.room:room-ktx:2.2.3"
+    implementation "androidx.room:room-runtime:2.2.3"
+    kapt "androidx.room:room-compiler:2.2.3"
 
     // 3rd Parties
     api 'com.jakewharton.timber:timber:4.7.1'
