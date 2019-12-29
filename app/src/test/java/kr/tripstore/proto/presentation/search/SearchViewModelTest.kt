@@ -6,8 +6,8 @@ import kotlinx.coroutines.test.runBlockingTest
 import kr.tripstore.proto.androidtest.MainCoroutineRule
 import kr.tripstore.proto.androidtest.util.LiveDataTestUtil
 import kr.tripstore.proto.shared.data.FakeTripDataSource
-import kr.tripstore.proto.shared.data.source.TripRepository
-import kr.tripstore.proto.shared.domain.GetTripPackagePageUseCase
+import kr.tripstore.proto.shared.data.trip.TripRepository
+import kr.tripstore.proto.shared.domain.trip.GetTripPackagePageUseCase
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsNot
 import org.hamcrest.core.IsNull
@@ -32,8 +32,12 @@ class SearchViewModelTest {
     @Before
     fun setup() {
         val tripDataSource = FakeTripDataSource()
-        val tripRepository = TripRepository(tripDataSource)
-        getTripPackagePageUseCase = GetTripPackagePageUseCase(tripRepository)
+        val tripRepository =
+            TripRepository(tripDataSource)
+        getTripPackagePageUseCase =
+            GetTripPackagePageUseCase(
+                tripRepository
+            )
     }
 
     @Test

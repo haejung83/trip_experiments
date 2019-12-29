@@ -6,8 +6,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import kr.tripstore.proto.model.domain.TripTheme
-import kr.tripstore.proto.shared.data.Result
-import kr.tripstore.proto.shared.domain.GetTripThemesUseCase
+import kr.tripstore.proto.shared.result.Result
+import kr.tripstore.proto.shared.domain.trip.GetTripThemesUseCase
 import timber.log.Timber
 import javax.inject.Inject
 

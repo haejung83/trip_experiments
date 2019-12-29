@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-package kr.tripstore.proto.shared.data
+package kr.tripstore.proto.shared.result
 
-import kr.tripstore.proto.shared.data.Result.Success
+import kr.tripstore.proto.shared.result.Result.Success
 
 
 /**

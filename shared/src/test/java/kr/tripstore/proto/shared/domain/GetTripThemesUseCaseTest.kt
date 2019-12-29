@@ -2,9 +2,10 @@ package kr.tripstore.proto.shared.domain
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import kr.tripstore.proto.shared.data.Result
+import kr.tripstore.proto.shared.result.Result
 import kr.tripstore.proto.shared.data.source.FakeRemoteTripDataSource
-import kr.tripstore.proto.shared.data.source.TripRepository
+import kr.tripstore.proto.shared.data.trip.TripRepository
+import kr.tripstore.proto.shared.domain.trip.GetTripThemesUseCase
 import kr.tripstore.proto.shared.test.util.assertResult
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsNot
@@ -19,14 +20,19 @@ class GetTripThemesUseCaseTest {
     @ExperimentalCoroutinesApi
     @Before
     fun setup() {
-        tripRepository = TripRepository(FakeRemoteTripDataSource())
+        tripRepository = TripRepository(
+            FakeRemoteTripDataSource()
+        )
     }
 
     @Test
     fun getTripThemesUseCase_isNotNull() =
         runBlockingTest {
             // Given a trip repository with a FakeRemoteTripDataSource that returns the predefined result at TestData
-            val getTripThemesUseCase = GetTripThemesUseCase(tripRepository)
+            val getTripThemesUseCase =
+                GetTripThemesUseCase(
+                    tripRepository
+                )
             // When getting a result of TripTheme
             val getTripThemesUseCaseResult = getTripThemesUseCase.invoke()
             // Then the result is not null
@@ -37,7 +43,10 @@ class GetTripThemesUseCaseTest {
     fun getTripThemesUseCase_checkResultIsNotEmpty() =
         runBlockingTest {
             // Given a trip repository with a FakeRemoteTripDataSource that returns the predefined result at TestData
-            val getTripThemesUseCase = GetTripThemesUseCase(tripRepository)
+            val getTripThemesUseCase =
+                GetTripThemesUseCase(
+                    tripRepository
+                )
             // When getting TripThemes
             val getTripThemesUseCaseResult = getTripThemesUseCase.invoke()
             val data = (getTripThemesUseCaseResult as Result.Success).data

@@ -8,8 +8,8 @@ import kr.tripstore.proto.androidtest.util.LiveDataTestUtil
 import kr.tripstore.proto.shared.data.FakeEmptyTripDataSource
 import kr.tripstore.proto.shared.data.FakeErrorTripDataSource
 import kr.tripstore.proto.shared.data.FakeTripDataSource
-import kr.tripstore.proto.shared.data.source.TripRepository
-import kr.tripstore.proto.shared.domain.GetTripThemesUseCase
+import kr.tripstore.proto.shared.data.trip.TripRepository
+import kr.tripstore.proto.shared.domain.trip.GetTripThemesUseCase
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.Is
 import org.hamcrest.core.IsNot
@@ -37,12 +37,28 @@ class TripViewModelTest {
     @Before
     fun setup() {
         // Prepare two UseCases
-        val tripRepository = TripRepository(FakeTripDataSource())
-        getTripThemesUseCase = GetTripThemesUseCase(tripRepository)
-        val emptyTripRepository = TripRepository(FakeEmptyTripDataSource())
-        getEmptyTripThemesUseCase = GetTripThemesUseCase(emptyTripRepository)
-        val errorTripRepository = TripRepository(FakeErrorTripDataSource())
-        getErrorTripThemesUseCase = GetTripThemesUseCase(errorTripRepository)
+        val tripRepository =
+            TripRepository(FakeTripDataSource())
+        getTripThemesUseCase =
+            GetTripThemesUseCase(
+                tripRepository
+            )
+        val emptyTripRepository =
+            TripRepository(
+                FakeEmptyTripDataSource()
+            )
+        getEmptyTripThemesUseCase =
+            GetTripThemesUseCase(
+                emptyTripRepository
+            )
+        val errorTripRepository =
+            TripRepository(
+                FakeErrorTripDataSource()
+            )
+        getErrorTripThemesUseCase =
+            GetTripThemesUseCase(
+                errorTripRepository
+            )
     }
 
     @Test

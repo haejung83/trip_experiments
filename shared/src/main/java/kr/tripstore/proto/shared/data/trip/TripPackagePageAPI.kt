@@ -1,4 +1,4 @@
-package kr.tripstore.proto.shared.data.source.remote
+package kr.tripstore.proto.shared.data.trip
 
 import kr.tripstore.proto.model.TripPackagePage
 import kr.tripstore.proto.shared.BuildConfig

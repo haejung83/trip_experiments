@@ -1,12 +1,12 @@
-package kr.tripstore.proto.shared.domain
+package kr.tripstore.proto.shared.domain.trip
 
 import android.net.Uri
 import kr.tripstore.proto.model.TripLink
 import kr.tripstore.proto.model.TripLinkType
 import kr.tripstore.proto.model.domain.TripTheme
 import kr.tripstore.proto.model.domain.TripThemeDetail
-import kr.tripstore.proto.shared.data.Result
-import kr.tripstore.proto.shared.data.source.TripRepository
+import kr.tripstore.proto.shared.result.Result
+import kr.tripstore.proto.shared.data.trip.TripRepository
 import javax.inject.Inject
 
 class GetTripThemesUseCase @Inject constructor(
