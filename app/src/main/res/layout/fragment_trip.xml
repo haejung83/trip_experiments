@@ -18,7 +18,7 @@
         android:paddingEnd="@dimen/padding_end_fragment"
         tools:context="kr.tripstore.proto.presentation.trip.TripFragment">
 
-        <kr.tripstore.proto.presentation.trip.LayoutAnimatedRecyclerView
+        <kr.tripstore.proto.presentation.widget.LayoutAnimatedRecyclerView
             android:id="@+id/recyclerview_trip"
             android:layout_width="0dp"
             android:layout_height="0dp"

@@ -1,4 +1,4 @@
-package kr.tripstore.proto.presentation.trip
+package kr.tripstore.proto.presentation.widget
 
 import android.content.Context
 import android.util.AttributeSet
