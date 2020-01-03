@@ -12,12 +12,17 @@
         <variable
             name="item"
             type="kr.tripstore.proto.presentation.trip.theme.TripThemeCellItem" />
+
+        <variable
+            name="clickListener"
+            type="kr.tripstore.proto.presentation.trip.theme.TripThemeItemViewClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:layout_margin="1dp">
+        android:layout_margin="1dp"
+        android:onClick="@{(view) -> clickListener.onClick(view, item)}">
 
         <ImageView
             android:id="@+id/imageview_theme_cell"

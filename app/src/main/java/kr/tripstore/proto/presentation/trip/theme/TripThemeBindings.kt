@@ -16,7 +16,7 @@ object TripThemeBindings {
     @JvmStatic
     fun setAdapterWithViewModel(recyclerView: RecyclerView, viewModel: TripViewModel) {
         recyclerView.run {
-            val tripThemeAdapter = TripThemeAdapter(viewModel)
+            val tripThemeAdapter = TripThemeAdapter(viewModel.tripThemeItemViewClickListener)
             adapter = tripThemeAdapter
             layoutManager = GridLayoutManager(context, 4, GridLayoutManager.VERTICAL, false).apply {
                 spanSizeLookup = tripThemeAdapter.gridSpanSizeLookup
