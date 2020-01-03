@@ -16,8 +16,7 @@ data class TripThemeCellItem(
     override val id: Int,
     val title: String,
     val imageUrl: String,
-    val openLinkSymbol: String,
-    val openLinkSymbolVisibility: Int
+    val openLinkSymbol: String
 ) :
     TripThemeItem(id) {
     override val tripThemeType: TripThemeType

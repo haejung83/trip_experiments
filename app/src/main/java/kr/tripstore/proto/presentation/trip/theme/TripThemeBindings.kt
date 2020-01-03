@@ -45,8 +45,7 @@ object TripThemeBindings {
                                 tripThemeDetail.id,
                                 tripThemeDetail.title,
                                 tripThemeDetail.imageUrl,
-                                openLinkSymbol,
-                                if (openLinkSymbol.isNotEmpty()) View.VISIBLE else View.INVISIBLE
+                                openLinkSymbol
                             )
                         }.toTypedArray()
                     )
