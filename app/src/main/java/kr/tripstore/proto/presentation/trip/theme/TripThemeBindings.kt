@@ -1,7 +1,6 @@
 package kr.tripstore.proto.presentation.trip.theme
 
 import android.content.Context
-import android.view.View
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -37,16 +36,19 @@ object TripThemeBindings {
                             tripTheme.title
                         ),
                         *tripTheme.themeDetails.map { tripThemeDetail ->
-                            val openLinkSymbol = getSymbolFromOpenLink(
-                                recyclerView.context,
-                                tripThemeDetail.openLink.type
-                            )
-                            TripThemeCellItem(
-                                tripThemeDetail.id,
-                                tripThemeDetail.title,
-                                tripThemeDetail.imageUrl,
-                                openLinkSymbol
-                            )
+                            tripThemeDetail.run {
+                                val symbol = getSymbolFromOpenLink(
+                                    recyclerView.context,
+                                    openLink.type
+                                )
+                                TripThemeCellItem(
+                                    id,
+                                    title,
+                                    imageUrl,
+                                    openLink,
+                                    symbol
+                                )
+                            }
                         }.toTypedArray()
                     )
                 }.flatten()
