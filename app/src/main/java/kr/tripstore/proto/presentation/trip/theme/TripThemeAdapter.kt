@@ -1,16 +1,16 @@
 package kr.tripstore.proto.presentation.trip.theme
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import kr.tripstore.proto.databinding.ItemThemeCellBinding
 import kr.tripstore.proto.databinding.ItemThemeTitleBinding
-import kr.tripstore.proto.presentation.trip.TripViewModel
 
 class TripThemeAdapter(
-    private val tripViewModel: TripViewModel
+    private val tripThemeItemViewClickListener: TripThemeItemViewClickListener
 ) : ListAdapter<TripThemeItem, TripThemeItemViewHolder>(TripThemeItemDiffCallback()) {
 
     val gridSpanSizeLookup by lazy {
@@ -45,10 +45,14 @@ class TripThemeAdapter(
         }
 
     override fun onBindViewHolder(holder: TripThemeItemViewHolder, position: Int) =
-        holder.bind(getItem(position))
+        holder.bind(getItem(position), tripThemeItemViewClickListener)
 
     override fun getItemViewType(position: Int): Int = getItem(position).tripThemeType.viewType
 
+}
+
+interface TripThemeItemViewClickListener {
+    fun onClick(view: View, tripThemeItem: TripThemeItem)
 }
 
 class TripThemeItemDiffCallback : DiffUtil.ItemCallback<TripThemeItem>() {

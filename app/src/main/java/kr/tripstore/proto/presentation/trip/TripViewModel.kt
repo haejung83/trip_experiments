@@ -1,13 +1,16 @@
 package kr.tripstore.proto.presentation.trip
 
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import kr.tripstore.proto.model.domain.TripTheme
-import kr.tripstore.proto.shared.result.Result
+import kr.tripstore.proto.presentation.trip.theme.TripThemeItem
+import kr.tripstore.proto.presentation.trip.theme.TripThemeItemViewClickListener
 import kr.tripstore.proto.shared.domain.trip.GetTripThemesUseCase
+import kr.tripstore.proto.shared.result.Result
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -26,6 +29,13 @@ class TripViewModel @Inject constructor(
     private val _isError = MutableLiveData<Boolean>(false)
     val isError: LiveData<Boolean>
         get() = _isError
+
+    val tripThemeItemViewClickListener: TripThemeItemViewClickListener =
+        object : TripThemeItemViewClickListener {
+            override fun onClick(view: View, tripThemeItem: TripThemeItem) {
+                Timber.d("$view, ${tripThemeItem.tripThemeType}")
+            }
+        }
 
     fun start() {
         if (_isLoading.value == true) return
