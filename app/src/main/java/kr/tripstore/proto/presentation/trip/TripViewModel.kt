@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import kr.tripstore.proto.model.domain.TripTheme
+import kr.tripstore.proto.presentation.link.TripLinkOpener
+import kr.tripstore.proto.presentation.trip.theme.TripThemeCellItem
 import kr.tripstore.proto.presentation.trip.theme.TripThemeItem
 import kr.tripstore.proto.presentation.trip.theme.TripThemeItemViewClickListener
 import kr.tripstore.proto.shared.domain.trip.GetTripThemesUseCase
@@ -15,6 +17,7 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class TripViewModel @Inject constructor(
+    private val tripLinkOpener: TripLinkOpener,
     private val getTripThemesUseCase: GetTripThemesUseCase
 ) : ViewModel() {
 
@@ -33,7 +36,9 @@ class TripViewModel @Inject constructor(
     val tripThemeItemViewClickListener: TripThemeItemViewClickListener =
         object : TripThemeItemViewClickListener {
             override fun onClick(view: View, tripThemeItem: TripThemeItem) {
-                Timber.d("$view, ${tripThemeItem.tripThemeType}")
+                when (tripThemeItem) {
+                    is TripThemeCellItem -> tripLinkOpener.open(tripThemeItem.openLink)
+                }
             }
         }
 

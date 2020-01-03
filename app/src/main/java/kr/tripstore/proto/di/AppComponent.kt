@@ -5,6 +5,7 @@ import dagger.Component
 import dagger.android.AndroidInjector
 import dagger.android.support.AndroidSupportInjectionModule
 import kr.tripstore.proto.TsApplication
+import kr.tripstore.proto.presentation.link.TripLinkResolverModule
 import kr.tripstore.proto.shared.di.SharedModule
 import kr.tripstore.proto.shared.di.ViewModelModule
 import javax.inject.Singleton
@@ -15,6 +16,7 @@ import javax.inject.Singleton
         AndroidSupportInjectionModule::class,
         AppModule::class,
         ActivityBindingModule::class,
+        TripLinkResolverModule::class,
         ViewModelModule::class,
         SharedModule::class
     ]

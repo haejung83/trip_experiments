@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
-import kr.tripstore.proto.shared.result.Result
 import kr.tripstore.proto.shared.domain.trip.GetTripPackagePageUseCase
+import kr.tripstore.proto.shared.result.Result
 import timber.log.Timber
 import javax.inject.Inject
 
