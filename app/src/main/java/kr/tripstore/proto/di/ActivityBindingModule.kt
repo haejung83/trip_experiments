@@ -7,6 +7,7 @@ import kr.tripstore.proto.presentation.save.SaveModule
 import kr.tripstore.proto.presentation.search.SearchModule
 import kr.tripstore.proto.presentation.trip.TripActivity
 import kr.tripstore.proto.presentation.trip.TripModule
+import kr.tripstore.proto.presentation.web.WebModule
 import kr.tripstore.proto.shared.di.ActivityScope
 
 @Module
@@ -19,7 +20,8 @@ abstract class ActivityBindingModule {
             TripModule::class,
             SearchModule::class,
             SaveModule::class,
-            ProfileModule::class
+            ProfileModule::class,
+            WebModule::class
         ]
     )
     internal abstract fun tripActivity(): TripActivity

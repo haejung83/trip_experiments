@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="viewModel"
+            type="kr.tripstore.proto.presentation.web.WebViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintlayout_web_fragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/padding_start_fragment"
+        android:paddingEnd="@dimen/padding_end_fragment">
+
+        <TextView
+            android:id="@+id/textview_web_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{viewModel.pageTitle}"
+            android:visibility="@{TextUtils.isEmpty(viewModel.pageTitle) ? View.GONE : View.VISIBLE}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider_title"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_web_title" />
+
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/progressbar_page_loading"
+            app:loadUrl="@{viewModel.loadUrl}" />
+
+        <ProgressBar
+            android:id="@+id/progressbar_page_loading"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="@{viewModel.loadingProgress}"
+            android:visibility="@{viewModel.isLoadingProgressVisible ? View.VISIBLE : View.GONE}"
+            app:layout_constraintEnd_toEndOf="@+id/divider_title"
+            app:layout_constraintStart_toStartOf="@+id/divider_title"
+            app:layout_constraintTop_toBottomOf="@+id/divider_title" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
