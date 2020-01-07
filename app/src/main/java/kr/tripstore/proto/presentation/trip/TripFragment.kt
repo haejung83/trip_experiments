@@ -3,8 +3,11 @@ package kr.tripstore.proto.presentation.trip
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import kr.tripstore.proto.R
 import kr.tripstore.proto.databinding.FragmentTripBinding
+import kr.tripstore.proto.model.TripLinkType
+import kr.tripstore.proto.presentation.EventObserver
 import kr.tripstore.proto.presentation.base.DaggerDataBindingFragment
 import timber.log.Timber
 import javax.inject.Inject
@@ -24,12 +27,35 @@ class TripFragment : DaggerDataBindingFragment<FragmentTripBinding>() {
         viewDataBinding.viewModel = viewModel.apply {
             Timber.d("ViewModel: ${this.hashCode()}")
         }
+        setupNavigation()
         viewDataBinding.lifecycleOwner = this
         viewModel.start()
     }
 
-    companion object {
-        fun newInstance() = TripFragment()
+    private fun setupNavigation() {
+        viewModel.openTripLinkEvent.observe(
+            this@TripFragment, EventObserver { tripLink ->
+                Timber.d("TripLink: $tripLink")
+                when (tripLink.type) {
+                    TripLinkType.WEB -> {
+                        navigateToWebFragment(tripLink.parameters)
+                    }
+                    TripLinkType.THEME_CALENDAR -> {
+                    }
+                    else -> {
+                    }
+                }
+            }
+        )
+    }
+
+    private fun navigateToWebFragment(params: Map<String, String?>) {
+        val url = params["url"]
+        url?.let {
+            val action =
+                TripFragmentDirections.actionNavigationTripToWebFragment(it, params["title"])
+            findNavController().navigate(action)
+        }
     }
 
 }

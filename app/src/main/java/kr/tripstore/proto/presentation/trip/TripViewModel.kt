@@ -6,8 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import kr.tripstore.proto.model.TripLink
 import kr.tripstore.proto.model.domain.TripTheme
-import kr.tripstore.proto.presentation.link.TripLinkOpener
+import kr.tripstore.proto.presentation.Event
 import kr.tripstore.proto.presentation.trip.theme.TripThemeCellItem
 import kr.tripstore.proto.presentation.trip.theme.TripThemeItem
 import kr.tripstore.proto.presentation.trip.theme.TripThemeItemViewClickListener
@@ -17,13 +18,16 @@ import timber.log.Timber
 import javax.inject.Inject
 
 class TripViewModel @Inject constructor(
-    private val tripLinkOpener: TripLinkOpener,
     private val getTripThemesUseCase: GetTripThemesUseCase
 ) : ViewModel() {
 
     private val _tripThemes = MutableLiveData<List<TripTheme>>()
     val tripThemes: LiveData<List<TripTheme>>
         get() = _tripThemes
+
+    private val _openTripLinkEvent = MutableLiveData<Event<TripLink>>()
+    val openTripLinkEvent: LiveData<Event<TripLink>>
+        get() = _openTripLinkEvent
 
     private val _isLoading = MutableLiveData<Boolean>(false)
     val isLoading: LiveData<Boolean>
@@ -37,7 +41,7 @@ class TripViewModel @Inject constructor(
         object : TripThemeItemViewClickListener {
             override fun onClick(view: View, tripThemeItem: TripThemeItem) {
                 when (tripThemeItem) {
-                    is TripThemeCellItem -> tripLinkOpener.open(tripThemeItem.openLink)
+                    is TripThemeCellItem -> _openTripLinkEvent.value = Event(tripThemeItem.openLink)
                 }
             }
         }

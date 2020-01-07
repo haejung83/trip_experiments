@@ -1,8 +1,10 @@
 package kr.tripstore.proto.presentation.web
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.navArgs
 import kr.tripstore.proto.R
 import kr.tripstore.proto.databinding.FragmentWebBinding
 import kr.tripstore.proto.presentation.base.DaggerDataBindingFragment
@@ -16,8 +18,11 @@ class WebFragment : DaggerDataBindingFragment<FragmentWebBinding>() {
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
 
+    private val args: WebFragmentArgs by navArgs()
+
     private val viewModel by viewModels<WebViewModel> { viewModelFactory }
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewDataBinding.run {
@@ -34,11 +39,7 @@ class WebFragment : DaggerDataBindingFragment<FragmentWebBinding>() {
                 javaScriptEnabled = true
             }
         }
-        viewModel.load("https://www.google.com")
-    }
-
-    companion object {
-        fun newInstance() = WebFragment()
+        viewModel.load(args.loadUrl)
     }
 
 }
