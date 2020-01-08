@@ -18,14 +18,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingStart="@dimen/padding_start_fragment"
-        android:paddingEnd="@dimen/padding_end_fragment">
+        android:paddingStart="@dimen/padding_start_web_fragment"
+        android:paddingEnd="@dimen/padding_end_web_fragment">
 
         <TextView
             android:id="@+id/textview_web_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:paddingTop="@dimen/padding_top_fragment_title"
+            android:paddingBottom="@dimen/padding_bottom_fragment_title"
             android:text="@{viewModel.pageTitle}"
             android:visibility="@{TextUtils.isEmpty(viewModel.pageTitle) ? View.GONE : View.VISIBLE}"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,7 +37,6 @@
             android:id="@+id/divider_title"
             android:layout_width="0dp"
             android:layout_height="1dp"
-            android:layout_marginTop="8dp"
             android:background="?android:attr/listDivider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,11 +46,10 @@
             android:id="@+id/webview"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/progressbar_page_loading"
+            app:layout_constraintTop_toBottomOf="@+id/divider_title"
             app:loadUrl="@{viewModel.loadUrl}" />
 
         <ProgressBar
@@ -63,7 +62,7 @@
             android:visibility="@{viewModel.isLoadingProgressVisible ? View.VISIBLE : View.GONE}"
             app:layout_constraintEnd_toEndOf="@+id/divider_title"
             app:layout_constraintStart_toStartOf="@+id/divider_title"
-            app:layout_constraintTop_toBottomOf="@+id/divider_title" />
+            app:layout_constraintTop_toBottomOf="@+id/textview_web_title" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

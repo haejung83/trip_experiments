@@ -8,6 +8,7 @@
         <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/nanum_gothic_font</item>
         <!-- Target Android sdk versions < 26 and > 14. -->
         <item name="fontFamily">@font/nanum_gothic_font</item>
+        <item name="android:progressBarStyleHorizontal">@style/Widget.TripStore.ProgressBar</item>
     </style>
 
     <!-- Label: Black -->
@@ -46,6 +47,12 @@
 
     <style name="Base.AppTheme.LabelWhite.Small" parent="Base.AppTheme.LabelWhite">
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <!-- ProgressBar -->
+    <style name="Widget.TripStore.ProgressBar" parent="Widget.AppCompat.ProgressBar.Horizontal">
+        <item name="android:minHeight">4dp</item>
+        <item name="android:maxHeight">4dp</item>
     </style>
 
 </resources>
