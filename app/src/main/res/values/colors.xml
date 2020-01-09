@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primaryColor">#d50000</color>
-    <color name="primaryLightColor">#ff5131</color>
-    <color name="primaryDarkColor">#cb3333</color>
-    <color name="primaryTextColor">#FFFFFF</color>
 
+    <!-- Branding Color -->
+    <color name="ts_red_deep">#d50000</color>
+    <color name="ts_red_light">#ff5131</color>
+    <color name="ts_red_dark">#cb3333</color>
+
+    <!-- Text Color -->
+    <color name="ts_text_white">#F4F4F4</color>
+    <color name="ts_text_gray">#C0C0C0</color>
+    <color name="ts_text_black">#000000</color>
+
+    <!-- Common Color -->
     <color name="launcher_background">#FFFFFF</color>
+    <color name="ts_black">#000000</color>
+    <color name="ts_white">#FFFFFF</color>
 
-    <color name="all_text_white">#FFFFFF</color>
-    <color name="all_text_gray">#C0C0C0</color>
-    <color name="all_text_black">#000000</color>
-
-    <color name="all_black">#000000</color>
-    <color name="all_white">#FFFFFF</color>
 </resources>

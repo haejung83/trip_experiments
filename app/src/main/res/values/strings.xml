@@ -1,7 +1,9 @@
 <resources>
 
+    <!-- Application Values -->
     <string name="application_name">트립스토어 베타</string>
 
+    <!-- Navigation Menu Values -->
     <string name="menu_trip">여행</string>
     <string name="menu_search">검색</string>
     <string name="menu_save">저장</string>

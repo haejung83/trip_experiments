@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.TripStore" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Text Appearance -->
+        <item name="textAppearanceHeadline1">@style/TextAppearance.TripStore.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.TripStore.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.TripStore.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.TripStore.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.TripStore.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.TripStore.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.TripStore.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.TripStore.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.TripStore.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.TripStore.Body2</item>
+        <item name="textAppearanceButton">@style/TextAppearance.TripStore.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.TripStore.Caption</item>
+    </style>
+
+    <style name="TripStore" parent="Base.TripStore">
+        <!-- For Android sdk versions 26+. -->
+        <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/nanum_gothic_font</item>
+        <!-- Target Android sdk versions < 26 and > 14. -->
+        <item name="fontFamily">@font/nanum_gothic_font</item>
+        <!-- Progress Bar -->
+        <item name="android:progressBarStyleHorizontal">@style/Widget.TripStore.ProgressBar</item>
+    </style>
+
+    <style name="TripStore.Red" parent="TripStore">
+        <item name="colorPrimary">@color/ts_red_deep</item>
+        <item name="colorPrimaryDark">@color/ts_red_dark</item>
+        <item name="colorAccent">@color/ts_red_light</item>
+        <item name="colorOnPrimary">@color/ts_text_white</item>
+    </style>
+
+</resources>

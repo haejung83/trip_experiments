@@ -12,7 +12,7 @@
         android:label="@string/application_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Base.AppTheme"
+        android:theme="@style/TripStore.Red"
         android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="m">
