@@ -39,7 +39,7 @@
 
         <TextView
             android:id="@+id/textview_theme_cell"
-            style="?attr/textAppearanceSubtitle2"
+            style="?attr/textAppearanceCaption"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"

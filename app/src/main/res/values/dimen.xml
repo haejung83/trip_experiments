@@ -2,6 +2,8 @@
 <resources>
 
     <!-- Common Grid Dimension -->
+    <dimen name="grid_title_vertical_margin">8dp</dimen>
+    <dimen name="grid_title_horizontal_margin">8dp</dimen>
     <dimen name="grid_cell_0_25">10dp</dimen>
     <dimen name="grid_cell_0_5">20dp</dimen>
     <dimen name="grid_cell_1">40dp</dimen>
@@ -19,7 +21,5 @@
 
     <!-- Fragment Title -->
     <dimen name="height_fragment_title">@dimen/grid_cell_1</dimen>
-    <dimen name="padding_top_fragment_title">8dp</dimen>
-    <dimen name="padding_bottom_fragment_title">8dp</dimen>
 
 </resources>
