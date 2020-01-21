@@ -5,6 +5,9 @@ import dagger.Provides
 import kr.tripstore.proto.shared.data.calendar.CalendarsDataSource
 import kr.tripstore.proto.shared.data.calendar.CalendarsRemoteDataSource
 import kr.tripstore.proto.shared.data.calendar.CalendarsRepository
+import kr.tripstore.proto.shared.data.temperature.TemperaturesDataSource
+import kr.tripstore.proto.shared.data.temperature.TemperaturesRemoteDataSource
+import kr.tripstore.proto.shared.data.temperature.TemperaturesRepository
 import kr.tripstore.proto.shared.data.trip.TripDataSource
 import kr.tripstore.proto.shared.data.trip.TripRemoteDataSource
 import kr.tripstore.proto.shared.data.trip.TripRepository
@@ -42,4 +45,19 @@ class SharedModule {
     fun provideCalendarsRepository(
         @RemoteTripDataSource remoteCalendarsDataSource: CalendarsDataSource
     ) = CalendarsRepository(remoteCalendarsDataSource)
+
+    /*
+     * TemperaturesDataSource
+     */
+    @Provides
+    @RemoteTripDataSource
+    fun provideTemperaturesDataSource(): TemperaturesDataSource =
+        TemperaturesRemoteDataSource()
+
+    @Singleton
+    @Provides
+    fun provideTemperaturesRepository(
+        @RemoteTripDataSource remoteTemperaturesDataSource: TemperaturesDataSource
+    ) = TemperaturesRepository(remoteTemperaturesDataSource)
+
 }

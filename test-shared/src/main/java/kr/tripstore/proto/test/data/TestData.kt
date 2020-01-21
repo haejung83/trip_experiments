@@ -72,5 +72,25 @@ object TestData {
         NO_ERRORS,
         calendarDays
     )
+    // Temperatures
+    val temperatures = Temperatures(
+        RESPONSE_TIME,
+        NO_ERROR,
+        NO_ERRORS,
+        listOf(
+            "최고 25℃",
+            "최고 26℃",
+            "최고 28℃",
+            "최고 31℃",
+            "최고 33℃",
+            "최고 34℃",
+            "최고 34℃",
+            "최고 34℃",
+            "최고 32℃",
+            "최고 29℃",
+            "최고 27℃",
+            "최고 25℃"
+        )
+    )
 
 }
