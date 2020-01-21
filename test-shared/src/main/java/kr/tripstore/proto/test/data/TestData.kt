@@ -1,9 +1,6 @@
 package kr.tripstore.proto.test.data
 
-import kr.tripstore.proto.model.TripDetail
-import kr.tripstore.proto.model.TripPackage
-import kr.tripstore.proto.model.TripPackagePage
-import kr.tripstore.proto.model.TripPackagePageFilter
+import kr.tripstore.proto.model.*
 import kotlin.random.Random
 
 @Suppress("UNUSED", "MemberVisibilityCanBePrivate")
@@ -18,6 +15,7 @@ object TestData {
     private val NO_ERRORS = null
     private val RESPONSE_TIME = Random.nextDouble(0.005, 0.9)
 
+    // TripPackagePage
     val tripPackagePageFilter = TripPackagePageFilter("false", "false")
     val tripDetail = TripDetail(
         TRIP_DETAIL_BASE_ID + 1,
@@ -44,6 +42,7 @@ object TestData {
         tripPackagePageFilter,
         listOf(tripPackage)
     )
+    // Empty TripPackagePage
     val emptyTripPackage = TripPackage(
         TRIP_PACKAGE_BASE_ID + 0,
         "없음",
@@ -62,6 +61,16 @@ object TestData {
         0,
         tripPackagePageFilter,
         emptyList()
+    )
+    // Calendars
+    val calendarDays = (10..20).toList().map {
+        CalendarDay("2020-01-$it", Random.nextInt(100_000, 900_000), false)
+    }
+    val calendars = Calendars(
+        RESPONSE_TIME,
+        NO_ERROR,
+        NO_ERRORS,
+        calendarDays
     )
 
 }

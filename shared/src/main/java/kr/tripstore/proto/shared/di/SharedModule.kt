@@ -2,14 +2,20 @@ package kr.tripstore.proto.shared.di
 
 import dagger.Module
 import dagger.Provides
+import kr.tripstore.proto.shared.data.calendar.CalendarsDataSource
+import kr.tripstore.proto.shared.data.calendar.CalendarsRemoteDataSource
+import kr.tripstore.proto.shared.data.calendar.CalendarsRepository
 import kr.tripstore.proto.shared.data.trip.TripDataSource
-import kr.tripstore.proto.shared.data.trip.TripRepository
 import kr.tripstore.proto.shared.data.trip.TripRemoteDataSource
+import kr.tripstore.proto.shared.data.trip.TripRepository
 import javax.inject.Singleton
 
 @Module
 class SharedModule {
 
+    /*
+     * TripDataSource
+     */
     @Provides
     @RemoteTripDataSource
     fun provideTripDataSource(): TripDataSource =
@@ -23,4 +29,17 @@ class SharedModule {
     ): TripRepository =
         TripRepository(remoteTripDataSource)
 
+    /*
+     * CalendarsDataSource
+     */
+    @Provides
+    @RemoteTripDataSource
+    fun provideCalendarsDataSource(): CalendarsDataSource =
+        CalendarsRemoteDataSource()
+
+    @Singleton
+    @Provides
+    fun provideCalendarsRepository(
+        @RemoteTripDataSource remoteCalendarsDataSource: CalendarsDataSource
+    ) = CalendarsRepository(remoteCalendarsDataSource)
 }
