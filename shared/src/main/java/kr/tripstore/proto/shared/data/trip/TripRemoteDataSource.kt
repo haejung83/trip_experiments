@@ -4,8 +4,7 @@ import kr.tripstore.proto.model.TripPackagePage
 import kr.tripstore.proto.shared.result.Result
 import javax.inject.Inject
 
-class TripRemoteDataSource @Inject constructor() :
-    TripDataSource {
+class TripRemoteDataSource @Inject constructor() : TripDataSource {
 
     private val tripPackagePageAPI = TripPackagePageAPI.create()
 
