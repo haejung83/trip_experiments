@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import kr.tripstore.proto.shared.domain.calendar.GetLowestPriceCalendarUseCase
+import kr.tripstore.proto.shared.result.Result
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -12,9 +13,11 @@ class ProfileViewModel @Inject constructor(
 ) : ViewModel() {
 
     fun start() {
+        // FIXME: For Testing
         viewModelScope.launch {
-            val lowestPriceCalendar = getLowestPriceCalendarUseCase(479, 1)
-            Timber.d("LowestPriceCalendar: $lowestPriceCalendar")
+            val lowestPriceCalendarResult = getLowestPriceCalendarUseCase(479, 1)
+            if (lowestPriceCalendarResult is Result.Success)
+                Timber.d("LowestPriceCalendar: $lowestPriceCalendarResult")
         }
     }
 

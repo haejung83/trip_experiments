@@ -1,5 +1,6 @@
 package kr.tripstore.proto.shared.domain.calendar
 
+import kr.tripstore.proto.model.CalendarDay
 import kr.tripstore.proto.model.domain.LowestPriceCalendar
 import kr.tripstore.proto.model.domain.LowestPriceDay
 import kr.tripstore.proto.model.domain.LowestPriceMonth
@@ -15,38 +16,24 @@ class GetLowestPriceCalendarUseCase @Inject constructor(
 ) {
 
     suspend operator fun invoke(placeId: Int, cityId: Int): Result<LowestPriceCalendar> {
-        val calendars = calendarsRepository.getCalendars(placeId, cityId)
-        val temperatures = temperaturesRepository.getTemperatures(placeId)
-        val extractRegex = REGEXP_YEAR_MONTH_DAY.toRegex()
+        // Prepare high temperatures
+        val highTemperatures =
+            when (val temperatures = temperaturesRepository.getTemperatures(placeId)) {
+                is Result.Success -> temperatures.data.highTemperatures
+                else -> null
+            }
 
-        return when (calendars) {
+        // Assemble a LowestPriceCalendar using the Calendar result and prepared high temperatures
+        return when (val calendars = calendarsRepository.getCalendars(placeId, cityId)) {
             is Result.Success -> {
                 Result.Success(
-                    LowestPriceCalendar(placeId, cityId,
-                        calendars.data.calendarDays.mapNotNull { calendarDay ->
-                            extractRegex.find(calendarDay.date)
-                                ?.groupValues?.let { extractedDateGroup ->
-                                Triple(
-                                    // Year
-                                    extractedDateGroup[1].toInt(),
-                                    // Month
-                                    extractedDateGroup[2].toInt(),
-                                    LowestPriceDay(
-                                        // Day
-                                        extractedDateGroup[3].toInt(),
-                                        calendarDay.price,
-                                        calendarDay.isHoliday
-                                    )
-                                )
-                            }
-                        }.groupBy {
-                            it.second
-                        }.map { groupedLowestPriceDay ->
-                            LowestPriceMonth(
-                                groupedLowestPriceDay.key,
-                                String.empty,
-                                groupedLowestPriceDay.value.map { it.third })
-                        }
+                    LowestPriceCalendar(
+                        placeId,
+                        cityId,
+                        assembleLowestPriceMonthsUsingCalendarsDays(
+                            calendars.data.calendarDays,
+                            highTemperatures
+                        )
                     )
                 )
             }
@@ -56,8 +43,37 @@ class GetLowestPriceCalendarUseCase @Inject constructor(
     }
 
     companion object {
-        private const val REGEXP_YEAR_MONTH_DAY =
-            "(20\\d{2})[-]*(0[1-9]|1[012])[-]*(0[1-9]|[12][0-9]|3[01])"
+        @Suppress("unused")
+        private const val INDEX_ALL = 0
+        private const val INDEX_YEAR = 1
+        private const val INDEX_MONTH = 2
+        private const val INDEX_DAY = 3
+        private val REGEXP_YEAR_MONTH_DAY =
+            "(20\\d{2})[-]*(0[1-9]|1[012])[-]*(0[1-9]|[12][0-9]|3[01])".toRegex()
+
+        private fun assembleLowestPriceMonthsUsingCalendarsDays(
+            calendarDays: List<CalendarDay>,
+            highTemperatures: List<String>?
+        ) = calendarDays.mapNotNull { calendarDay ->
+            REGEXP_YEAR_MONTH_DAY.find(calendarDay.date)?.let { matched ->
+                Triple(
+                    matched.groupValues[INDEX_YEAR].toInt(),
+                    matched.groupValues[INDEX_MONTH].toInt(),
+                    LowestPriceDay(
+                        matched.groupValues[INDEX_DAY].toInt(),
+                        calendarDay.price,
+                        calendarDay.isHoliday
+                    )
+                )
+            }
+        }.groupBy {
+            it.second // GroupBy Month
+        }.map { groupedLowestPriceDay ->
+            LowestPriceMonth(
+                groupedLowestPriceDay.key,
+                highTemperatures?.get(groupedLowestPriceDay.key - 1) ?: String.empty,
+                groupedLowestPriceDay.value.map { it.third })
+        }
     }
 
 }
