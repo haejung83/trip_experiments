@@ -15,7 +15,7 @@ class ProfileViewModel @Inject constructor(
     fun start() {
         // FIXME: For Testing
         viewModelScope.launch {
-            val lowestPriceCalendarResult = getLowestPriceCalendarUseCase(479, 1)
+            val lowestPriceCalendarResult = getLowestPriceCalendarUseCase(479, arrayOf(1, 2))
             if (lowestPriceCalendarResult is Result.Success)
                 Timber.d("LowestPriceCalendar: $lowestPriceCalendarResult")
         }

@@ -2,6 +2,7 @@ package kr.tripstore.proto.shared.data.calendar
 
 import kr.tripstore.proto.model.Calendars
 import kr.tripstore.proto.shared.BuildConfig
+import kr.tripstore.proto.shared.extension.ArrayValueWrapper
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
@@ -12,8 +13,8 @@ interface CalendarsAPI {
 
     @GET("/guest/list/calendar")
     suspend fun getCalendars(
-        @Query("placeId") placeId: Int,
-        @Query("cityId") cityId: Int,
+        @Query("placeId") placeId: ArrayValueWrapper<Int>,
+        @Query("cityId") cityId: ArrayValueWrapper<Int>,
         @Query("fromApp") fromApp: Boolean = true,
         @Query("platform") platform: String = "Android"
     ): Response<Calendars>

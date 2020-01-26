@@ -31,12 +31,14 @@ class GetLowestPriceCalendarUseCaseTest {
     @Test
     fun getLowestPriceCalendar_isNotNull() =
         runBlocking {
+            val fakePlace = 479
+            val fakeCities = arrayOf(1)
             // Given repositories which getting CalendarDay and Temperatures
             val getLowestPriceCalendarUseCase = GetLowestPriceCalendarUseCase(
                 calendarsRepository, temperaturesRepository
             )
             // When getting a result of LowestPriceCalendar
-            val getLowestPriceCalendarResult = getLowestPriceCalendarUseCase(479, 1)
+            val getLowestPriceCalendarResult = getLowestPriceCalendarUseCase(fakePlace, fakeCities)
             // Then the result is not null
             assertResult(getLowestPriceCalendarResult)
         }
@@ -44,12 +46,14 @@ class GetLowestPriceCalendarUseCaseTest {
     @Test
     fun getLowestPriceCalendar_checkResultIsNotEmpty() =
         runBlockingTest {
+            val fakePlace = 479
+            val fakeCities = arrayOf(1)
             // Given repositories which getting CalendarDay and Temperatures
             val getLowestPriceCalendarUseCase = GetLowestPriceCalendarUseCase(
                 calendarsRepository, temperaturesRepository
             )
             // When getting a result of LowestPriceCalendar
-            val getLowestPriceCalendarResult = getLowestPriceCalendarUseCase(479, 1)
+            val getLowestPriceCalendarResult = getLowestPriceCalendarUseCase(fakePlace, fakeCities)
             val data = (getLowestPriceCalendarResult as Result.Success).data
             // Then the data is not empty
             assertThat(data.months.size, IsNot.not(0))

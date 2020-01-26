@@ -2,10 +2,10 @@ package kr.tripstore.proto.shared.domain
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import kr.tripstore.proto.shared.result.Result
 import kr.tripstore.proto.shared.data.source.FakeRemoteTripDataSource
 import kr.tripstore.proto.shared.data.trip.TripRepository
 import kr.tripstore.proto.shared.domain.trip.GetTripThemesUseCase
+import kr.tripstore.proto.shared.result.Result
 import kr.tripstore.proto.shared.test.util.assertResult
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsNot

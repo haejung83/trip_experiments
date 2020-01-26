@@ -5,8 +5,8 @@ import kr.tripstore.proto.model.TripLink
 import kr.tripstore.proto.model.TripLinkType
 import kr.tripstore.proto.model.domain.TripTheme
 import kr.tripstore.proto.model.domain.TripThemeDetail
-import kr.tripstore.proto.shared.result.Result
 import kr.tripstore.proto.shared.data.trip.TripRepository
+import kr.tripstore.proto.shared.result.Result
 import javax.inject.Inject
 
 class GetTripThemesUseCase @Inject constructor(

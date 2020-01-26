@@ -2,7 +2,7 @@ package kr.tripstore.proto.model.domain
 
 class LowestPriceCalendar(
     val placeId: Int,
-    val cityId: Int,
+    val cityId: Array<Int>,
     val months: List<LowestPriceMonth>
 )
 

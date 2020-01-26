@@ -26,13 +26,15 @@ class CalendarsRepositoryTest {
     @Test
     fun getCalendars_isNotNull() =
         runBlockingTest {
+            val fakePlaces = arrayOf(478, 479)
+            val fakeCities = arrayOf(1)
             // Given a calendars data source
             val calendarsRepository =
                 CalendarsRepository(
                     calendarsRemoteDataSource
                 )
             // When getting a result of Calendars
-            val calendarsResult = calendarsRepository.getCalendars(0, 0)
+            val calendarsResult = calendarsRepository.getCalendars(fakePlaces, fakeCities)
             // Then the result is not null
             assertResult(calendarsResult)
         }
@@ -40,13 +42,15 @@ class CalendarsRepositoryTest {
     @Test
     fun getCalendars_isSameAsTestData() =
         runBlockingTest {
+            val fakePlaces = arrayOf(478, 479)
+            val fakeCities = arrayOf(1)
             // Given a calendars data source
             val calendarsRepository =
                 CalendarsRepository(
                     calendarsRemoteDataSource
                 )
             // When getting a result of Calendars
-            val calendarsResult = calendarsRepository.getCalendars(0, 0)
+            val calendarsResult = calendarsRepository.getCalendars(fakePlaces, fakeCities)
             val data = (calendarsResult as Result.Success).data
             // Then the data is equal to the predefined test data
             assertThat(data, IsEqual.equalTo(TestData.calendars))
