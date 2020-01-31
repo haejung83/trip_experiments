@@ -8,6 +8,9 @@ import kr.tripstore.proto.shared.data.calendar.CalendarsRepository
 import kr.tripstore.proto.shared.data.temperature.TemperaturesDataSource
 import kr.tripstore.proto.shared.data.temperature.TemperaturesRemoteDataSource
 import kr.tripstore.proto.shared.data.temperature.TemperaturesRepository
+import kr.tripstore.proto.shared.data.themecalendar.ThemeCalendarDataSource
+import kr.tripstore.proto.shared.data.themecalendar.ThemeCalendarRemoteDataSource
+import kr.tripstore.proto.shared.data.themecalendar.ThemeCalendarRepository
 import kr.tripstore.proto.shared.data.trip.TripDataSource
 import kr.tripstore.proto.shared.data.trip.TripRemoteDataSource
 import kr.tripstore.proto.shared.data.trip.TripRepository
@@ -23,7 +26,6 @@ class SharedModule {
     @RemoteTripDataSource
     fun provideTripDataSource(): TripDataSource =
         TripRemoteDataSource()
-
 
     @Singleton
     @Provides
@@ -59,5 +61,19 @@ class SharedModule {
     fun provideTemperaturesRepository(
         @RemoteTripDataSource remoteTemperaturesDataSource: TemperaturesDataSource
     ) = TemperaturesRepository(remoteTemperaturesDataSource)
+
+    /*
+     * ThemeCalendarDataSource
+     */
+    @Provides
+    @RemoteTripDataSource
+    fun provideThemeCalendarDataSource(): ThemeCalendarDataSource =
+        ThemeCalendarRemoteDataSource()
+
+    @Singleton
+    @Provides
+    fun provideThemeCalendarRepository(
+        @RemoteTripDataSource remoteThemeCalendarDataSource: ThemeCalendarDataSource
+    ) = ThemeCalendarRepository(remoteThemeCalendarDataSource)
 
 }

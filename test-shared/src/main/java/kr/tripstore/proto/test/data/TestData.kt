@@ -92,5 +92,21 @@ object TestData {
             "최고 25℃"
         )
     )
+    // ThemeCalendar
+    val themeCalendarDescription = ThemeCalendarDescription(
+        116,
+        "보라카이",
+        "화려한 여행\n보라카이에서 보내세요.",
+        "보라카이 여행은 당신의 삶의 스트레스에서 탈출 할 기회입니다.",
+        "",
+        "2019-12-20 12:52:27",
+        "2019-12-31 11:19:52"
+    )
+    val themeCalendar = ThemeCalendar(
+        RESPONSE_TIME,
+        NO_ERROR,
+        NO_ERRORS,
+        themeCalendarDescription
+    )
 
 }
