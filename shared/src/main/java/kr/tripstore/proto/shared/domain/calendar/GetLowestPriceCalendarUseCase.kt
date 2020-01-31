@@ -35,7 +35,7 @@ class GetLowestPriceCalendarUseCase @Inject constructor(
                     LowestPriceCalendar(
                         placeId,
                         cityId,
-                        assembleLowestPriceMonthsUsingCalendarsDays(
+                        assembleLowestPriceMonthsUsingCalendarDays(
                             calendars.data.calendarDays,
                             highTemperatures
                         )
@@ -56,7 +56,7 @@ class GetLowestPriceCalendarUseCase @Inject constructor(
         private val REGEXP_YEAR_MONTH_DAY =
             "(20\\d{2})[-]*(0[1-9]|1[012])[-]*(0[1-9]|[12][0-9]|3[01])".toRegex()
 
-        private fun assembleLowestPriceMonthsUsingCalendarsDays(
+        private fun assembleLowestPriceMonthsUsingCalendarDays(
             calendarDays: List<CalendarDay>,
             highTemperatures: List<String>?
         ) = calendarDays.mapNotNull { calendarDay ->
