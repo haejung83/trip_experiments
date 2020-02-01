@@ -13,8 +13,8 @@ interface CalendarsAPI {
 
     @GET("/guest/list/calendar")
     suspend fun getCalendars(
-        @Query("placeId") placeId: ArrayValueWrapper<Int>,
-        @Query("cityId") cityId: ArrayValueWrapper<Int>,
+        @Query("placeId") placeIds: ArrayValueWrapper<Int>,
+        @Query("cityId") cityIds: ArrayValueWrapper<Int>,
         @Query("fromApp") fromApp: Boolean = true,
         @Query("platform") platform: String = "Android"
     ): Response<Calendars>
