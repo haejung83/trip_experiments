@@ -13,9 +13,9 @@ class ThemeCalendarRemoteDataSource @Inject constructor() : ThemeCalendarDataSou
         return if (response.isSuccessful) {
             response.body()?.let {
                 Result.Success(it)
-            } ?: Result.Error(Exception("No Data"))
+            } ?: Result.Error(Exception("ThemeCalendar: No Data"))
         } else {
-            Result.Error(Exception("Error"))
+            Result.Error(Exception("ThemeCalendar: Error"))
         }
     }
 
