@@ -13,9 +13,9 @@ class TemperaturesRemoteDataSource @Inject constructor() : TemperaturesDataSourc
         return if (response.isSuccessful) {
             response.body()?.let {
                 Result.Success(it)
-            } ?: Result.Error(Exception("No Data"))
+            } ?: Result.Error(Exception("TemperaturesRemoteDataSource: is not available"))
         } else {
-            Result.Error(Exception("Error"))
+            Result.Error(Exception("TemperaturesRemoteDataSource: Error"))
         }
     }
 

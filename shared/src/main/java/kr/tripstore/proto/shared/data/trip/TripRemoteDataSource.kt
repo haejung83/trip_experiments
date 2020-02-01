@@ -13,9 +13,9 @@ class TripRemoteDataSource @Inject constructor() : TripDataSource {
         return if (response.isSuccessful) {
             response.body()?.let {
                 Result.Success(it)
-            } ?: Result.Error(Exception("No Data"))
+            } ?: Result.Error(Exception("TripRemoteDataSource: is not available"))
         } else {
-            Result.Error(Exception("Error"))
+            Result.Error(Exception("TripRemoteDataSource: Error"))
         }
     }
 
