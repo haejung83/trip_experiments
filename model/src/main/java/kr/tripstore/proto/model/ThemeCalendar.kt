@@ -15,6 +15,7 @@ data class ThemeCalendarDescription(
     val title: String,
     val subTitle: String,
     val description: String,
+    @field:Json(name = "imgUrl")
     val imageUrl: String,
     val createdAt: String?,
     val updatedAt: String?
