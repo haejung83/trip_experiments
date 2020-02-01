@@ -37,7 +37,7 @@ class GetTripThemesUseCase @Inject constructor(
                         }
                 )
             }
-            is Result.Error -> Result.Error(tripPackagePage.exception)
+            is Result.Error -> Result.Error(Exception("GetTripThemesUseCase: Error"))
             is Result.Loading -> Result.Loading
         }
 

@@ -41,7 +41,7 @@ class GetLowestPriceThemeCalendarUseCase @Inject constructor(
                         )
                     )
                 } ?: Result.Error(
-                    Exception("GetLowestPriceThemeCalendarUseCase: ThemeCalendar is not available")
+                    Exception("GetLowestPriceThemeCalendarUseCase: is not available")
                 )
             }
             is Result.Error -> Result.Error(Exception("GetLowestPriceThemeCalendarUseCase: Error"))

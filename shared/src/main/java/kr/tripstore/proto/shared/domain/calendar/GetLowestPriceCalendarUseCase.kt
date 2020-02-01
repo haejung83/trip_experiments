@@ -42,7 +42,7 @@ class GetLowestPriceCalendarUseCase @Inject constructor(
                     )
                 )
             }
-            is Result.Error -> Result.Error(calendars.exception)
+            is Result.Error -> Result.Error(Exception("GetLowestPriceCalendarUseCase: Error"))
             is Result.Loading -> Result.Loading
         }
     }
