@@ -17,6 +17,13 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_enter_anim"
             app:popExitAnim="@anim/nav_default_exit_anim" />
+        <action
+            android:id="@+id/action_navigation_trip_to_calendarFragment"
+            app:destination="@id/nav_calendar_Fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_enter_anim"
+            app:popExitAnim="@anim/nav_default_exit_anim" />
     </fragment>
 
     <fragment
@@ -50,8 +57,20 @@
             app:nullable="true" />
         <argument
             android:name="isShare"
-            app:argType="string"
-            android:defaultValue="false" />
+            android:defaultValue="false"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_calendar_Fragment"
+        android:name="kr.tripstore.proto.presentation.calendar.CalendarFragment"
+        android:label="CalendarFragment">
+        <argument
+            android:name="placeId"
+            app:argType="integer" />
+        <argument
+            android:name="cityIds"
+            app:argType="integer[]" />
     </fragment>
 
 </navigation>

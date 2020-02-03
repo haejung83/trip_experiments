@@ -40,6 +40,9 @@ class TripFragment : DaggerDataBindingFragment<FragmentTripBinding>() {
                     TripLinkType.WEB -> {
                         navigateToWebFragment(tripLink.parameters)
                     }
+                    TripLinkType.CALENDAR -> {
+                        navigateToCalendarFragment(tripLink.parameters)
+                    }
                     TripLinkType.THEME_CALENDAR -> {
                     }
                     else -> {
@@ -54,6 +57,20 @@ class TripFragment : DaggerDataBindingFragment<FragmentTripBinding>() {
         url?.let {
             val action =
                 TripFragmentDirections.actionNavigationTripToWebFragment(it, params["title"])
+            findNavController().navigate(action)
+        }
+    }
+
+    private fun navigateToCalendarFragment(params: Map<String, String?>) {
+        val placeId = params["placeId"]?.toInt()
+        val cityIds = params["cityId"]?.let { cities ->
+            cities.split(",").map { it.toInt() }
+        } ?: emptyList()
+        placeId?.let {
+            val action = TripFragmentDirections.actionNavigationTripToCalendarFragment(
+                it,
+                cityIds.toIntArray()
+            )
             findNavController().navigate(action)
         }
     }

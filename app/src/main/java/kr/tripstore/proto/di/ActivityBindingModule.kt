@@ -2,6 +2,7 @@ package kr.tripstore.proto.di
 
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
+import kr.tripstore.proto.presentation.calendar.CalendarModule
 import kr.tripstore.proto.presentation.profile.ProfileModule
 import kr.tripstore.proto.presentation.save.SaveModule
 import kr.tripstore.proto.presentation.search.SearchModule
@@ -21,7 +22,8 @@ abstract class ActivityBindingModule {
             SearchModule::class,
             SaveModule::class,
             ProfileModule::class,
-            WebModule::class
+            WebModule::class,
+            CalendarModule::class
         ]
     )
     internal abstract fun tripActivity(): TripActivity
