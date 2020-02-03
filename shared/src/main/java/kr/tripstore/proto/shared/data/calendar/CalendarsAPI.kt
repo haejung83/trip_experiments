@@ -15,6 +15,7 @@ interface CalendarsAPI {
     suspend fun getCalendars(
         @Query("placeId") placeIds: ArrayValueWrapper<Int>,
         @Query("cityId") cityIds: ArrayValueWrapper<Int>,
+        @Query("themeId") themeIds: ArrayValueWrapper<Int>?,
         @Query("fromApp") fromApp: Boolean = true,
         @Query("platform") platform: String = "Android"
     ): Response<Calendars>

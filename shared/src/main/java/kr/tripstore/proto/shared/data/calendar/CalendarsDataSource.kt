@@ -5,6 +5,10 @@ import kr.tripstore.proto.shared.result.Result
 
 interface CalendarsDataSource {
 
-    suspend fun getCalendars(placeIds: Array<Int>, cityIds: Array<Int>): Result<Calendars>
+    suspend fun getCalendars(
+        placeIds: Array<Int>,
+        cityIds: Array<Int>,
+        themeIds: Array<Int>? = null
+    ): Result<Calendars>
 
 }

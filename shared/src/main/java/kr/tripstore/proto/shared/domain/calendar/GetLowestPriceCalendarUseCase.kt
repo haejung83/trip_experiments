@@ -17,7 +17,8 @@ class GetLowestPriceCalendarUseCase @Inject constructor(
 
     suspend operator fun invoke(
         placeId: Int,
-        cityId: Array<Int>
+        cityIds: Array<Int>,
+        themeIds: Array<Int>? = null
     ): Result<LowestPriceCalendar> {
         // Prepare high temperatures
         val highTemperatures =
@@ -29,12 +30,13 @@ class GetLowestPriceCalendarUseCase @Inject constructor(
             }
 
         // Assemble a LowestPriceCalendar using the Calendar result and prepared high temperatures
-        return when (val calendars = calendarsRepository.getCalendars(arrayOf(placeId), cityId)) {
+        return when (val calendars =
+            calendarsRepository.getCalendars(arrayOf(placeId), cityIds, themeIds)) {
             is Result.Success -> {
                 Result.Success(
                     LowestPriceCalendar(
                         placeId,
-                        cityId,
+                        cityIds,
                         assembleLowestPriceMonthsUsingCalendarDays(
                             calendars.data.calendarDays,
                             highTemperatures

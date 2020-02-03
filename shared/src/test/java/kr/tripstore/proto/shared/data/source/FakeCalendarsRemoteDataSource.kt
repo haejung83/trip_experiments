@@ -7,7 +7,11 @@ import kr.tripstore.proto.test.data.TestData
 
 class FakeCalendarsRemoteDataSource : CalendarsDataSource {
 
-    override suspend fun getCalendars(placeId: Array<Int>, cityId: Array<Int>): Result<Calendars> =
+    override suspend fun getCalendars(
+        placeIds: Array<Int>,
+        cityIds: Array<Int>,
+        themeIds: Array<Int>?
+    ): Result<Calendars> =
         Result.Success(TestData.calendars)
 
 }

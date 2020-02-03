@@ -11,10 +11,14 @@ class CalendarsRemoteDataSource @Inject constructor() : CalendarsDataSource {
 
     override suspend fun getCalendars(
         placeIds: Array<Int>,
-        cityIds: Array<Int>
+        cityIds: Array<Int>,
+        themeIds: Array<Int>?
     ): Result<Calendars> {
-        val response =
-            calendarsAPI.getCalendars(placeIds.toArrayValueWrapper(), cityIds.toArrayValueWrapper())
+        val response = calendarsAPI.getCalendars(
+            placeIds.toArrayValueWrapper(),
+            cityIds.toArrayValueWrapper(),
+            themeIds?.toArrayValueWrapper()
+        )
         return if (response.isSuccessful) {
             response.body()?.let {
                 Result.Success(it)
