@@ -37,6 +37,7 @@ class GetLowestPriceCalendarUseCase @Inject constructor(
                     LowestPriceCalendar(
                         placeId,
                         cityIds,
+                        themeIds,
                         assembleLowestPriceMonthsUsingCalendarDays(
                             calendars.data.calendarDays,
                             highTemperatures

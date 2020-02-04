@@ -9,6 +9,7 @@ import kr.tripstore.proto.databinding.FragmentTripBinding
 import kr.tripstore.proto.model.TripLinkType
 import kr.tripstore.proto.presentation.EventObserver
 import kr.tripstore.proto.presentation.base.DaggerDataBindingFragment
+import kr.tripstore.proto.shared.extension.splitAndGetIntArrayByComma
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -63,13 +64,13 @@ class TripFragment : DaggerDataBindingFragment<FragmentTripBinding>() {
 
     private fun navigateToCalendarFragment(params: Map<String, String?>) {
         val placeId = params["placeId"]?.toInt()
-        val cityIds = params["cityId"]?.let { cities ->
-            cities.split(",").map { it.toInt() }
-        } ?: emptyList()
+        val cityIds = params["cityId"]?.splitAndGetIntArrayByComma() ?: emptyList()
+        val themeIds = params["themeId"]?.splitAndGetIntArrayByComma()
         placeId?.let {
             val action = TripFragmentDirections.actionNavigationTripToCalendarFragment(
                 it,
-                cityIds.toIntArray()
+                cityIds.toIntArray(),
+                themeIds?.toIntArray()
             )
             findNavController().navigate(action)
         }

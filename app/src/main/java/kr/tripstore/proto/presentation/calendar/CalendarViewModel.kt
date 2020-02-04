@@ -19,11 +19,13 @@ class CalendarViewModel @Inject constructor(
     val placeName: LiveData<String>
         get() = _placeName
 
-    fun load(placeId: Int, cityIds: Array<Int>) {
+    fun load(placeId: Int, cityIds: Array<Int>, themeIds: Array<Int>?) {
         viewModelScope.launch {
-            val lowestPriceCalendarResult = getLowestPriceCalendarUseCase(placeId, cityIds)
+            Timber.v("load args: placeId[$placeId], cityIds[${cityIds.joinToString()}], themeIds[${themeIds?.joinToString()}]")
+            val lowestPriceCalendarResult =
+                getLowestPriceCalendarUseCase(placeId, cityIds, themeIds)
             Timber.v("lowestPriceCalendarResult: $lowestPriceCalendarResult")
-            if(lowestPriceCalendarResult is Result.Success) {
+            if (lowestPriceCalendarResult is Result.Success) {
                 _placeName.value = lowestPriceCalendarResult.data.placeId.toString()
             }
         }

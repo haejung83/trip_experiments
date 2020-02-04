@@ -27,7 +27,7 @@ class CalendarFragment : DaggerDataBindingFragment<FragmentCalendarBinding>() {
             viewModel = this@CalendarFragment.viewModel
             lifecycleOwner = this@CalendarFragment
         }
-        viewModel.load(args.placeId, args.cityIds.toTypedArray())
+        viewModel.load(args.placeId, args.cityIds.toTypedArray(), args.themeIds?.toTypedArray())
     }
 
 }

@@ -71,6 +71,11 @@
         <argument
             android:name="cityIds"
             app:argType="integer[]" />
+        <argument
+            android:name="themeIds"
+            android:defaultValue="@null"
+            app:argType="integer[]"
+            app:nullable="true" />
     </fragment>
 
 </navigation>
