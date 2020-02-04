@@ -17,7 +17,7 @@ class TripThemeAdapter(
         object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int =
                 when (this@TripThemeAdapter.getItemViewType(position)) {
-                    TripThemeType.TRIP_THEME_TITLE.viewType -> 4
+                    TripThemeItemType.TRIP_THEME_TITLE.viewType -> 4
                     else -> 1
                 }
         }
@@ -25,7 +25,7 @@ class TripThemeAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TripThemeItemViewHolder =
         when (viewType) {
-            TripThemeType.TRIP_THEME_TITLE.viewType ->
+            TripThemeItemType.TRIP_THEME_TITLE.viewType ->
                 TripThemeTitleItemViewHolder(
                     ItemThemeTitleBinding.inflate(
                         LayoutInflater.from(parent.context),
@@ -33,7 +33,7 @@ class TripThemeAdapter(
                         false
                     )
                 )
-            TripThemeType.TRIP_THEME_CELL.viewType ->
+            TripThemeItemType.TRIP_THEME_CELL.viewType ->
                 TripThemeCellItemViewHolder(
                     ItemThemeCellBinding.inflate(
                         LayoutInflater.from(parent.context),
@@ -47,7 +47,7 @@ class TripThemeAdapter(
     override fun onBindViewHolder(holder: TripThemeItemViewHolder, position: Int) =
         holder.bind(getItem(position), tripThemeItemViewClickListener)
 
-    override fun getItemViewType(position: Int): Int = getItem(position).tripThemeType.viewType
+    override fun getItemViewType(position: Int): Int = getItem(position).tripThemeItemType.viewType
 
 }
 
@@ -61,11 +61,11 @@ class TripThemeItemDiffCallback : DiffUtil.ItemCallback<TripThemeItem>() {
         oldItem.id == newItem.id
 
     override fun areContentsTheSame(oldItem: TripThemeItem, newItem: TripThemeItem): Boolean =
-        if (oldItem.tripThemeType == newItem.tripThemeType) {
-            when (oldItem.tripThemeType) {
-                TripThemeType.TRIP_THEME_TITLE ->
+        if (oldItem.tripThemeItemType == newItem.tripThemeItemType) {
+            when (oldItem.tripThemeItemType) {
+                TripThemeItemType.TRIP_THEME_TITLE ->
                     (oldItem as TripThemeTitleItem) == (newItem as TripThemeTitleItem)
-                TripThemeType.TRIP_THEME_CELL ->
+                TripThemeItemType.TRIP_THEME_CELL ->
                     (oldItem as TripThemeCellItem) == (newItem as TripThemeCellItem)
             }
         } else false
