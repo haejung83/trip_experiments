@@ -2,7 +2,7 @@ package kr.tripstore.proto.model.domain
 
 data class LowestPriceCalendar(
     val placeId: Int,
-    val cityId: Array<Int>,
+    val cityIds: Array<Int>,
     val months: List<LowestPriceMonth>
 ) {
     override fun equals(other: Any?): Boolean {
@@ -12,7 +12,7 @@ data class LowestPriceCalendar(
         other as LowestPriceCalendar
 
         if (placeId != other.placeId) return false
-        if (!cityId.contentEquals(other.cityId)) return false
+        if (!cityIds.contentEquals(other.cityIds)) return false
         if (months != other.months) return false
 
         return true
@@ -20,7 +20,7 @@ data class LowestPriceCalendar(
 
     override fun hashCode(): Int {
         var result = placeId
-        result = 31 * result + cityId.contentHashCode()
+        result = 31 * result + cityIds.contentHashCode()
         result = 31 * result + months.hashCode()
         return result
     }

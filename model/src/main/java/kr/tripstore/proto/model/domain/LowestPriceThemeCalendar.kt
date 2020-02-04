@@ -5,7 +5,7 @@ import java.util.*
 data class LowestPriceThemeCalendar(
     val themeCalendarId: Int,
     val placeId: Int,
-    val cityId: Array<Int>,
+    val cityIds: Array<Int>,
     val months: List<LowestPriceMonth>,
     val description: LowestPriceThemeCalendarDescription
 ) {
@@ -17,7 +17,7 @@ data class LowestPriceThemeCalendar(
 
         if (themeCalendarId != other.themeCalendarId) return false
         if (placeId != other.placeId) return false
-        if (!cityId.contentEquals(other.cityId)) return false
+        if (!cityIds.contentEquals(other.cityIds)) return false
         if (months != other.months) return false
         if (description != other.description) return false
 
@@ -27,7 +27,7 @@ data class LowestPriceThemeCalendar(
     override fun hashCode(): Int {
         var result = themeCalendarId
         result = 31 * result + placeId
-        result = 31 * result + cityId.contentHashCode()
+        result = 31 * result + cityIds.contentHashCode()
         result = 31 * result + months.hashCode()
         result = 31 * result + description.hashCode()
         return result

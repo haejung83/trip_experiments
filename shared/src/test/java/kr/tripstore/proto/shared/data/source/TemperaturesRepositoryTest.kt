@@ -26,13 +26,14 @@ class TemperaturesRepositoryTest {
     @Test
     fun getTemperatures_isNotNull() =
         runBlockingTest {
+            val fakePlaceId = 479
             // Given a temperature data source
             val temperaturesRepository =
                 TemperaturesRepository(
                     temperaturesRemoteDataSource
                 )
             // When getting a result of temperature
-            val temperaturesResult = temperaturesRepository.getTemperatures(0)
+            val temperaturesResult = temperaturesRepository.getTemperatures(fakePlaceId)
             // Then the result is not null
             assertResult(temperaturesResult)
         }
@@ -40,13 +41,14 @@ class TemperaturesRepositoryTest {
     @Test
     fun getTemperatures_isSameAsTestData() =
         runBlockingTest {
+            val fakePlaceId = 479
             // Given a temperature data source
             val temperaturesRepository =
                 TemperaturesRepository(
                     temperaturesRemoteDataSource
                 )
             // When getting a result of temperature
-            val temperaturesResult = temperaturesRepository.getTemperatures(0)
+            val temperaturesResult = temperaturesRepository.getTemperatures(fakePlaceId)
             val data = (temperaturesResult as Result.Success).data
             // Then the data is equal to the predefined test data
             assertThat(data, IsEqual.equalTo(TestData.temperatures))

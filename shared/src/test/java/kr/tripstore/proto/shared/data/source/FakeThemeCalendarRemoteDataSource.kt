@@ -7,7 +7,7 @@ import kr.tripstore.proto.test.data.TestData
 
 class FakeThemeCalendarRemoteDataSource : ThemeCalendarDataSource {
 
-    override suspend fun getThemeCalendar(themeId: Int): Result<ThemeCalendar> =
+    override suspend fun getThemeCalendar(themeCalendarId: Int): Result<ThemeCalendar> =
         Result.Success(TestData.themeCalendar)
 
 }
