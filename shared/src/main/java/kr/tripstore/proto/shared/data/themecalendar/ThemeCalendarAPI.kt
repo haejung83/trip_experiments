@@ -10,8 +10,8 @@ import retrofit2.http.Path
 
 interface ThemeCalendarAPI {
 
-    @GET("/guest/themeCalendars/{themeId}")
-    suspend fun getThemeCalendar(@Path("themeId") themeId: Int): Response<ThemeCalendar>
+    @GET("/guest/themeCalendars/{themeCalendarId}")
+    suspend fun getThemeCalendar(@Path("themeCalendarId") themeCalendarId: Int): Response<ThemeCalendar>
 
     companion object {
         fun create(): ThemeCalendarAPI =

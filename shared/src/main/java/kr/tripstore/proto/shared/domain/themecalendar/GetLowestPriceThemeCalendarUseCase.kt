@@ -15,13 +15,13 @@ class GetLowestPriceThemeCalendarUseCase @Inject constructor(
 ) {
 
     suspend operator fun invoke(
-        themeId: Int,
+        themeCalendarId: Int,
         placeId: Int,
         cityIds: Array<Int>
     ): Result<LowestPriceThemeCalendar> {
 
         val themeDescription =
-            when (val themeCalendar = themeCalendarRepository.getThemeCalendar(themeId)) {
+            when (val themeCalendar = themeCalendarRepository.getThemeCalendar(themeCalendarId)) {
                 is Result.Success -> themeCalendar.data.description
                 else -> null
             }
@@ -31,7 +31,7 @@ class GetLowestPriceThemeCalendarUseCase @Inject constructor(
                 themeDescription?.let { description ->
                     Result.Success(
                         LowestPriceThemeCalendar(
-                            themeId,
+                            themeCalendarId,
                             placeId,
                             cityIds,
                             lowestPriceCalendar.data.months,

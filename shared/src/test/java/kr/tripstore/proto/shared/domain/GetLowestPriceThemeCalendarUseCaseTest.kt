@@ -35,9 +35,9 @@ class GetLowestPriceThemeCalendarUseCaseTest {
     @Test
     fun getLowestPriceThemeCalendar_isNotNull() =
         runBlockingTest {
-            val fakeTheme = 116
-            val fakePlace = 9269
-            val fakeCities = arrayOf(1)
+            val fakeThemeCalendarId = 116
+            val fakePlaceId = 9269
+            val fakeCityIds = arrayOf(1)
             // Given repositories and GetLowestPriceCalendarUseCase which getting GetLowestPriceThemeCalendarUseCase
             val getLowestPriceCalendarUseCase = GetLowestPriceCalendarUseCase(
                 calendarsRepository,
@@ -49,7 +49,7 @@ class GetLowestPriceThemeCalendarUseCaseTest {
             )
             // When getting a result of LowestPriceThemeCalendar
             val getLowestPriceThemeCalendarResult = getLowestPriceThemeCalendarUseCase(
-                fakeTheme, fakePlace, fakeCities
+                fakeThemeCalendarId, fakePlaceId, fakeCityIds
             )
             // Then the result is not null
             assertResult(getLowestPriceThemeCalendarResult)
@@ -58,9 +58,9 @@ class GetLowestPriceThemeCalendarUseCaseTest {
     @Test
     fun getLowestPriceThemeCalendar_checkResultIsNotEmpty() =
         runBlockingTest {
-            val fakeTheme = 116
-            val fakePlace = 9269
-            val fakeCities = arrayOf(1)
+            val fakeThemeCalendarId = 116
+            val fakePlaceId = 9269
+            val fakeCityIds = arrayOf(1)
             // Given repositories and GetLowestPriceCalendarUseCase which getting GetLowestPriceThemeCalendarUseCase
             val getLowestPriceCalendarUseCase = GetLowestPriceCalendarUseCase(
                 calendarsRepository,
@@ -72,7 +72,7 @@ class GetLowestPriceThemeCalendarUseCaseTest {
             )
             // When getting a result of LowestPriceThemeCalendar
             val getLowestPriceThemeCalendarResult = getLowestPriceThemeCalendarUseCase(
-                fakeTheme, fakePlace, fakeCities
+                fakeThemeCalendarId, fakePlaceId, fakeCityIds
             )
             val data = (getLowestPriceThemeCalendarResult as Result.Success).data
             // Then the data is not empty

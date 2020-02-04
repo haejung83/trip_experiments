@@ -3,7 +3,7 @@ package kr.tripstore.proto.model.domain
 import java.util.*
 
 data class LowestPriceThemeCalendar(
-    val themeId: Int,
+    val themeCalendarId: Int,
     val placeId: Int,
     val cityId: Array<Int>,
     val months: List<LowestPriceMonth>,
@@ -15,7 +15,7 @@ data class LowestPriceThemeCalendar(
 
         other as LowestPriceThemeCalendar
 
-        if (themeId != other.themeId) return false
+        if (themeCalendarId != other.themeCalendarId) return false
         if (placeId != other.placeId) return false
         if (!cityId.contentEquals(other.cityId)) return false
         if (months != other.months) return false
@@ -25,7 +25,7 @@ data class LowestPriceThemeCalendar(
     }
 
     override fun hashCode(): Int {
-        var result = themeId
+        var result = themeCalendarId
         result = 31 * result + placeId
         result = 31 * result + cityId.contentHashCode()
         result = 31 * result + months.hashCode()

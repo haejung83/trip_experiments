@@ -8,8 +8,8 @@ class ThemeCalendarRemoteDataSource @Inject constructor() : ThemeCalendarDataSou
 
     private val themeCalendarAPI = ThemeCalendarAPI.create()
 
-    override suspend fun getThemeCalendar(themeId: Int): Result<ThemeCalendar> {
-        val response = themeCalendarAPI.getThemeCalendar(themeId)
+    override suspend fun getThemeCalendar(themeCalendarId: Int): Result<ThemeCalendar> {
+        val response = themeCalendarAPI.getThemeCalendar(themeCalendarId)
         return if (response.isSuccessful) {
             response.body()?.let {
                 Result.Success(it)

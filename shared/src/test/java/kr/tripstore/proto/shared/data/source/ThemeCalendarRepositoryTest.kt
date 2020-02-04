@@ -26,14 +26,14 @@ class ThemeCalendarRepositoryTest {
     @Test
     fun getThemeCalendar_isNotNull() =
         runBlockingTest {
-            val fakeThemeId = 116
+            val fakeThemeCalendarId = 116
             // Given a theme calendar data source
             val themeCalendarRepository =
                 ThemeCalendarRepository(
                     themeCalendarsRemoteDataSource
                 )
             // When getting a result of ThemeCalendar
-            val themeCalendarResult = themeCalendarRepository.getThemeCalendar(fakeThemeId)
+            val themeCalendarResult = themeCalendarRepository.getThemeCalendar(fakeThemeCalendarId)
             // Then the result is  not null
             assertResult(themeCalendarResult)
         }
@@ -41,14 +41,14 @@ class ThemeCalendarRepositoryTest {
     @Test
     fun getThemeCalendar_isSameAsTestData() =
         runBlockingTest {
-            val fakeThemeId = 116
+            val fakeThemeCalendarId = 116
             // Given a theme calendar data source
             val themeCalendarRepository =
                 ThemeCalendarRepository(
                     themeCalendarsRemoteDataSource
                 )
             // When getting a result of ThemeCalendar
-            val themeCalendarResult = themeCalendarRepository.getThemeCalendar(fakeThemeId)
+            val themeCalendarResult = themeCalendarRepository.getThemeCalendar(fakeThemeCalendarId)
             val data = (themeCalendarResult as Result.Success).data
             // Then the data is equal to the predefined test data
             assertThat(data, IsEqual.equalTo(TestData.themeCalendar))

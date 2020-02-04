@@ -5,6 +5,6 @@ import kr.tripstore.proto.shared.result.Result
 
 interface ThemeCalendarDataSource {
 
-    suspend fun getThemeCalendar(themeId: Int): Result<ThemeCalendar>
+    suspend fun getThemeCalendar(themeCalendarId: Int): Result<ThemeCalendar>
 
 }
