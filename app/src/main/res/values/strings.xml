@@ -23,4 +23,23 @@
     <string name="trip_detail_symbol_of_search">검색</string>
     <string name="trip_detail_symbol_of_list">목록</string>
 
+    <!-- Calendar -->
+    <string name="calendar_sunday">일</string>
+    <string name="calendar_monday">월</string>
+    <string name="calendar_tuesday">화</string>
+    <string name="calendar_wednesday">수</string>
+    <string name="calendar_thursday">목</string>
+    <string name="calendar_friday">금</string>
+    <string name="calendar_saturday">토</string>
+
+    <string name="calendar_month">월</string>
+    <string name="calendar_grade_of_price_expensive">고가</string>
+    <string name="calendar_grade_of_price_reasonable">중가</string>
+    <string name="calendar_grade_of_price_cheap">저가</string>
+
+    <!-- Place Holder - Hint -->
+    <string name="placeholder_number">0123456789</string>
+    <string name="placeholder_long_word">긴 플레이스홀더</string>
+    <string name="placeholder_short_word">힌트</string>
+
 </resources>

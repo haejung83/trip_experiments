@@ -16,4 +16,8 @@
     <color name="ts_black">#000000</color>
     <color name="ts_white">#FFFFFF</color>
 
+    <!-- Calendar Color -->
+    <color name="ts_calendar_holiday">#d44040</color>
+    <color name="ts_calendar_day">#202020</color>
+
 </resources>
