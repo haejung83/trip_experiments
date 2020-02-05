@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="item"
+            type="kr.tripstore.proto.presentation.calendar.CalendarDayOfWeekItem" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/grid_cell_1"
+        android:layout_margin="1dp">
+
+        <TextView
+            android:id="@+id/textview_day_of_week"
+            style="@style/TextAppearance.TripStore.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/placeholder_short_word"
+            android:text="@{item.dayOfWeek}"
+            android:textColor="@{item.holiday ? @color/ts_calendar_holiday : @color/ts_calendar_day}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="kr.tripstore.proto.presentation.calendar.PriceGrade" />
+
+        <variable
+            name="item"
+            type="kr.tripstore.proto.presentation.calendar.CalendarDayCellItem" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/grid_cell_1"
+        android:layout_margin="1dp">
+
+        <TextView
+            android:id="@+id/textview_day"
+            style="@style/TextAppearance.TripStore.Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:hint="@string/placeholder_short_word"
+            android:text="@{String.valueOf(item.day)}"
+            android:textColor="@{item.holiday ? @color/ts_calendar_holiday : @color/ts_calendar_day}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textview_price"
+            style="@style/TextAppearance.TripStore.Small3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:hint="@string/placeholder_short_word"
+            android:text="@{String.valueOf(item.lowestPrice > 0 ? item.lowestPrice/10000 : 0)}"
+            android:visibility="@{item.gradeOfPrice != PriceGrade.NONE ? View.VISIBLE : View.INVISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_day" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
