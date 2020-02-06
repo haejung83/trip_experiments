@@ -46,7 +46,7 @@ data class CalendarDayCellItem(
         get() = CalendarItemType.CALENDAR_DAY_CELL
 }
 
-data class CalendarEmptyCell(
+data class CalendarEmptyCellItem(
     val emptyCellCount: Int
 ) : CalendarItem() {
     override val calendarItemType: CalendarItemType
