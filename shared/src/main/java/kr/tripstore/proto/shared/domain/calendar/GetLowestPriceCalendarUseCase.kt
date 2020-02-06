@@ -60,30 +60,53 @@ class GetLowestPriceCalendarUseCase @Inject constructor(
         private val REGEXP_YEAR_MONTH_DAY =
             "(20\\d{2})[-]*(0[1-9]|1[012])[-]*(0[1-9]|[12][0-9]|3[01])".toRegex()
 
+        private fun findMinMaxPriceFromCalendarDays(calendarDays: List<CalendarDay>): Pair<Int, Int> =
+            Pair(
+                calendarDays.minBy { it.price }?.price ?: 0,
+                calendarDays.maxBy { it.price }?.price ?: 10_000_000
+            )
+
+        private fun getLowerAndUpperBaseForGradeOfPrice(min: Int, max: Int): Pair<Int, Int> {
+            val oneThird = (max - min) / 3
+            val twiceOfOneThird = oneThird * 2
+            return Pair(oneThird + min, twiceOfOneThird + min)
+        }
+
         private fun assembleLowestPriceMonthsUsingCalendarDays(
             calendarDays: List<CalendarDay>,
             highTemperatures: List<String>?
-        ) = calendarDays.mapNotNull { calendarDay ->
-            REGEXP_YEAR_MONTH_DAY.find(calendarDay.date)?.let { matched ->
-                Triple(
-                    matched.groupValues[INDEX_YEAR].toInt(),
-                    matched.groupValues[INDEX_MONTH].toInt(),
-                    LowestPriceDay(
-                        matched.groupValues[INDEX_DAY].toInt(),
-                        calendarDay.price,
-                        PriceGrade.EXPENSIVE,
-                        calendarDay.isHoliday
+        ): List<LowestPriceMonth> {
+            val (min, max) = findMinMaxPriceFromCalendarDays(calendarDays)
+            val (lower, upper) = getLowerAndUpperBaseForGradeOfPrice(min, max)
+
+            return calendarDays.mapNotNull { calendarDay ->
+                REGEXP_YEAR_MONTH_DAY.find(calendarDay.date)?.let { matched ->
+                    Triple(
+                        matched.groupValues[INDEX_YEAR].toInt(),
+                        matched.groupValues[INDEX_MONTH].toInt(),
+                        LowestPriceDay(
+                            matched.groupValues[INDEX_DAY].toInt(),
+                            calendarDay.price,
+                            when (calendarDay.price) {
+                                in upper until max -> PriceGrade.EXPENSIVE
+                                in lower until upper -> PriceGrade.REASONABLE
+                                in min until lower -> PriceGrade.CHEAP
+                                else -> PriceGrade.NONE
+                            },
+                            calendarDay.isHoliday
+                        )
                     )
-                )
+                }
+            }.groupBy {
+                it.second // GroupBy Month
+            }.map { groupedLowestPriceDay ->
+                LowestPriceMonth(
+                    groupedLowestPriceDay.key,
+                    highTemperatures?.get(groupedLowestPriceDay.key - 1) ?: String.empty,
+                    groupedLowestPriceDay.value.map { it.third })
             }
-        }.groupBy {
-            it.second // GroupBy Month
-        }.map { groupedLowestPriceDay ->
-            LowestPriceMonth(
-                groupedLowestPriceDay.key,
-                highTemperatures?.get(groupedLowestPriceDay.key - 1) ?: String.empty,
-                groupedLowestPriceDay.value.map { it.third })
         }
+
     }
 
 }
