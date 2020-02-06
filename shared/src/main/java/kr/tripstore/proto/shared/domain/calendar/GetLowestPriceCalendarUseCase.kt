@@ -4,6 +4,7 @@ import kr.tripstore.proto.model.CalendarDay
 import kr.tripstore.proto.model.domain.LowestPriceCalendar
 import kr.tripstore.proto.model.domain.LowestPriceDay
 import kr.tripstore.proto.model.domain.LowestPriceMonth
+import kr.tripstore.proto.model.domain.PriceGrade
 import kr.tripstore.proto.shared.data.calendar.CalendarsRepository
 import kr.tripstore.proto.shared.data.temperature.TemperaturesRepository
 import kr.tripstore.proto.shared.extension.empty
@@ -70,6 +71,7 @@ class GetLowestPriceCalendarUseCase @Inject constructor(
                     LowestPriceDay(
                         matched.groupValues[INDEX_DAY].toInt(),
                         calendarDay.price,
+                        PriceGrade.EXPENSIVE,
                         calendarDay.isHoliday
                     )
                 )

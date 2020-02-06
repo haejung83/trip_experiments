@@ -6,7 +6,7 @@
 
         <import type="android.view.View" />
 
-        <import type="kr.tripstore.proto.presentation.calendar.PriceGrade" />
+        <import type="kr.tripstore.proto.model.domain.PriceGrade" />
 
         <variable
             name="item"

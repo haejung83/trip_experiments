@@ -41,5 +41,6 @@ data class LowestPriceMonth(
 data class LowestPriceDay(
     val day: Int,
     val price: Int,
+    val gradeOfPrice: PriceGrade,
     val isHoliday: Boolean
 )

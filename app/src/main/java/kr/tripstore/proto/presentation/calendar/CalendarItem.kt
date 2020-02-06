@@ -1,5 +1,7 @@
 package kr.tripstore.proto.presentation.calendar
 
+import kr.tripstore.proto.model.domain.PriceGrade
+
 abstract class CalendarItem {
     abstract val calendarItemType: CalendarItemType
 }
@@ -32,13 +34,6 @@ data class CalendarDayOfWeekItem(
 ) : CalendarItem() {
     override val calendarItemType: CalendarItemType
         get() = CalendarItemType.CALENDAR_DAY_OF_WEEK_CELL
-}
-
-enum class PriceGrade {
-    EXPENSIVE,
-    REASONABLE,
-    CHEAP,
-    NONE
 }
 
 data class CalendarDayCellItem(
