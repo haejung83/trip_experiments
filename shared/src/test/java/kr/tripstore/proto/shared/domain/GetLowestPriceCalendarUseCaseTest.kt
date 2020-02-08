@@ -60,7 +60,8 @@ class GetLowestPriceCalendarUseCaseTest {
                 getLowestPriceCalendarUseCase(fakePlaceId, fakeCityIds, fakeThemeIds)
             val data = (getLowestPriceCalendarResult as Result.Success).data
             // Then the data is not empty
-            assertThat(data.months.size, IsNot.not(0))
+            assertThat(data.years.size, IsNot.not(0))
+            assertThat(data.years.first().months.size, IsNot.not(0))
         }
 
 }

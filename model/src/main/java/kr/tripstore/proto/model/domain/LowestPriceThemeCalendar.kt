@@ -6,7 +6,7 @@ data class LowestPriceThemeCalendar(
     val themeCalendarId: Int,
     val placeId: Int,
     val cityIds: Array<Int>,
-    val months: List<LowestPriceMonth>,
+    val years: List<LowestPriceYear>,
     val description: LowestPriceThemeCalendarDescription
 ) {
     override fun equals(other: Any?): Boolean {
@@ -18,7 +18,7 @@ data class LowestPriceThemeCalendar(
         if (themeCalendarId != other.themeCalendarId) return false
         if (placeId != other.placeId) return false
         if (!cityIds.contentEquals(other.cityIds)) return false
-        if (months != other.months) return false
+        if (years != other.years) return false
         if (description != other.description) return false
 
         return true
@@ -28,7 +28,7 @@ data class LowestPriceThemeCalendar(
         var result = themeCalendarId
         result = 31 * result + placeId
         result = 31 * result + cityIds.contentHashCode()
-        result = 31 * result + months.hashCode()
+        result = 31 * result + years.hashCode()
         result = 31 * result + description.hashCode()
         return result
     }

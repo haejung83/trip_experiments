@@ -1,10 +1,7 @@
 package kr.tripstore.proto.shared.domain.calendar
 
 import kr.tripstore.proto.model.CalendarDay
-import kr.tripstore.proto.model.domain.LowestPriceCalendar
-import kr.tripstore.proto.model.domain.LowestPriceDay
-import kr.tripstore.proto.model.domain.LowestPriceMonth
-import kr.tripstore.proto.model.domain.PriceGrade
+import kr.tripstore.proto.model.domain.*
 import kr.tripstore.proto.shared.data.calendar.CalendarsRepository
 import kr.tripstore.proto.shared.data.temperature.TemperaturesRepository
 import kr.tripstore.proto.shared.extension.empty
@@ -39,7 +36,7 @@ class GetLowestPriceCalendarUseCase @Inject constructor(
                         placeId,
                         cityIds,
                         themeIds,
-                        assembleLowestPriceMonthsUsingCalendarDays(
+                        assembleLowestPriceYearsUsingCalendarDays(
                             calendars.data.calendarDays,
                             highTemperatures
                         )
@@ -72,10 +69,10 @@ class GetLowestPriceCalendarUseCase @Inject constructor(
             return Pair(oneThird + min, twiceOfOneThird + min)
         }
 
-        private fun assembleLowestPriceMonthsUsingCalendarDays(
+        private fun assembleLowestPriceYearsUsingCalendarDays(
             calendarDays: List<CalendarDay>,
             highTemperatures: List<String>?
-        ): List<LowestPriceMonth> {
+        ): List<LowestPriceYear> {
             val (min, max) = findMinMaxPriceFromCalendarDays(calendarDays)
             val (lower, upper) = getLowerAndUpperBaseForGradeOfPrice(min, max)
 
@@ -98,12 +95,21 @@ class GetLowestPriceCalendarUseCase @Inject constructor(
                     )
                 }
             }.groupBy {
-                it.second // GroupBy Month
-            }.map { groupedLowestPriceDay ->
-                LowestPriceMonth(
-                    groupedLowestPriceDay.key,
-                    highTemperatures?.get(groupedLowestPriceDay.key - 1) ?: String.empty,
-                    groupedLowestPriceDay.value.map { it.third })
+                it.first // GroupBy Year
+            }.map { yearGroupedLowestPriceDay ->
+                LowestPriceYear(
+                    yearGroupedLowestPriceDay.key,
+                    yearGroupedLowestPriceDay.value
+                        .groupBy {
+                            it.second // GroupBy Month
+                        }.map { monthGroupedLowestPriceDay ->
+                            LowestPriceMonth(
+                                monthGroupedLowestPriceDay.key,
+                                highTemperatures?.get(monthGroupedLowestPriceDay.key - 1)
+                                    ?: String.empty,
+                                monthGroupedLowestPriceDay.value.map { it.third })
+                        }
+                )
             }
         }
 

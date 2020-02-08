@@ -4,7 +4,7 @@ data class LowestPriceCalendar(
     val placeId: Int,
     val cityIds: Array<Int>,
     val themeIds: Array<Int>?,
-    val months: List<LowestPriceMonth>
+    val years: List<LowestPriceYear>
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
@@ -18,7 +18,7 @@ data class LowestPriceCalendar(
             if (other.themeIds == null) return false
             if (!themeIds.contentEquals(other.themeIds)) return false
         } else if (other.themeIds != null) return false
-        if (months != other.months) return false
+        if (years != other.years) return false
 
         return true
     }
@@ -27,10 +27,15 @@ data class LowestPriceCalendar(
         var result = placeId
         result = 31 * result + cityIds.contentHashCode()
         result = 31 * result + (themeIds?.contentHashCode() ?: 0)
-        result = 31 * result + months.hashCode()
+        result = 31 * result + years.hashCode()
         return result
     }
 }
+
+data class LowestPriceYear(
+    val year: Int,
+    val months: List<LowestPriceMonth>
+)
 
 data class LowestPriceMonth(
     val month: Int,

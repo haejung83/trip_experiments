@@ -42,32 +42,36 @@ class CalendarViewModel @Inject constructor(
             if (lowestPriceCalendarResult is Result.Success) {
                 lowestPriceCalendarResult.data.let { data ->
                     _placeName.value = data.placeId.toString()
-                    _items.value = data.months.map { month ->
-                        listOf(
-                            // Space (1)
-                            CalendarSpaceItem(20),
-                            // Month (1)
-                            CalendarMonthTitleItem(
-                                month.month.toString(),
-                                month.highestTemperatures
-                            ),
-                            // Days of week (7)
-                            *getListOfDayOfWeekItem(
-                                dayOfWeekStringProvider.daysOfWeek()
-                            ).toTypedArray(),
-                            // Days (28~31)
-                            *month.days.map { day ->
-                                CalendarDayCellItem(
-                                    day.day,
-                                    day.price,
-                                    day.gradeOfPrice,
-                                    day.isHoliday
-                                )
-                            }.toTypedArray(),
-                            // Space (1)
-                            CalendarSpaceItem(10)
-                        )
+
+                    _items.value = data.years.map { year ->
+                        year.months.map { month ->
+                            listOf(
+                                // Space (1)
+                                CalendarSpaceItem(20),
+                                // Month (1)
+                                CalendarMonthTitleItem(
+                                    month.month.toString(),
+                                    month.highestTemperatures
+                                ),
+                                // Days of week (7)
+                                *getListOfDayOfWeekItem(
+                                    dayOfWeekStringProvider.daysOfWeek()
+                                ).toTypedArray(),
+                                // Days (28~31)
+                                *month.days.map { day ->
+                                    CalendarDayCellItem(
+                                        day.day,
+                                        day.price,
+                                        day.gradeOfPrice,
+                                        day.isHoliday
+                                    )
+                                }.toTypedArray(),
+                                // Space (1)
+                                CalendarSpaceItem(10)
+                            )
+                        }.flatten()
                     }.flatten()
+
                 }
             }
         }
