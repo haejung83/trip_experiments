@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -18,17 +19,19 @@
 
         <TextView
             android:id="@+id/textview_month"
-            style="@style/TextAppearance.TripStore.Subtitle1"
+            style="?attr/textAppearanceSubtitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/placeholder_number"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="4dp"
+            android:text="@{item.monthTitle}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            tools:text="@tools:sample/cities" />
 
         <TextView
             android:id="@+id/textview_month_postfix"
-            style="@style/TextAppearance.TripStore.Subtitle1"
+            style="?attr/textAppearanceSubtitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/calendar_month"
@@ -37,13 +40,14 @@
 
         <TextView
             android:id="@+id/textview_highest_temperature"
-            style="@style/TextAppearance.TripStore.Body2"
+            style="?attr/textAppearanceCaption"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:hint="@string/placeholder_long_word"
+            android:text="@{item.highestTemperature}"
             app:layout_constraintBaseline_toBaselineOf="@+id/textview_month_postfix"
-            app:layout_constraintStart_toEndOf="@+id/textview_month_postfix" />
+            app:layout_constraintStart_toEndOf="@+id/textview_month_postfix"
+            tools:text="@tools:sample/lorem" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

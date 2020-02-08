@@ -27,7 +27,8 @@
             android:layout_marginTop="@dimen/grid_title_vertical_margin"
             android:text="@{viewModel.placeName}"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/cities" />
 
         <View
             android:id="@+id/divider_title"
@@ -43,10 +44,12 @@
             android:id="@+id/recyclerview_calendar"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            app:items="@{viewModel.items}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider_title" />
+            app:layout_constraintTop_toBottomOf="@+id/divider_title"
+            app:viewModel="@{viewModel}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

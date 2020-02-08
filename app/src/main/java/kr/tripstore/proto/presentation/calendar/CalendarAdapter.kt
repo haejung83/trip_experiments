@@ -4,12 +4,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import kr.tripstore.proto.databinding.*
 
 class CalendarAdapter(
     private val calendarItemViewClickListener: CalendarItemViewClickListener
 ) : ListAdapter<CalendarItem, CalendarItemViewHolder>(CalendarItemDiffCallback()) {
+
+    val gridSpanSizeLookup by lazy {
+        object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int =
+                when (this@CalendarAdapter.getItemViewType(position)) {
+                    CalendarItemType.CALENDAR_DAY_CELL.viewType -> 1
+                    CalendarItemType.CALENDAR_EMPTY_CELL.viewType -> 1
+                    CalendarItemType.CALENDAR_DAY_OF_WEEK_CELL.viewType -> 1
+                    CalendarItemType.CALENDAR_MONTH_TITLE.viewType -> 7
+                    CalendarItemType.CALENDAR_SPACE.viewType -> 7
+                    CalendarItemType.CALENDAR_TITLE.viewType -> 7
+                    else -> 1
+                }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CalendarItemViewHolder =
         when (viewType) {
@@ -26,8 +42,8 @@ class CalendarAdapter(
                     )
                 )
             CalendarItemType.CALENDAR_DAY_OF_WEEK_CELL.viewType ->
-                CalendarDayCellItemViewHolder(
-                    ItemCalendarDayCellBinding.inflate(
+                CalendarDayOfWeekItemViewHolder(
+                    ItemCalendarDayOfWeekCellBinding.inflate(
                         LayoutInflater.from(parent.context), parent, false
                     )
                 )

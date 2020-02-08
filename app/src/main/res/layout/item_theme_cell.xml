@@ -35,7 +35,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+            tools:ignore="ContentDescription"
+            tools:srcCompat="@tools:sample/avatars[6]" />
 
         <TextView
             android:id="@+id/textview_theme_cell"
@@ -52,7 +53,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/last_names" />
 
         <TextView
             android:id="@+id/textview_link_symbol"
@@ -70,7 +72,8 @@
             android:textColor="@color/ts_text_white"
             android:visibility="@{TextUtils.isEmpty(item.openLinkSymbol) ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="@id/textview_theme_cell"
-            app:layout_constraintEnd_toEndOf="@id/textview_theme_cell" />
+            app:layout_constraintEnd_toEndOf="@id/textview_theme_cell"
+            tools:text="@tools:sample/first_names" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

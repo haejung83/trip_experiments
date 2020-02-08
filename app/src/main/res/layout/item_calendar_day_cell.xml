@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -21,16 +22,16 @@
 
         <TextView
             android:id="@+id/textview_day"
-            style="@style/TextAppearance.TripStore.Body2"
+            style="?attr/textAppearanceBody2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:hint="@string/placeholder_short_word"
             android:text="@{String.valueOf(item.day)}"
             android:textColor="@{item.holiday ? @color/ts_calendar_holiday : @color/ts_calendar_day}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@tools:sample/us_zipcodes" />
 
         <TextView
             android:id="@+id/textview_price"
@@ -39,13 +40,13 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:layout_marginBottom="2dp"
-            android:hint="@string/placeholder_short_word"
             android:text="@{String.valueOf(item.lowestPrice > 0 ? item.lowestPrice/10000 : 0)}"
             android:visibility="@{item.gradeOfPrice != PriceGrade.NONE ? View.VISIBLE : View.INVISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textview_day" />
+            app:layout_constraintTop_toBottomOf="@+id/textview_day"
+            tools:text="@tools:sample/us_zipcodes" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
