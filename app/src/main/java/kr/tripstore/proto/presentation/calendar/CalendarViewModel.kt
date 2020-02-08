@@ -12,6 +12,7 @@ import kr.tripstore.proto.shared.domain.calendar.GetLowestPriceCalendarUseCase
 import kr.tripstore.proto.shared.extension.empty
 import kr.tripstore.proto.shared.result.Result
 import timber.log.Timber
+import java.util.*
 import javax.inject.Inject
 
 class CalendarViewModel @Inject constructor(
@@ -57,6 +58,12 @@ class CalendarViewModel @Inject constructor(
                                 *getListOfDayOfWeekItem(
                                     dayOfWeekStringProvider.daysOfWeek()
                                 ).toTypedArray(),
+                                // Empty (0~6)
+                                *getEmptyCellItemByYearMonthDay(
+                                    year.year,
+                                    month.month,
+                                    month.days.first().day
+                                ).toTypedArray(),
                                 // Days (28~31)
                                 *month.days.map { day ->
                                     CalendarDayCellItem(
@@ -78,6 +85,23 @@ class CalendarViewModel @Inject constructor(
     }
 
     companion object {
+
+        // The month is 0-based in Calendar.set(), Check below link
+        // https://developer.android.com/reference/kotlin/android/icu/util/Calendar?hl=en#set_1
+        private fun getEmptyCellItemByYearMonthDay(
+            year: Int,
+            month: Int,
+            day: Int
+        ): List<CalendarItem> =
+            mutableListOf<CalendarEmptyCellItem>().apply {
+                Calendar.getInstance(Locale.KOREA).let {
+                    it.set(year, month - 1, day)
+                    it.firstDayOfWeek = Calendar.SUNDAY
+                    val emptyCount = it.get(Calendar.DAY_OF_WEEK) - Calendar.SUNDAY
+                    if (emptyCount > 0) add(CalendarEmptyCellItem(emptyCount))
+                }
+            }
+
 
         private fun getListOfDayOfWeekItem(daysOfWeek: List<DayOfWeekString>): List<CalendarItem> =
             daysOfWeek.map { CalendarDayOfWeekItem(it.text, it.isHoliday) }

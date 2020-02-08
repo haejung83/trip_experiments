@@ -17,8 +17,10 @@ class CalendarAdapter(
             override fun getSpanSize(position: Int): Int =
                 when (this@CalendarAdapter.getItemViewType(position)) {
                     CalendarItemType.CALENDAR_DAY_CELL.viewType -> 1
-                    CalendarItemType.CALENDAR_EMPTY_CELL.viewType -> 1
                     CalendarItemType.CALENDAR_DAY_OF_WEEK_CELL.viewType -> 1
+                    CalendarItemType.CALENDAR_EMPTY_CELL.viewType -> {
+                        (this@CalendarAdapter.getItem(position) as CalendarEmptyCellItem).emptyCellCount
+                    }
                     CalendarItemType.CALENDAR_MONTH_TITLE.viewType -> 7
                     CalendarItemType.CALENDAR_SPACE.viewType -> 7
                     CalendarItemType.CALENDAR_TITLE.viewType -> 7
@@ -35,15 +37,15 @@ class CalendarAdapter(
                         LayoutInflater.from(parent.context), parent, false
                     )
                 )
-            CalendarItemType.CALENDAR_EMPTY_CELL.viewType ->
-                CalendarEmptyCellItemViewHolder(
-                    ItemCalendarEmptyBinding.inflate(
-                        LayoutInflater.from(parent.context), parent, false
-                    )
-                )
             CalendarItemType.CALENDAR_DAY_OF_WEEK_CELL.viewType ->
                 CalendarDayOfWeekItemViewHolder(
                     ItemCalendarDayOfWeekCellBinding.inflate(
+                        LayoutInflater.from(parent.context), parent, false
+                    )
+                )
+            CalendarItemType.CALENDAR_EMPTY_CELL.viewType ->
+                CalendarEmptyCellItemViewHolder(
+                    ItemCalendarEmptyBinding.inflate(
                         LayoutInflater.from(parent.context), parent, false
                     )
                 )
@@ -89,10 +91,10 @@ class CalendarItemDiffCallback : DiffUtil.ItemCallback<CalendarItem>() {
             when (oldItem.calendarItemType) {
                 CalendarItemType.CALENDAR_DAY_CELL ->
                     (oldItem as CalendarDayCellItem) == (newItem as CalendarDayCellItem)
-                CalendarItemType.CALENDAR_EMPTY_CELL ->
-                    (oldItem as CalendarEmptyCellItem) == (newItem as CalendarEmptyCellItem)
                 CalendarItemType.CALENDAR_DAY_OF_WEEK_CELL ->
                     (oldItem as CalendarDayOfWeekItem) == (newItem as CalendarDayOfWeekItem)
+                CalendarItemType.CALENDAR_EMPTY_CELL ->
+                    (oldItem as CalendarEmptyCellItem) == (newItem as CalendarEmptyCellItem)
                 CalendarItemType.CALENDAR_MONTH_TITLE ->
                     (oldItem as CalendarMonthTitleItem) == (newItem as CalendarMonthTitleItem)
                 CalendarItemType.CALENDAR_SPACE ->
