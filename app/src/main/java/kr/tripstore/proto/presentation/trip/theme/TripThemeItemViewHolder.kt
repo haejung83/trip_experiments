@@ -20,6 +20,7 @@ class TripThemeTitleItemViewHolder(private val binding: ItemThemeTitleBinding) :
     ) {
         binding.let {
             it.item = tripThemeItem as TripThemeTitleItem
+            it.executePendingBindings()
         }
     }
 }
@@ -33,6 +34,7 @@ class TripThemeCellItemViewHolder(private val binding: ItemThemeCellBinding) :
         binding.let {
             it.item = tripThemeItem as TripThemeCellItem
             it.clickListener = tripThemeItemViewClickListener
+            it.executePendingBindings()
         }
     }
 }

@@ -36,5 +36,6 @@
     <string name="calendar_grade_of_price_expensive">고가</string>
     <string name="calendar_grade_of_price_reasonable">중가</string>
     <string name="calendar_grade_of_price_cheap">저가</string>
+    <string name="calendar_ten_thousand_won">만원</string>
 
 </resources>
