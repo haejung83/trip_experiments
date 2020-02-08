@@ -4,6 +4,7 @@ import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import kr.tripstore.proto.presentation.calendar.CalendarModule
 import kr.tripstore.proto.presentation.profile.ProfileModule
+import kr.tripstore.proto.presentation.resource.ResourceModule
 import kr.tripstore.proto.presentation.save.SaveModule
 import kr.tripstore.proto.presentation.search.SearchModule
 import kr.tripstore.proto.presentation.trip.TripActivity
@@ -18,6 +19,7 @@ abstract class ActivityBindingModule {
     @ActivityScope
     @ContributesAndroidInjector(
         modules = [
+            ResourceModule::class,
             TripModule::class,
             SearchModule::class,
             SaveModule::class,
