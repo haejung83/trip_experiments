@@ -6,7 +6,11 @@
     <dimen name="grid_title_horizontal_margin">8dp</dimen>
     <dimen name="grid_cell_0_25">10dp</dimen>
     <dimen name="grid_cell_0_5">20dp</dimen>
+    <dimen name="grid_cell_0_75">30dp</dimen>
     <dimen name="grid_cell_1">40dp</dimen>
+    <dimen name="grid_cell_1_25">50dp</dimen>
+    <dimen name="grid_cell_1_5">60dp</dimen>
+    <dimen name="grid_cell_1_75">60dp</dimen>
     <dimen name="grid_cell_2">80dp</dimen>
 
     <!-- Fragment -->
@@ -21,5 +25,13 @@
 
     <!-- Fragment Title -->
     <dimen name="height_fragment_title">@dimen/grid_cell_1</dimen>
+
+    <!-- Skeleton -->
+    <dimen name="rect_radius_skeleton_low">4dp</dimen>
+    <dimen name="rect_radius_skeleton_medium">8dp</dimen>
+    <dimen name="rect_radius_skeleton_high">12dp</dimen>
+
+    <!-- Calendar -->
+    <dimen name="height_skeleton_calendar">240dp</dimen>
 
 </resources>

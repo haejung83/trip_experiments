@@ -6,6 +6,10 @@
     <color name="ts_red_light">#ff5131</color>
     <color name="ts_red_dark">#cb3333</color>
 
+    <!-- Skeleton Color -->
+    <color name="ts_skeleton_bright">#cccccc</color>
+    <color name="ts_skeleton_dark">#aaaaaa</color>
+
     <!-- Text Color -->
     <color name="ts_text_white">#F4F4F4</color>
     <color name="ts_text_gray">#C0C0C0</color>
