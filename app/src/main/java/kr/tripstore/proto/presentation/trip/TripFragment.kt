@@ -63,10 +63,10 @@ class TripFragment : DaggerDataBindingFragment<FragmentTripBinding>() {
     }
 
     private fun navigateToCalendarFragment(params: Map<String, String?>) {
-        val placeId = params["placeId"]?.toInt()
+        val placeIds = params["placeId"]?.splitAndGetIntArrayByComma()?.filter { it != 0 }
         val cityIds = params["cityId"]?.splitAndGetIntArrayByComma() ?: emptyList()
         val themeIds = params["themeId"]?.splitAndGetIntArrayByComma()
-        placeId?.let {
+        placeIds?.first()?.let {
             val action = TripFragmentDirections.actionNavigationTripToCalendarFragment(
                 it,
                 cityIds.toIntArray(),
