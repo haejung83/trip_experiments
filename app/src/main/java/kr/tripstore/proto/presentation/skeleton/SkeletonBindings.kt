@@ -16,9 +16,18 @@ object SkeletonBindings {
     @JvmStatic
     fun setShimmerShow(shimmerLayout: ShimmerLayout, isShow: Boolean?) {
         isShow?.let {
-            shimmerLayout.visibility = if (isShow) View.VISIBLE else View.GONE
-            if (isShow) shimmerLayout.startShimmerAnimation()
-            else shimmerLayout.stopShimmerAnimation()
+            if (it) {
+                shimmerLayout.alpha = 1f
+                shimmerLayout.visibility = View.VISIBLE
+                shimmerLayout.startShimmerAnimation()
+            } else {
+                shimmerLayout.stopShimmerAnimation()
+                shimmerLayout.animate().apply {
+                    duration = 500
+                    alpha(0f)
+                    withEndAction() { shimmerLayout.visibility = View.GONE }
+                }.start()
+            }
         }
     }
 

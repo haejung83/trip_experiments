@@ -17,12 +17,12 @@
         android:id="@+id/shimmerlayout_skeleton"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:shimmer_angle="10"
+        app:shimmer_angle="30"
         app:shimmer_animation_duration="1000"
         app:shimmer_color="@color/shimmer_color"
         app:shimmer_is_show="@{isShow}"
         app:shimmer_item_layout="@{itemLayout}"
-        app:shimmer_mask_width="0.2">
+        app:shimmer_mask_width="1.0">
 
         <LinearLayout
             android:id="@+id/linearlayout_skeleton_container"
