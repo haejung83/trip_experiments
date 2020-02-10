@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="itemLayout"
+            type="Integer" />
+
+        <variable
+            name="isShow"
+            type="Boolean" />
+    </data>
+
+    <io.supercharge.shimmerlayout.ShimmerLayout
+        android:id="@+id/shimmerlayout_skeleton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:shimmer_angle="10"
+        app:shimmer_animation_duration="1000"
+        app:shimmer_color="@color/shimmer_color"
+        app:shimmer_is_show="@{isShow}"
+        app:shimmer_item_layout="@{itemLayout}"
+        app:shimmer_mask_width="0.2">
+
+        <LinearLayout
+            android:id="@+id/linearlayout_skeleton_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+
+    </io.supercharge.shimmerlayout.ShimmerLayout>
+
+</layout>

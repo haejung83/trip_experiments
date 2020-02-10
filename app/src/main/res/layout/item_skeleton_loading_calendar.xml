@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/constraintlayout_skeleton_calendar"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/height_skeleton_calendar"
+    android:paddingStart="@dimen/padding_start_fragment"
+    android:paddingEnd="@dimen/padding_end_fragment">
+
+    <View
+        android:id="@+id/view_month_title"
+        android:layout_width="@dimen/grid_cell_2"
+        android:layout_height="@dimen/grid_cell_0_75"
+        android:layout_marginTop="@dimen/grid_cell_0_75"
+        android:background="@drawable/skeleton_rect_medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/view_day_of_week"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/grid_cell_0_5"
+        android:layout_marginTop="@dimen/grid_cell_0_5"
+        android:background="@drawable/skeleton_rect_medium_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_month_title" />
+
+    <View
+        android:id="@+id/view_week_1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/grid_cell_0_5"
+        android:layout_marginTop="@dimen/grid_cell_0_25"
+        android:background="@drawable/skeleton_rect_medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_day_of_week" />
+
+    <View
+        android:id="@+id/view_week_2"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/grid_cell_0_5"
+        android:layout_marginTop="@dimen/grid_cell_0_25"
+        android:background="@drawable/skeleton_rect_medium_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_week_1" />
+
+    <View
+        android:id="@+id/view_week_3"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/grid_cell_0_5"
+        android:layout_marginTop="@dimen/grid_cell_0_25"
+        android:background="@drawable/skeleton_rect_medium"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_week_2" />
+
+    <View
+        android:id="@+id/view_week_4"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/grid_cell_0_5"
+        android:layout_marginTop="@dimen/grid_cell_0_25"
+        android:layout_marginEnd="@dimen/grid_cell_0_5"
+        android:background="@drawable/skeleton_rect_medium_dark"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view_week_3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
