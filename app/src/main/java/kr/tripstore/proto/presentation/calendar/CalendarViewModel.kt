@@ -28,6 +28,10 @@ class CalendarViewModel @Inject constructor(
     val items: LiveData<List<CalendarItem>>
         get() = _items
 
+    private val _isLoading = MutableLiveData<Boolean>(false)
+    val isLoading: LiveData<Boolean>
+        get() = _isLoading
+
     val calendarItemViewClickListener = object : CalendarItemViewClickListener {
         override fun onClick(view: View, calendarItem: CalendarItem) {
             Timber.v("onClick: CalendarItem $calendarItem")
@@ -37,6 +41,7 @@ class CalendarViewModel @Inject constructor(
     fun load(placeId: Int, cityIds: Array<Int>, themeIds: Array<Int>?) {
         viewModelScope.launch {
             Timber.v("load args: placeId[$placeId], cityIds[${cityIds.joinToString()}], themeIds[${themeIds?.joinToString()}]")
+            showLoading()
             val lowestPriceCalendarResult =
                 getLowestPriceCalendarUseCase(placeId, cityIds, themeIds)
 
@@ -78,10 +83,20 @@ class CalendarViewModel @Inject constructor(
                             )
                         }.flatten()
                     }.flatten()
-
                 }
+            } else {
+                // Show an error layout
             }
+            hideLoading()
         }
+    }
+
+    private fun showLoading() {
+        _isLoading.value = true
+    }
+
+    private fun hideLoading() {
+        _isLoading.value = false
     }
 
     companion object {

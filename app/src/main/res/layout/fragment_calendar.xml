@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View" />
+
         <variable
             name="viewModel"
             type="kr.tripstore.proto.presentation.calendar.CalendarViewModel" />
@@ -40,10 +42,22 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textview_calendar_title" />
 
+        <include
+            layout="@layout/layout_skeleton_loading"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:isShow="@{viewModel.isLoading}"
+            app:itemLayout="@{@layout/item_skeleton_loading_calendar}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider_title" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerview_calendar"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:visibility="@{viewModel.isLoading ? View.INVISIBLE : View.VISIBLE}"
             app:items="@{viewModel.items}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
