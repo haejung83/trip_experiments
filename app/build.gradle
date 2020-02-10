@@ -66,6 +66,7 @@ dependencies {
     implementation "com.google.dagger:dagger-android-support:2.24"
     kapt "com.google.dagger:dagger-compiler:2.25.2"
     kapt "com.google.dagger:dagger-android-processor:2.24"
+    implementation "io.supercharge:shimmerlayout:2.1.0"
 
     // Unit Testing
     testImplementation 'junit:junit:4.12'
