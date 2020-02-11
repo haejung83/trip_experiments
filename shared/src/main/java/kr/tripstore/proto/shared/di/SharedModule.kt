@@ -23,14 +23,14 @@ class SharedModule {
      * TripDataSource
      */
     @Provides
-    @RemoteTripDataSource
+    @RemoteDataSource
     fun provideTripDataSource(): TripDataSource =
         TripRemoteDataSource()
 
     @Singleton
     @Provides
     fun provideTripRepository(
-        @RemoteTripDataSource remoteTripDataSource: TripDataSource
+        @RemoteDataSource remoteTripDataSource: TripDataSource
     ): TripRepository =
         TripRepository(remoteTripDataSource)
 
@@ -38,42 +38,42 @@ class SharedModule {
      * CalendarsDataSource
      */
     @Provides
-    @RemoteTripDataSource
+    @RemoteDataSource
     fun provideCalendarsDataSource(): CalendarsDataSource =
         CalendarsRemoteDataSource()
 
     @Singleton
     @Provides
     fun provideCalendarsRepository(
-        @RemoteTripDataSource remoteCalendarsDataSource: CalendarsDataSource
+        @RemoteDataSource remoteCalendarsDataSource: CalendarsDataSource
     ) = CalendarsRepository(remoteCalendarsDataSource)
 
     /*
      * TemperaturesDataSource
      */
     @Provides
-    @RemoteTripDataSource
+    @RemoteDataSource
     fun provideTemperaturesDataSource(): TemperaturesDataSource =
         TemperaturesRemoteDataSource()
 
     @Singleton
     @Provides
     fun provideTemperaturesRepository(
-        @RemoteTripDataSource remoteTemperaturesDataSource: TemperaturesDataSource
+        @RemoteDataSource remoteTemperaturesDataSource: TemperaturesDataSource
     ) = TemperaturesRepository(remoteTemperaturesDataSource)
 
     /*
      * ThemeCalendarDataSource
      */
     @Provides
-    @RemoteTripDataSource
+    @RemoteDataSource
     fun provideThemeCalendarDataSource(): ThemeCalendarDataSource =
         ThemeCalendarRemoteDataSource()
 
     @Singleton
     @Provides
     fun provideThemeCalendarRepository(
-        @RemoteTripDataSource remoteThemeCalendarDataSource: ThemeCalendarDataSource
+        @RemoteDataSource remoteThemeCalendarDataSource: ThemeCalendarDataSource
     ) = ThemeCalendarRepository(remoteThemeCalendarDataSource)
 
 }
