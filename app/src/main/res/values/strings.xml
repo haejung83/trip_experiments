@@ -13,16 +13,6 @@
     <string name="default_theme_title">테마 제목</string>
     <string name="default_theme_cell_title">여행 테마</string>
 
-    <!-- Trip Detail -->
-    <string name="trip_detail_symbol_of_web">웹</string>
-    <string name="trip_detail_symbol_of_detail">상세</string>
-    <string name="trip_detail_symbol_of_start">공항</string>
-    <string name="trip_detail_symbol_of_place">장소</string>
-    <string name="trip_detail_symbol_of_calendar">달력</string>
-    <string name="trip_detail_symbol_of_theme_calendar">테마</string>
-    <string name="trip_detail_symbol_of_search">검색</string>
-    <string name="trip_detail_symbol_of_list">목록</string>
-
     <!-- Calendar -->
     <string name="calendar_sunday">일</string>
     <string name="calendar_monday">월</string>

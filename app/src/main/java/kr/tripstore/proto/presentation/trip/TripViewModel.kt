@@ -5,25 +5,30 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kr.tripstore.proto.model.TripLink
-import kr.tripstore.proto.model.domain.TripTheme
 import kr.tripstore.proto.presentation.Event
+import kr.tripstore.proto.presentation.resource.TripLinkSymbolStringProvider
 import kr.tripstore.proto.presentation.trip.theme.TripThemeCellItem
 import kr.tripstore.proto.presentation.trip.theme.TripThemeItem
 import kr.tripstore.proto.presentation.trip.theme.TripThemeItemViewClickListener
+import kr.tripstore.proto.presentation.trip.theme.TripThemeTitleItem
 import kr.tripstore.proto.shared.domain.trip.GetTripThemesUseCase
+import kr.tripstore.proto.shared.extension.empty
 import kr.tripstore.proto.shared.result.Result
 import timber.log.Timber
 import javax.inject.Inject
 
 class TripViewModel @Inject constructor(
-    private val getTripThemesUseCase: GetTripThemesUseCase
+    private val getTripThemesUseCase: GetTripThemesUseCase,
+    private val tripLinkSymbolStringProvider: TripLinkSymbolStringProvider
 ) : ViewModel() {
 
-    private val _tripThemes = MutableLiveData<List<TripTheme>>()
-    val tripThemes: LiveData<List<TripTheme>>
-        get() = _tripThemes
+    private val _tripThemeItems = MutableLiveData<List<TripThemeItem>>()
+    val tripThemeItems: LiveData<List<TripThemeItem>>
+        get() = _tripThemeItems
 
     private val _openTripLinkEvent = MutableLiveData<Event<TripLink>>()
     val openTripLinkEvent: LiveData<Event<TripLink>>
@@ -55,7 +60,30 @@ class TripViewModel @Inject constructor(
             _isLoading.value = false
             if (tripThemesResult is Result.Success) {
                 Timber.d("Success: $tripThemesResult")
-                _tripThemes.value = tripThemesResult.data
+                val tripThemeItems = withContext(Dispatchers.Default) {
+                    tripThemesResult.data.map { tripTheme ->
+                        listOf(
+                            TripThemeTitleItem(
+                                tripTheme.id,
+                                tripTheme.title
+                            ),
+                            *tripTheme.themeDetails.map { tripThemeDetail ->
+                                tripThemeDetail.run {
+                                    TripThemeCellItem(
+                                        id,
+                                        title,
+                                        imageUrl,
+                                        openLink,
+                                        tripLinkSymbolStringProvider.getSymbolByTripLinkType(
+                                            openLink.type
+                                        ) ?: String.empty
+                                    )
+                                }
+                            }.toTypedArray()
+                        )
+                    }.flatten()
+                }
+                _tripThemeItems.value = tripThemeItems
                 _isError.value = false
             } else {
                 Timber.d("Error: $tripThemesResult")

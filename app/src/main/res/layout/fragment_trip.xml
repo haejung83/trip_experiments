@@ -23,11 +23,11 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layoutAnimation="@anim/grid_layout_animation_from_bottom"
-            app:items="@{viewModel.tripThemes}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:tripThemeItems="@{viewModel.tripThemeItems}"
             app:viewModel="@{viewModel}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

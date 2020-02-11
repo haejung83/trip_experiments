@@ -29,7 +29,7 @@ object CalendarBindings {
         }
     }
 
-    @BindingAdapter("items")
+    @BindingAdapter("calendarItems")
     @JvmStatic
     fun setCalendarItems(recyclerView: RecyclerView, items: List<CalendarItem>?) {
         items?.let { calendarItems ->

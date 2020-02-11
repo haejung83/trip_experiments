@@ -16,5 +16,12 @@ class ResourceModule {
     fun provideDayOfWeekProvider(context: Context): DayOfWeekStringProvider =
         ContextDayOfWeekStringProvider(context)
 
+    /**
+     * TripLink Symbol String Provider
+     */
+    @ActivityScope
+    @Provides
+    fun provideTripLinkSymbolProvider(context: Context): TripLinkSymbolStringProvider =
+        ContextTripLinkSymbolStringProvider(context)
 
 }

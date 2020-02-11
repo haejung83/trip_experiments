@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">shared</string>
+
+    <!-- TripLink Symbol -->
+    <string name="trip_link_symbol_of_web">웹</string>
+    <string name="trip_link_symbol_of_detail">상세</string>
+    <string name="trip_link_symbol_of_start">공항</string>
+    <string name="trip_link_symbol_of_place">장소</string>
+    <string name="trip_link_symbol_of_calendar">달력</string>
+    <string name="trip_link_symbol_of_theme_calendar">테마</string>
+    <string name="trip_link_symbol_of_search">검색</string>
+    <string name="trip_link_symbol_of_list">목록</string>
+
 </resources>
