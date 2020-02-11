@@ -1,23 +1,27 @@
 package kr.tripstore.proto.shared.domain.calendar
 
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.withContext
 import kr.tripstore.proto.model.CalendarDay
 import kr.tripstore.proto.model.domain.*
 import kr.tripstore.proto.shared.data.calendar.CalendarsRepository
 import kr.tripstore.proto.shared.data.temperature.TemperaturesRepository
+import kr.tripstore.proto.shared.di.DefaultCoroutineDispatcher
 import kr.tripstore.proto.shared.extension.empty
 import kr.tripstore.proto.shared.result.Result
 import javax.inject.Inject
 
 class GetLowestPriceCalendarUseCase @Inject constructor(
     private val calendarsRepository: CalendarsRepository,
-    private val temperaturesRepository: TemperaturesRepository
+    private val temperaturesRepository: TemperaturesRepository,
+    @DefaultCoroutineDispatcher private val defaultDispatcher: CoroutineDispatcher
 ) {
 
     suspend operator fun invoke(
         placeId: Int,
         cityIds: Array<Int>,
         themeIds: Array<Int>? = null
-    ): Result<LowestPriceCalendar> {
+    ): Result<LowestPriceCalendar> = withContext(defaultDispatcher) {
         // Prepare high temperatures
         val highTemperatures =
             when (val temperatures = temperaturesRepository.getTemperatures(placeId)) {
@@ -28,7 +32,7 @@ class GetLowestPriceCalendarUseCase @Inject constructor(
             }
 
         // Assemble a LowestPriceCalendar using the Calendar result and prepared high temperatures
-        return when (val calendars =
+        when (val calendars =
             calendarsRepository.getCalendars(arrayOf(placeId), cityIds, themeIds)) {
             is Result.Success -> {
                 Result.Success(

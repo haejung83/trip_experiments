@@ -1,5 +1,6 @@
 package kr.tripstore.proto.shared.domain
 
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import kr.tripstore.proto.shared.data.calendar.CalendarsRepository
@@ -41,11 +42,13 @@ class GetLowestPriceThemeCalendarUseCaseTest {
             // Given repositories and GetLowestPriceCalendarUseCase which getting GetLowestPriceThemeCalendarUseCase
             val getLowestPriceCalendarUseCase = GetLowestPriceCalendarUseCase(
                 calendarsRepository,
-                temperaturesRepository
+                temperaturesRepository,
+                Dispatchers.Unconfined
             )
             val getLowestPriceThemeCalendarUseCase = GetLowestPriceThemeCalendarUseCase(
                 getLowestPriceCalendarUseCase,
-                themeCalendarRepository
+                themeCalendarRepository,
+                Dispatchers.Unconfined
             )
             // When getting a result of LowestPriceThemeCalendar
             val getLowestPriceThemeCalendarResult = getLowestPriceThemeCalendarUseCase(
@@ -64,11 +67,13 @@ class GetLowestPriceThemeCalendarUseCaseTest {
             // Given repositories and GetLowestPriceCalendarUseCase which getting GetLowestPriceThemeCalendarUseCase
             val getLowestPriceCalendarUseCase = GetLowestPriceCalendarUseCase(
                 calendarsRepository,
-                temperaturesRepository
+                temperaturesRepository,
+                Dispatchers.Unconfined
             )
             val getLowestPriceThemeCalendarUseCase = GetLowestPriceThemeCalendarUseCase(
                 getLowestPriceCalendarUseCase,
-                themeCalendarRepository
+                themeCalendarRepository,
+                Dispatchers.Unconfined
             )
             // When getting a result of LowestPriceThemeCalendar
             val getLowestPriceThemeCalendarResult = getLowestPriceThemeCalendarUseCase(

@@ -1,9 +1,12 @@
 package kr.tripstore.proto.shared.domain.themecalendar
 
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.withContext
 import kr.tripstore.proto.model.ThemeCalendarDescription
 import kr.tripstore.proto.model.domain.LowestPriceThemeCalendar
 import kr.tripstore.proto.model.domain.LowestPriceThemeCalendarDescription
 import kr.tripstore.proto.shared.data.themecalendar.ThemeCalendarRepository
+import kr.tripstore.proto.shared.di.DefaultCoroutineDispatcher
 import kr.tripstore.proto.shared.domain.calendar.GetLowestPriceCalendarUseCase
 import kr.tripstore.proto.shared.result.Result
 import kr.tripstore.proto.shared.util.themeCalendarDateFormat
@@ -11,14 +14,15 @@ import javax.inject.Inject
 
 class GetLowestPriceThemeCalendarUseCase @Inject constructor(
     private val getLowestPriceCalendarUseCase: GetLowestPriceCalendarUseCase,
-    private val themeCalendarRepository: ThemeCalendarRepository
+    private val themeCalendarRepository: ThemeCalendarRepository,
+    @DefaultCoroutineDispatcher private val defaultDispatcher: CoroutineDispatcher
 ) {
 
     suspend operator fun invoke(
         themeCalendarId: Int,
         placeId: Int,
         cityIds: Array<Int>
-    ): Result<LowestPriceThemeCalendar> {
+    ): Result<LowestPriceThemeCalendar> = withContext(defaultDispatcher) {
 
         val themeDescription =
             when (val themeCalendar = themeCalendarRepository.getThemeCalendar(themeCalendarId)) {
@@ -26,7 +30,7 @@ class GetLowestPriceThemeCalendarUseCase @Inject constructor(
                 else -> null
             }
 
-        return when (val lowestPriceCalendar = getLowestPriceCalendarUseCase(placeId, cityIds)) {
+        when (val lowestPriceCalendar = getLowestPriceCalendarUseCase(placeId, cityIds)) {
             is Result.Success -> {
                 themeDescription?.let { description ->
                     Result.Success(

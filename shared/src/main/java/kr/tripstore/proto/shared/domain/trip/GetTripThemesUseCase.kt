@@ -1,19 +1,23 @@
 package kr.tripstore.proto.shared.domain.trip
 
 import android.net.Uri
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.withContext
 import kr.tripstore.proto.model.TripLink
 import kr.tripstore.proto.model.TripLinkType
 import kr.tripstore.proto.model.domain.TripTheme
 import kr.tripstore.proto.model.domain.TripThemeDetail
 import kr.tripstore.proto.shared.data.trip.TripRepository
+import kr.tripstore.proto.shared.di.DefaultCoroutineDispatcher
 import kr.tripstore.proto.shared.result.Result
 import javax.inject.Inject
 
 class GetTripThemesUseCase @Inject constructor(
-    private val tripRepository: TripRepository
+    private val tripRepository: TripRepository,
+    @DefaultCoroutineDispatcher private val defaultDispatcher: CoroutineDispatcher
 ) {
 
-    suspend operator fun invoke(): Result<List<TripTheme>> =
+    suspend operator fun invoke(): Result<List<TripTheme>> = withContext(defaultDispatcher) {
         when (val tripPackagePage = tripRepository.getTripPackagePage()) {
             is Result.Success -> {
                 Result.Success(
@@ -40,6 +44,7 @@ class GetTripThemesUseCase @Inject constructor(
             is Result.Error -> Result.Error(Exception("GetTripThemesUseCase: Error"))
             is Result.Loading -> Result.Loading
         }
+    }
 
     private fun parseOpenLinkUrlToTripLink(openLink: String): TripLink {
         val parsedUri = Uri.parse(openLink)

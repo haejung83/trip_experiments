@@ -1,5 +1,6 @@
 package kr.tripstore.proto.shared.domain
 
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import kr.tripstore.proto.shared.data.source.FakeRemoteTripDataSource
@@ -31,7 +32,8 @@ class GetTripThemesUseCaseTest {
             // Given a trip repository with a FakeRemoteTripDataSource that returns the predefined result at TestData
             val getTripThemesUseCase =
                 GetTripThemesUseCase(
-                    tripRepository
+                    tripRepository,
+                    Dispatchers.Unconfined
                 )
             // When getting a result of TripTheme
             val getTripThemesUseCaseResult = getTripThemesUseCase.invoke()
@@ -45,7 +47,8 @@ class GetTripThemesUseCaseTest {
             // Given a trip repository with a FakeRemoteTripDataSource that returns the predefined result at TestData
             val getTripThemesUseCase =
                 GetTripThemesUseCase(
-                    tripRepository
+                    tripRepository,
+                    Dispatchers.Unconfined
                 )
             // When getting TripThemes
             val getTripThemesUseCaseResult = getTripThemesUseCase.invoke()

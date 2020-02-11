@@ -1,7 +1,7 @@
 package kr.tripstore.proto.shared.domain
 
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.runBlockingTest
 import kr.tripstore.proto.shared.data.calendar.CalendarsRepository
 import kr.tripstore.proto.shared.data.source.FakeCalendarsRemoteDataSource
@@ -30,13 +30,13 @@ class GetLowestPriceCalendarUseCaseTest {
 
     @Test
     fun getLowestPriceCalendar_isNotNull() =
-        runBlocking {
+        runBlockingTest {
             val fakePlaceId = 479
             val fakeCityIds = arrayOf(1)
             val fakeThemeIds = null
             // Given repositories which getting CalendarDay and Temperatures
             val getLowestPriceCalendarUseCase = GetLowestPriceCalendarUseCase(
-                calendarsRepository, temperaturesRepository
+                calendarsRepository, temperaturesRepository, Dispatchers.Unconfined
             )
             // When getting a result of LowestPriceCalendar
             val getLowestPriceCalendarResult =
@@ -53,7 +53,7 @@ class GetLowestPriceCalendarUseCaseTest {
             val fakeThemeIds = null
             // Given repositories which getting CalendarDay and Temperatures
             val getLowestPriceCalendarUseCase = GetLowestPriceCalendarUseCase(
-                calendarsRepository, temperaturesRepository
+                calendarsRepository, temperaturesRepository, Dispatchers.Unconfined
             )
             // When getting a result of LowestPriceCalendar
             val getLowestPriceCalendarResult =
