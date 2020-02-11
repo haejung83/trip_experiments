@@ -5,7 +5,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import kr.tripstore.proto.presentation.resource.DayOfWeekString
 import kr.tripstore.proto.presentation.resource.DayOfWeekStringProvider
 import kr.tripstore.proto.shared.domain.calendar.GetLowestPriceCalendarUseCase
@@ -47,42 +49,44 @@ class CalendarViewModel @Inject constructor(
 
             if (lowestPriceCalendarResult is Result.Success) {
                 lowestPriceCalendarResult.data.let { data ->
-                    _placeName.value = data.placeId.toString()
-
-                    _items.value = data.years.map { year ->
-                        year.months.map { month ->
-                            listOf(
-                                // Space (1)
-                                CalendarSpaceItem(20),
-                                // Month (1)
-                                CalendarMonthTitleItem(
-                                    month.month.toString(),
-                                    month.highestTemperatures
-                                ),
-                                // Days of week (7)
-                                *getListOfDayOfWeekItem(
-                                    dayOfWeekStringProvider.daysOfWeek()
-                                ).toTypedArray(),
-                                // Empty (0~6)
-                                *getEmptyCellItemByYearMonthDay(
-                                    year.year,
-                                    month.month,
-                                    month.days.first().day
-                                ).toTypedArray(),
-                                // Days (28~31)
-                                *month.days.map { day ->
-                                    CalendarDayCellItem(
-                                        day.day,
-                                        day.price,
-                                        day.gradeOfPrice,
-                                        day.isHoliday
-                                    )
-                                }.toTypedArray(),
-                                // Space (1)
-                                CalendarSpaceItem(10)
-                            )
+                    val calendarItems = withContext(Dispatchers.Default) {
+                        data.years.map { year ->
+                            year.months.map { month ->
+                                listOf(
+                                    // Space (1)
+                                    CalendarSpaceItem(20),
+                                    // Month (1)
+                                    CalendarMonthTitleItem(
+                                        month.month.toString(),
+                                        month.highestTemperatures
+                                    ),
+                                    // Days of week (7)
+                                    *getListOfDayOfWeekItem(
+                                        dayOfWeekStringProvider.daysOfWeek()
+                                    ).toTypedArray(),
+                                    // Empty (0~6)
+                                    *getEmptyCellItemByYearMonthDay(
+                                        year.year,
+                                        month.month,
+                                        month.days.first().day
+                                    ).toTypedArray(),
+                                    // Days (28~31)
+                                    *month.days.map { day ->
+                                        CalendarDayCellItem(
+                                            day.day,
+                                            day.price,
+                                            day.gradeOfPrice,
+                                            day.isHoliday
+                                        )
+                                    }.toTypedArray(),
+                                    // Space (1)
+                                    CalendarSpaceItem(10)
+                                )
+                            }.flatten()
                         }.flatten()
-                    }.flatten()
+                    }
+                    _placeName.value = data.placeId.toString()
+                    _items.value = calendarItems
                 }
             } else {
                 // Show an error layout
