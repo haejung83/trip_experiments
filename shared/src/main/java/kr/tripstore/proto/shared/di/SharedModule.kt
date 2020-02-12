@@ -2,6 +2,7 @@ package kr.tripstore.proto.shared.di
 
 import dagger.Module
 import dagger.Provides
+import kr.tripstore.proto.shared.data.agency.*
 import kr.tripstore.proto.shared.data.calendar.CalendarsDataSource
 import kr.tripstore.proto.shared.data.calendar.CalendarsRemoteDataSource
 import kr.tripstore.proto.shared.data.calendar.CalendarsRepository
@@ -75,5 +76,25 @@ class SharedModule {
     fun provideThemeCalendarRepository(
         @RemoteDataSource remoteThemeCalendarDataSource: ThemeCalendarDataSource
     ) = ThemeCalendarRepository(remoteThemeCalendarDataSource)
+
+    /*
+     * AgencyDataSource
+     */
+    @Provides
+    @RemoteDataSource
+    fun provideAgencyRemoteDataSource(): AgencyDataSource =
+        AgencyRemoteDataSource()
+
+    @Provides
+    @LocalDataSource
+    fun provideAgencyLocalDataSource(): AgencyCacheDataSource =
+        AgencyLocalDataSource()
+
+    @Singleton
+    @Provides
+    fun provideAgencyRepository(
+        @RemoteDataSource remoteAgencyDataSource: AgencyDataSource,
+        @LocalDataSource localAgencyCacheDataSource: AgencyCacheDataSource
+    ) = AgencyRepository(remoteAgencyDataSource, localAgencyCacheDataSource)
 
 }

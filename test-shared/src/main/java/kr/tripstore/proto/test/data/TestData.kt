@@ -108,5 +108,22 @@ object TestData {
         NO_ERRORS,
         themeCalendarDescription
     )
+    // Agency
+    val agency = Agency(
+        1,
+        "HANA",
+        "하나투어",
+        "02-1600-5384",
+        "상품번호와 여행사명이 있으면 빠른 상담이 가능합니다.\r\n트립스토어 운영시간은 평일 09:30 ~ 18:30 입니다!",
+        "상품번호",
+        "http://manager.hanatour.com",
+        "https://page.tripstore.kr/strip/HANA.js"
+    )
+    val agencies = Agencies(
+        RESPONSE_TIME,
+        NO_ERROR,
+        NO_ERRORS,
+        listOf(agency)
+    )
 
 }
