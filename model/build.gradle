@@ -8,7 +8,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     // 3rd Party
-    implementation 'com.squareup.retrofit2:converter-moshi:2.6.2'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.7.1'
 }
 
 sourceCompatibility = "1.7"
