@@ -135,5 +135,15 @@ object TestData {
         NO_ERRORS,
         listOf(airline)
     )
+    // Departure City
+    val departureCity = DepartureCity(
+        1, "JCN", "인천/김포"
+    )
+    val departureCities = DepartureCities(
+        RESPONSE_TIME,
+        NO_ERROR,
+        NO_ERRORS,
+        listOf(departureCity)
+    )
 
 }
