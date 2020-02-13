@@ -42,8 +42,7 @@ class AirlineRepositoryTest {
             // When getting a result of airlines
             val airlinesResult = airlineRepository.getAirlines()
             val data = (airlinesResult as Result.Success).data
-
-            // Then the result is not null
+            // Then the data is equal to the predefined test data
             assertThat(data, IsEqual.equalTo(TestData.airlines.airlines))
         }
 

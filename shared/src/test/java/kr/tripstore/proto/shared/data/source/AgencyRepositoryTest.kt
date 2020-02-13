@@ -54,7 +54,7 @@ class AgencyRepositoryTest {
             // When getting a result of agencies
             val agenciesResult = agencyRepository.getAgencies()
             val data = (agenciesResult as Result.Success).data
-            // Then the result is not null
+            // Then the data is equal to the predefined test data
             assertThat(data, IsEqual.equalTo(TestData.agencies.agencies))
         }
 
