@@ -9,6 +9,9 @@ import kr.tripstore.proto.shared.data.airline.AirlineRepository
 import kr.tripstore.proto.shared.data.calendar.CalendarsDataSource
 import kr.tripstore.proto.shared.data.calendar.CalendarsRemoteDataSource
 import kr.tripstore.proto.shared.data.calendar.CalendarsRepository
+import kr.tripstore.proto.shared.data.departurecity.DepartureCityDataSource
+import kr.tripstore.proto.shared.data.departurecity.DepartureCityRemoteDataSource
+import kr.tripstore.proto.shared.data.departurecity.DepartureCityRepository
 import kr.tripstore.proto.shared.data.temperature.TemperaturesDataSource
 import kr.tripstore.proto.shared.data.temperature.TemperaturesRemoteDataSource
 import kr.tripstore.proto.shared.data.temperature.TemperaturesRepository
@@ -113,5 +116,19 @@ class SharedModule {
     fun provideAirlineRepository(
         @RemoteDataSource remoteAirlineDataSource: AirlineDataSource
     ) = AirlineRepository(remoteAirlineDataSource)
+
+    /*
+     * DepartureCityDataSource
+     */
+    @Provides
+    @RemoteDataSource
+    fun provideDepartureCityRemoteDataSource(): DepartureCityDataSource =
+        DepartureCityRemoteDataSource()
+
+    @Singleton
+    @Provides
+    fun provideDepartureCityRepository(
+        @RemoteDataSource remoteDepartureCityDataSource: DepartureCityDataSource
+    ) = DepartureCityRepository(remoteDepartureCityDataSource)
 
 }
