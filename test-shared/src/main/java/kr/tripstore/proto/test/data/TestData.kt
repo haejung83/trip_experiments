@@ -125,5 +125,15 @@ object TestData {
         NO_ERRORS,
         listOf(agency)
     )
+    // Airline
+    val airline = Airline(
+        1, "사천항공", "3U"
+    )
+    val airlines = Airlines(
+        RESPONSE_TIME,
+        NO_ERROR,
+        NO_ERRORS,
+        listOf(airline)
+    )
 
 }

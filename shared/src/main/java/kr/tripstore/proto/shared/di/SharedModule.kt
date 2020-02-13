@@ -3,6 +3,9 @@ package kr.tripstore.proto.shared.di
 import dagger.Module
 import dagger.Provides
 import kr.tripstore.proto.shared.data.agency.*
+import kr.tripstore.proto.shared.data.airline.AirlineDataSource
+import kr.tripstore.proto.shared.data.airline.AirlineRemoteDataSource
+import kr.tripstore.proto.shared.data.airline.AirlineRepository
 import kr.tripstore.proto.shared.data.calendar.CalendarsDataSource
 import kr.tripstore.proto.shared.data.calendar.CalendarsRemoteDataSource
 import kr.tripstore.proto.shared.data.calendar.CalendarsRepository
@@ -96,5 +99,19 @@ class SharedModule {
         @RemoteDataSource remoteAgencyDataSource: AgencyDataSource,
         @LocalDataSource localAgencyCacheDataSource: AgencyCacheDataSource
     ) = AgencyRepository(remoteAgencyDataSource, localAgencyCacheDataSource)
+
+    /*
+     * AirlineDataSource
+     */
+    @Provides
+    @RemoteDataSource
+    fun provideAirlineRemoteDataSource(): AirlineDataSource =
+        AirlineRemoteDataSource()
+
+    @Singleton
+    @Provides
+    fun provideAirlineRepository(
+        @RemoteDataSource remoteAirlineDataSource: AirlineDataSource
+    ) = AirlineRepository(remoteAirlineDataSource)
 
 }

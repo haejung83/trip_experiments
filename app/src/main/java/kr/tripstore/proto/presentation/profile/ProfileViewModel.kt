@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 import kr.tripstore.proto.shared.data.agency.AgencyRepository
+import kr.tripstore.proto.shared.data.airline.AirlineRepository
 import kr.tripstore.proto.shared.domain.calendar.GetLowestPriceCalendarUseCase
 import kr.tripstore.proto.shared.domain.themecalendar.GetLowestPriceThemeCalendarUseCase
 import kr.tripstore.proto.shared.result.Result
@@ -13,7 +14,8 @@ import javax.inject.Inject
 class ProfileViewModel @Inject constructor(
     private val getLowestPriceCalendarUseCase: GetLowestPriceCalendarUseCase,
     private val getLowestPriceThemeCalendarUseCase: GetLowestPriceThemeCalendarUseCase,
-    private val agencyRepository: AgencyRepository
+    private val agencyRepository: AgencyRepository,
+    private val airlineRepository: AirlineRepository
 ) : ViewModel() {
 
     fun start() {
@@ -31,6 +33,10 @@ class ProfileViewModel @Inject constructor(
             val agenciesResult = agencyRepository.getAgencies()
             if (agenciesResult is Result.Success)
                 Timber.d("Agencies: $agenciesResult")
+
+            val airlinesResult = airlineRepository.getAirlines()
+            if (airlinesResult is Result.Success)
+                Timber.d("Airlines: $airlinesResult")
         }
     }
 
