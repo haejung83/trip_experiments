@@ -15,17 +15,15 @@ android {
 
         buildConfigField "String", "API_HOST", "\"${server_v1_host}\""
     }
-
-    compileOptions {
-        sourceCompatibility 1.8
-        targetCompatibility 1.8
-    }
-
     buildTypes {
         release {
         }
         debug {
         }
+    }
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
     }
 }
 
