@@ -27,7 +27,7 @@ class WebFragment : DaggerDataBindingFragment<FragmentWebBinding>() {
         super.onActivityCreated(savedInstanceState)
         viewDataBinding.run {
             viewModel = this@WebFragment.viewModel
-            lifecycleOwner = this@WebFragment
+            lifecycleOwner = viewLifecycleOwner
         }
         // TODO : Assemble WebView's three parts - WebClient, WebChromeClient, Custom Javascript Interfaces
         viewDataBinding.webview.run {

@@ -115,6 +115,7 @@ class CalendarViewModel @Inject constructor(
             mutableListOf<CalendarEmptyCellItem>().apply {
                 Calendar.getInstance(Locale.KOREA).let {
                     it.set(year, month - 1, day)
+                    Timber.d("get days of month: ${it.getActualMaximum(Calendar.DAY_OF_MONTH)}")
                     it.firstDayOfWeek = Calendar.SUNDAY
                     val emptyCount = it.get(Calendar.DAY_OF_WEEK) - Calendar.SUNDAY
                     if (emptyCount > 0) add(CalendarEmptyCellItem(emptyCount))

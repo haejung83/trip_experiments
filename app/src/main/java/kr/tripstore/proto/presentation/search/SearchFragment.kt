@@ -24,7 +24,7 @@ class SearchFragment : DaggerDataBindingFragment<FragmentSearchBinding>() {
         viewDataBinding.viewModel = viewModel.apply {
             Timber.d("ViewModel: ${this.hashCode()}")
         }
-        viewDataBinding.lifecycleOwner = this
+        viewDataBinding.lifecycleOwner = viewLifecycleOwner
         viewModel.start()
     }
 

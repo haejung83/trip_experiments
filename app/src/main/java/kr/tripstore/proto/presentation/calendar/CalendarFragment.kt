@@ -25,7 +25,7 @@ class CalendarFragment : DaggerDataBindingFragment<FragmentCalendarBinding>() {
         super.onActivityCreated(savedInstanceState)
         viewDataBinding.run {
             viewModel = this@CalendarFragment.viewModel
-            lifecycleOwner = this@CalendarFragment
+            lifecycleOwner = viewLifecycleOwner
         }
         viewModel.load(args.placeId, args.cityIds.toTypedArray(), args.themeIds?.toTypedArray())
     }

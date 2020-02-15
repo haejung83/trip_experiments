@@ -29,13 +29,13 @@ class TripFragment : DaggerDataBindingFragment<FragmentTripBinding>() {
             Timber.d("ViewModel: ${this.hashCode()}")
         }
         setupNavigation()
-        viewDataBinding.lifecycleOwner = this
+        viewDataBinding.lifecycleOwner = viewLifecycleOwner
         viewModel.start()
     }
 
     private fun setupNavigation() {
         viewModel.openTripLinkEvent.observe(
-            this@TripFragment, EventObserver { tripLink ->
+            viewLifecycleOwner, EventObserver { tripLink ->
                 Timber.d("TripLink: $tripLink")
                 when (tripLink.type) {
                     TripLinkType.WEB -> {
