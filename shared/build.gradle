@@ -34,39 +34,29 @@ dependencies {
     testImplementation project(':androidtest-shared')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    // Kotlin Std
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    // Coroutines
-    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2'
+    // Kotlin
+    implementation kotlin_libraries
+    implementation kotlin_coroutine_libraries
 
-    // Android KTX
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
-    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
-    implementation "androidx.lifecycle:lifecycle-common-java8:2.2.0"
-    implementation "androidx.room:room-ktx:2.2.3"
-    implementation "androidx.room:room-runtime:2.2.3"
-    kapt "androidx.room:room-compiler:2.2.3"
+    // KTX
+    implementation ktx_lifecycle_libraries
+    implementation ktx_room_libraries
+    kapt ktx_room_kapt_libraries
 
-    // 3rd Parties
-    api 'com.jakewharton.timber:timber:4.7.1'
-    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
-    implementation 'com.squareup.retrofit2:converter-moshi:2.7.1'
-    implementation 'com.squareup.okhttp3:okhttp:4.3.1'
-    implementation 'com.squareup.okhttp3:logging-interceptor:4.3.1'
-    implementation 'com.google.dagger:dagger-android:2.26'
-    implementation 'com.google.dagger:dagger-android-support:2.26'
-    kapt 'com.google.dagger:dagger-compiler:2.26'
-    kapt 'com.google.dagger:dagger-android-processor:2.26'
+    // Timber [API Level]
+    api timber_libraries
+    // Retrofit2
+    implementation retrofit_libraries
+    implementation retrofit_converter_libraries
+    // Dagger
+    implementation dagger_libraries
+    kapt dagger_kapt_libraries
+    kaptTest dagger_kapt_test_libraries
 
     // Unit Testing
-    testImplementation 'junit:junit:4.13'
-    kaptTest 'com.google.dagger:dagger-compiler:2.26'
-    testImplementation 'org.hamcrest:hamcrest-library:2.2'
-    testImplementation "org.mockito:mockito-core:2.25.0"
-    testImplementation "com.nhaarman:mockito-kotlin:1.5.0"
+    testImplementation unit_test_libraries
     // Unit Testing for KTX
-    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation ktx_core_unit_test_libraries
     // Unit Testing for Kotlin-Coroutines
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2"
-    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.2"
+    testImplementation kotlin_coroutine_unit_test_libraries
 }

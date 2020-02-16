@@ -5,9 +5,8 @@ dependencies {
     implementation project(':model')
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    // Kotlin Std
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-
+    // Kotlin
+    implementation kotlin_libraries
 }
 
 sourceCompatibility = "7"
