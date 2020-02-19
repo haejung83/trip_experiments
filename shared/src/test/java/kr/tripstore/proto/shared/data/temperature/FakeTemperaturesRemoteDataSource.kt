@@ -1,4 +1,4 @@
-package kr.tripstore.proto.shared.data.source
+package kr.tripstore.proto.shared.data.temperature
 
 import kr.tripstore.proto.model.Temperatures
 import kr.tripstore.proto.shared.data.temperature.TemperaturesDataSource

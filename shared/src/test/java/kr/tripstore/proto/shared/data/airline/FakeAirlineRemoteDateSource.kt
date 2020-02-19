@@ -1,4 +1,4 @@
-package kr.tripstore.proto.shared.data.source
+package kr.tripstore.proto.shared.data.airline
 
 import kr.tripstore.proto.model.Airline
 import kr.tripstore.proto.shared.data.airline.AirlineDataSource

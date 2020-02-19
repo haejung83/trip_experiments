@@ -1,9 +1,7 @@
-package kr.tripstore.proto.shared.data.source
+package kr.tripstore.proto.shared.data.departurecity
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
-import kr.tripstore.proto.shared.data.departurecity.DepartureCityDataSource
-import kr.tripstore.proto.shared.data.departurecity.DepartureCityRepository
 import kr.tripstore.proto.shared.result.Result
 import kr.tripstore.proto.shared.test.util.assertResult
 import kr.tripstore.proto.test.data.TestData
@@ -20,7 +18,8 @@ class DepartureCityRepositoryTest {
     @ExperimentalCoroutinesApi
     @Before
     fun setup() {
-        departureCityRemoteDataSource = FakeDepartureCityRemoteDataSource()
+        departureCityRemoteDataSource =
+            FakeDepartureCityRemoteDataSource()
     }
 
     @Test

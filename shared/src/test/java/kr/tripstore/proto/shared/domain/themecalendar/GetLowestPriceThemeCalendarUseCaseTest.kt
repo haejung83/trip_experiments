@@ -1,16 +1,15 @@
-package kr.tripstore.proto.shared.domain
+package kr.tripstore.proto.shared.domain.themecalendar
 
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import kr.tripstore.proto.shared.data.calendar.CalendarsRepository
-import kr.tripstore.proto.shared.data.source.FakeCalendarsRemoteDataSource
-import kr.tripstore.proto.shared.data.source.FakeTemperaturesRemoteDataSource
-import kr.tripstore.proto.shared.data.source.FakeThemeCalendarRemoteDataSource
+import kr.tripstore.proto.shared.data.calendar.FakeCalendarsRemoteDataSource
+import kr.tripstore.proto.shared.data.temperature.FakeTemperaturesRemoteDataSource
+import kr.tripstore.proto.shared.data.themecalendar.FakeThemeCalendarRemoteDataSource
 import kr.tripstore.proto.shared.data.temperature.TemperaturesRepository
 import kr.tripstore.proto.shared.data.themecalendar.ThemeCalendarRepository
 import kr.tripstore.proto.shared.domain.calendar.GetLowestPriceCalendarUseCase
-import kr.tripstore.proto.shared.domain.themecalendar.GetLowestPriceThemeCalendarUseCase
 import kr.tripstore.proto.shared.result.Result
 import kr.tripstore.proto.shared.test.util.assertResult
 import org.hamcrest.MatcherAssert.assertThat

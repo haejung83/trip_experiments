@@ -1,11 +1,7 @@
-package kr.tripstore.proto.shared.data.source
+package kr.tripstore.proto.shared.data.agency
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
-import kr.tripstore.proto.shared.data.agency.AgencyCacheDataSource
-import kr.tripstore.proto.shared.data.agency.AgencyDataSource
-import kr.tripstore.proto.shared.data.agency.AgencyLocalDataSource
-import kr.tripstore.proto.shared.data.agency.AgencyRepository
 import kr.tripstore.proto.shared.result.Result
 import kr.tripstore.proto.shared.test.util.assertResult
 import kr.tripstore.proto.test.data.TestData
@@ -23,7 +19,8 @@ class AgencyRepositoryTest {
     @ExperimentalCoroutinesApi
     @Before
     fun setup() {
-        agencyRemoteDataSource = FakeAgencyRemoteDataSource()
+        agencyRemoteDataSource =
+            FakeAgencyRemoteDataSource()
         agencyLocalDataSource = AgencyLocalDataSource()
     }
 

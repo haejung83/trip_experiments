@@ -1,7 +1,8 @@
-package kr.tripstore.proto.shared.data.source
+package kr.tripstore.proto.shared.data.temperature
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import kr.tripstore.proto.shared.data.temperature.FakeTemperaturesRemoteDataSource
 import kr.tripstore.proto.shared.data.temperature.TemperaturesDataSource
 import kr.tripstore.proto.shared.data.temperature.TemperaturesRepository
 import kr.tripstore.proto.shared.result.Result
@@ -20,7 +21,8 @@ class TemperaturesRepositoryTest {
     @ExperimentalCoroutinesApi
     @Before
     fun setup() {
-        temperaturesRemoteDataSource = FakeTemperaturesRemoteDataSource()
+        temperaturesRemoteDataSource =
+            FakeTemperaturesRemoteDataSource()
     }
 
     @Test

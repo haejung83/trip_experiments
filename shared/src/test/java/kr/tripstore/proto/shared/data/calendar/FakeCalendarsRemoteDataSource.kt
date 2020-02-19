@@ -1,4 +1,4 @@
-package kr.tripstore.proto.shared.data.source
+package kr.tripstore.proto.shared.data.calendar
 
 import kr.tripstore.proto.model.Calendars
 import kr.tripstore.proto.shared.data.calendar.CalendarsDataSource

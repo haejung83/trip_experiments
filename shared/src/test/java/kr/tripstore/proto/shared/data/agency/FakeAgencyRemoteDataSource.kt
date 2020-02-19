@@ -1,7 +1,6 @@
-package kr.tripstore.proto.shared.data.source
+package kr.tripstore.proto.shared.data.agency
 
 import kr.tripstore.proto.model.Agency
-import kr.tripstore.proto.shared.data.agency.AgencyDataSource
 import kr.tripstore.proto.shared.result.Result
 import kr.tripstore.proto.test.data.TestData
 

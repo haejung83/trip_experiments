@@ -1,7 +1,8 @@
-package kr.tripstore.proto.shared.data.source
+package kr.tripstore.proto.shared.data.trip
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import kr.tripstore.proto.shared.data.trip.FakeRemoteTripDataSource
 import kr.tripstore.proto.shared.data.trip.TripDataSource
 import kr.tripstore.proto.shared.data.trip.TripRepository
 import kr.tripstore.proto.shared.result.Result
@@ -20,7 +21,8 @@ class TripRepositoryTest {
     @ExperimentalCoroutinesApi
     @Before
     fun setup() {
-        tripRemoteDataSource = FakeRemoteTripDataSource()
+        tripRemoteDataSource =
+            FakeRemoteTripDataSource()
     }
 
     @Test

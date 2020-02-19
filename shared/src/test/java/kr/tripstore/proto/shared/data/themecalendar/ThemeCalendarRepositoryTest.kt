@@ -1,7 +1,8 @@
-package kr.tripstore.proto.shared.data.source
+package kr.tripstore.proto.shared.data.themecalendar
 
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
+import kr.tripstore.proto.shared.data.themecalendar.FakeThemeCalendarRemoteDataSource
 import kr.tripstore.proto.shared.data.themecalendar.ThemeCalendarDataSource
 import kr.tripstore.proto.shared.data.themecalendar.ThemeCalendarRepository
 import kr.tripstore.proto.shared.result.Result
@@ -20,7 +21,8 @@ class ThemeCalendarRepositoryTest {
     @ExperimentalCoroutinesApi
     @Before
     fun setup() {
-        themeCalendarsRemoteDataSource = FakeThemeCalendarRemoteDataSource()
+        themeCalendarsRemoteDataSource =
+            FakeThemeCalendarRemoteDataSource()
     }
 
     @Test
