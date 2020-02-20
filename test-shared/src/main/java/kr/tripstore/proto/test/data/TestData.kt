@@ -145,5 +145,25 @@ object TestData {
         NO_ERRORS,
         listOf(departureCity)
     )
+    // Place
+    val place = Place(
+        479,
+        "DAD",
+        "다낭",
+        85,
+        "VN",
+        "베트남",
+        "아시아",
+        "약 5시간 소요",
+        false,
+        1,
+        ">다낭,DAD,ㄷㄴ,다 낭,다낭,다낭.,디닝"
+    )
+    val places = Places(
+        RESPONSE_TIME,
+        NO_ERROR,
+        NO_ERRORS,
+        listOf(place)
+    )
 
 }
