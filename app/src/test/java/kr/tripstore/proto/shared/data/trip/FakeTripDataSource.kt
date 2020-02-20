@@ -1,7 +1,6 @@
-package kr.tripstore.proto.shared.data
+package kr.tripstore.proto.shared.data.trip
 
 import kr.tripstore.proto.model.TripPackagePage
-import kr.tripstore.proto.shared.data.trip.TripDataSource
 import kr.tripstore.proto.shared.result.Result
 import kr.tripstore.proto.test.data.TestData
 

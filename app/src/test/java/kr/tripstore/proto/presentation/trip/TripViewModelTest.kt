@@ -1,13 +1,16 @@
 package kr.tripstore.proto.presentation.trip
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runBlockingTest
 import kr.tripstore.proto.androidtest.MainCoroutineRule
 import kr.tripstore.proto.androidtest.util.LiveDataTestUtil
-import kr.tripstore.proto.shared.data.FakeEmptyTripDataSource
-import kr.tripstore.proto.shared.data.FakeErrorTripDataSource
-import kr.tripstore.proto.shared.data.FakeTripDataSource
+import kr.tripstore.proto.presentation.resource.FakeTripLinkSymbolStringProvider
+import kr.tripstore.proto.presentation.resource.TripLinkSymbolStringProvider
+import kr.tripstore.proto.shared.data.trip.FakeEmptyTripDataSource
+import kr.tripstore.proto.shared.data.trip.FakeErrorTripDataSource
+import kr.tripstore.proto.shared.data.trip.FakeTripDataSource
 import kr.tripstore.proto.shared.data.trip.TripRepository
 import kr.tripstore.proto.shared.domain.trip.GetTripThemesUseCase
 import org.hamcrest.MatcherAssert.assertThat
@@ -28,6 +31,7 @@ class TripViewModelTest {
     private lateinit var getTripThemesUseCase: GetTripThemesUseCase
     private lateinit var getEmptyTripThemesUseCase: GetTripThemesUseCase
     private lateinit var getErrorTripThemesUseCase: GetTripThemesUseCase
+    private lateinit var tripLinkSymbolStringProvider: TripLinkSymbolStringProvider
 
     // Set the main coroutines dispatcher for unit testing.
     @ExperimentalCoroutinesApi
@@ -41,7 +45,8 @@ class TripViewModelTest {
             TripRepository(FakeTripDataSource())
         getTripThemesUseCase =
             GetTripThemesUseCase(
-                tripRepository
+                tripRepository,
+                Dispatchers.Unconfined
             )
         val emptyTripRepository =
             TripRepository(
@@ -49,7 +54,8 @@ class TripViewModelTest {
             )
         getEmptyTripThemesUseCase =
             GetTripThemesUseCase(
-                emptyTripRepository
+                emptyTripRepository,
+                Dispatchers.Unconfined
             )
         val errorTripRepository =
             TripRepository(
@@ -57,18 +63,20 @@ class TripViewModelTest {
             )
         getErrorTripThemesUseCase =
             GetTripThemesUseCase(
-                errorTripRepository
+                errorTripRepository,
+                Dispatchers.Unconfined
             )
+        tripLinkSymbolStringProvider = FakeTripLinkSymbolStringProvider()
     }
 
     @Test
     fun loadTripThemes_isEmpty() = mainCoroutineRule.runBlockingTest {
         // Given a TripViewModel with GetTripThemeUseCase that can provide a result which is not empty
-        val tripViewModel = TripViewModel(getEmptyTripThemesUseCase)
+        val tripViewModel = TripViewModel(getEmptyTripThemesUseCase, tripLinkSymbolStringProvider)
         // When fetching data from GetTripThemeUseCase
         tripViewModel.start()
         // Then the result is an empty
-        val value = LiveDataTestUtil.getValue(tripViewModel.tripThemes)
+        val value = LiveDataTestUtil.getValue(tripViewModel.tripThemeItems)
         assertThat(value, IsNull.notNullValue())
         assertThat(value?.size, Is.`is`(0))
     }
@@ -76,11 +84,11 @@ class TripViewModelTest {
     @Test
     fun loadTripThemes_isNotEmpty() = mainCoroutineRule.runBlockingTest {
         // Given a TripViewModel with GetTripThemeUseCase that can provide a result which is not empty
-        val tripViewModel = TripViewModel(getTripThemesUseCase)
+        val tripViewModel = TripViewModel(getTripThemesUseCase, tripLinkSymbolStringProvider)
         // When fetching data from GetTripThemeUseCase
         tripViewModel.start()
         // Then the result is not empty
-        LiveDataTestUtil.getValue(tripViewModel.tripThemes)?.let {
+        LiveDataTestUtil.getValue(tripViewModel.tripThemeItems)?.let {
             assertThat(it, IsNull.notNullValue())
             assertThat(it.size, IsNot.not(0))
         } ?: assert(false)
@@ -90,7 +98,7 @@ class TripViewModelTest {
     fun loadTripThemes_isLoading() {
         // Given a TripViewModel with GetTripThemeUseCase that can provide a result which is not empty
         mainCoroutineRule.pauseDispatcher()
-        val tripViewModel = TripViewModel(getTripThemesUseCase)
+        val tripViewModel = TripViewModel(getTripThemesUseCase, tripLinkSymbolStringProvider)
         // When fetching data from GetTripThemeUseCase
         tripViewModel.start()
         // Then the isLoading is false after resume coroutine scope
@@ -102,7 +110,7 @@ class TripViewModelTest {
     @Test
     fun loadTripThemes_isError() = mainCoroutineRule.runBlockingTest {
         // Given a TripViewModel with GetTripThemeUseCase that can provide a result which is not empty
-        val tripViewModel = TripViewModel(getErrorTripThemesUseCase)
+        val tripViewModel = TripViewModel(getErrorTripThemesUseCase, tripLinkSymbolStringProvider)
         // When fetching data from GetTripThemeUseCase
         tripViewModel.start()
         // Then the isError is true
