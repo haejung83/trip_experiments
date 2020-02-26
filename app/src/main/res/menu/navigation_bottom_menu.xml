@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/nav_trip_fragment"
         android:icon="@drawable/ic_trip"
-        android:title="@string/menu_trip" />
+        android:title="@string/menu_trip"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/nav_search_fragment"
         android:icon="@drawable/ic_search"
-        android:title="@string/menu_search" />
+        android:title="@string/menu_search"
+        app:showAsAction="always" />
 
     <item
         android:id="@+id/nav_save_fragment"
         android:icon="@drawable/ic_save"
-        android:title="@string/menu_save" />
+        android:title="@string/menu_save"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/nav_profile_fragment"
         android:icon="@drawable/ic_profile"
-        android:title="@string/menu_profile" />
+        android:title="@string/menu_profile"
+        app:showAsAction="ifRoom" />
 
 </menu>
