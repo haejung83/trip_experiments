@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <style name="Base.TripStore" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Base.TripStore" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Text Appearance -->
         <item name="textAppearanceHeadline1">@style/TextAppearance.TripStore.Headline1</item>
         <item name="textAppearanceHeadline2">@style/TextAppearance.TripStore.Headline2</item>
