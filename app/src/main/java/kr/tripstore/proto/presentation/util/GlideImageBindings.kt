@@ -1,55 +1,65 @@
 package kr.tripstore.proto.presentation.util
 
 import android.graphics.Bitmap
-import android.net.Uri
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.MultiTransformation
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 
 object GlideImageBindings {
 
-    @BindingAdapter("glideImage")
+    @BindingAdapter(
+        "glideImageUrl",
+        "glideCenterCrop",
+        "glideRoundedCorners",
+        requireAll = false
+    )
     @JvmStatic
-    fun loadImage(view: ImageView, source: Any?) {
-        source?.let {
-            Glide.with(view)
-                .load(it)
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(view)
-        }
+    fun loadImageByUrl(
+        view: ImageView,
+        url: String?,
+        centerCrop: Boolean = false,
+        roundedCorners: Int = 0
+    ) {
+        if (url == null) return
+
+        Glide.with(view)
+            .load(url)
+            .apply {
+                transition(DrawableTransitionOptions.withCrossFade())
+                if (centerCrop)
+                    centerCrop()
+                if (roundedCorners != 0)
+                    transform(MultiTransformation(CenterCrop(), RoundedCorners(roundedCorners)))
+            }.into(view)
     }
 
-    @BindingAdapter("glideImageUri")
+    @BindingAdapter(
+        "glideImageBitmap",
+        "glideCenterCrop",
+        "glideRoundedCorners",
+        requireAll = false
+    )
     @JvmStatic
-    fun loadImageByUri(view: ImageView, uri: Uri?) {
-        uri?.let {
-            Glide.with(view)
-                .load(it)
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(view)
-        }
+    fun loadImageByBitmap(
+        view: ImageView, bitmap: Bitmap?,
+        centerCrop: Boolean = false,
+        roundedCorners: Int = 0
+    ) {
+        if (bitmap == null) return
+
+        Glide.with(view)
+            .load(bitmap)
+            .apply {
+                transition(DrawableTransitionOptions.withCrossFade())
+                if (centerCrop)
+                    centerCrop()
+                if (roundedCorners != 0)
+                    transform(MultiTransformation(CenterCrop(), RoundedCorners(roundedCorners)))
+            }.into(view)
     }
 
-    @BindingAdapter("glideImageUrl")
-    @JvmStatic
-    fun loadImageByUrl(view: ImageView, url: String?) {
-        url?.let {
-            Glide.with(view)
-                .load(it)
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(view)
-        }
-    }
-
-    @BindingAdapter("glideImageBitmap")
-    @JvmStatic
-    fun loadImageByBitmap(view: ImageView, bitmap: Bitmap?) {
-        bitmap?.let {
-            Glide.with(view)
-                .load(it)
-                .transition(DrawableTransitionOptions.withCrossFade())
-                .into(view)
-        }
-    }
 }
