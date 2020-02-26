@@ -9,6 +9,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import kr.tripstore.proto.model.TripLink
+import kr.tripstore.proto.model.domain.TripTheme
 import kr.tripstore.proto.presentation.Event
 import kr.tripstore.proto.presentation.resource.TripLinkSymbolStringProvider
 import kr.tripstore.proto.presentation.trip.theme.TripThemeCellItem
@@ -52,6 +53,10 @@ class TripViewModel @Inject constructor(
         }
 
     fun start() {
+        loadTripThemes()
+    }
+
+    private fun loadTripThemes() {
         if (_isLoading.value == true) return
         _isLoading.value = true
 
@@ -60,30 +65,7 @@ class TripViewModel @Inject constructor(
             _isLoading.value = false
             if (tripThemesResult is Result.Success) {
                 Timber.d("Success: $tripThemesResult")
-                val tripThemeItems = withContext(Dispatchers.Default) {
-                    tripThemesResult.data.map { tripTheme ->
-                        listOf(
-                            TripThemeTitleItem(
-                                tripTheme.id,
-                                tripTheme.title
-                            ),
-                            *tripTheme.themeDetails.map { tripThemeDetail ->
-                                tripThemeDetail.run {
-                                    TripThemeCellItem(
-                                        id,
-                                        title,
-                                        imageUrl,
-                                        openLink,
-                                        tripLinkSymbolStringProvider.getSymbolByTripLinkType(
-                                            openLink.type
-                                        ) ?: String.empty
-                                    )
-                                }
-                            }.toTypedArray()
-                        )
-                    }.flatten()
-                }
-                _tripThemeItems.value = tripThemeItems
+                _tripThemeItems.value = getTripThemeItemsFromTripThemes(tripThemesResult.data)
                 _isError.value = false
             } else {
                 Timber.d("Error: $tripThemesResult")
@@ -91,6 +73,31 @@ class TripViewModel @Inject constructor(
             }
         }
     }
+
+    private suspend fun getTripThemeItemsFromTripThemes(tripThemes: List<TripTheme>): List<TripThemeItem> =
+        withContext(Dispatchers.Default) {
+            tripThemes.map { tripTheme ->
+                listOf(
+                    TripThemeTitleItem(
+                        tripTheme.id,
+                        tripTheme.title
+                    ),
+                    *tripTheme.themeDetails.map { tripThemeDetail ->
+                        tripThemeDetail.run {
+                            TripThemeCellItem(
+                                id,
+                                title,
+                                imageUrl,
+                                openLink,
+                                tripLinkSymbolStringProvider.getSymbolByTripLinkType(
+                                    openLink.type
+                                ) ?: String.empty
+                            )
+                        }
+                    }.toTypedArray()
+                )
+            }.flatten()
+        }
 
     override fun onCleared() {
         super.onCleared()
