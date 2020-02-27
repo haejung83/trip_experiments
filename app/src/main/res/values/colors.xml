@@ -2,9 +2,20 @@
 <resources>
 
     <!-- Branding Color -->
-    <color name="ts_red_deep">#d50000</color>
-    <color name="ts_red_light">#ff5131</color>
-    <color name="ts_red_dark">#cb3333</color>
+    <color name="ts_color_primary">#ef5350</color>
+    <color name="ts_color_primary_variant">#b61827</color>
+    <color name="ts_color_secondary">#d50000</color>
+    <color name="ts_color_secondary_variant">#9b0000</color>
+
+    <color name="ts_color_background">#fafafa</color>
+    <color name="ts_color_surface">#ffffff</color>
+    <color name="ts_color_error">#6d4c41</color>
+
+    <color name="ts_color_on_primary">#000000</color>
+    <color name="ts_color_on_secondary">#ffffff</color>
+    <color name="ts_color_on_background">#000000</color>
+    <color name="ts_color_on_surface">#000000</color>
+    <color name="ts_color_on_error">#ffffff</color>
 
     <!-- Skeleton Color -->
     <color name="ts_skeleton_bright">#cccccc</color>
@@ -26,5 +37,8 @@
     <color name="ts_calendar_expensive">#d52222</color>
     <color name="ts_calendar_reasonable">#202020</color>
     <color name="ts_calendar_cheap">#0077ff</color>
+
+    <color name="ts_color_status_bar">#40000000</color>
+    <color name="ts_color_navigation_bar">#40000000</color>
 
 </resources>

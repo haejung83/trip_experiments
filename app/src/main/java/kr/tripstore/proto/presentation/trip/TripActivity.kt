@@ -1,19 +1,22 @@
 package kr.tripstore.proto.presentation.trip
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import dagger.android.support.DaggerAppCompatActivity
 import kotlinx.android.synthetic.main.activity_trip.*
 import kr.tripstore.proto.R
+import kr.tripstore.proto.databinding.ActivityTripBinding
 
 class TripActivity : DaggerAppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_trip)
-
-        setupBottomNavigationWithNavController()
+        ActivityTripBinding.inflate(LayoutInflater.from(this)).apply {
+            setContentView(root)
+            setupBottomNavigationWithNavController()
+        }
     }
 
     private fun setupBottomNavigationWithNavController() {

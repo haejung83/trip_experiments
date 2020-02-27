@@ -21,17 +21,18 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/grid_cell_2"
-        android:layout_margin="1dp"
+        android:layout_margin="2dp"
+        android:background="@drawable/bg_rect_white_r5"
+        android:elevation="8dp"
         android:onClick="@{(view) -> clickListener.onClick(view, item)}">
 
         <ImageView
             android:id="@+id/imageview_theme_cell"
-            glideImageUrl="@{item.imageUrl}"
             glideCenterCrop="@{true}"
+            glideImageUrl="@{item.imageUrl}"
             glideRoundedCorners="@{16}"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_margin="1dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,7 +65,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="1dp"
             android:layout_marginBottom="1dp"
-            android:background="@drawable/trip_detail_background_link_type"
+            android:background="@drawable/bg_rect_black_border_white_r5"
             android:paddingStart="4dp"
             android:paddingTop="2dp"
             android:paddingEnd="4dp"

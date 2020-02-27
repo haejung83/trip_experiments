@@ -7,4 +7,13 @@
         <item name="android:maxHeight">4dp</item>
     </style>
 
+    <!-- BottomNavigationBar -->
+    <style name="Widget.TripStore.BottomNavigationView" parent="@style/Widget.MaterialComponents.BottomNavigationView.PrimarySurface">
+        <item name="labelVisibilityMode">selected</item>
+        <item name="itemIconTint">@color/ts_color_secondary</item>
+        <item name="itemTextColor">@color/ts_color_secondary</item>
+        <item name="itemTextAppearanceActive">@style/TextAppearance.TripStore.BottomNavigation
+        </item>
+    </style>
+
 </resources>

@@ -14,8 +14,11 @@
         android:id="@+id/constraintlayout_trip_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:paddingStart="@dimen/padding_start_fragment"
         android:paddingEnd="@dimen/padding_end_fragment"
+        app:paddingTopSystemWindowInsets="@{true}"
         tools:context="kr.tripstore.proto.presentation.trip.TripFragment">
 
         <kr.tripstore.proto.presentation.widget.LayoutAnimatedRecyclerView

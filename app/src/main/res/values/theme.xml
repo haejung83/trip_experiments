@@ -15,22 +15,42 @@
         <item name="textAppearanceBody2">@style/TextAppearance.TripStore.Body2</item>
         <item name="textAppearanceButton">@style/TextAppearance.TripStore.Button</item>
         <item name="textAppearanceCaption">@style/TextAppearance.TripStore.Caption</item>
+
+        <!-- System UI (StatusBar, NavigationBar) -->
+        <item name="android:statusBarColor">@color/ts_color_status_bar</item>
+        <item name="android:navigationBarColor">@color/ts_color_navigation_bar</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+        <item name="android:windowLightNavigationBar" tools:ignore="NewApi">true</item>
+        <item name="android:navigationBarDividerColor" tools:ignore="NewApi">
+            ?colorControlHighlight
+        </item>
     </style>
 
     <style name="TripStore" parent="Base.TripStore">
-        <!-- For Android sdk versions 26+. -->
         <item name="android:fontFamily" tools:targetApi="jelly_bean">@font/nanum_gothic_font</item>
-        <!-- Target Android sdk versions < 26 and > 14. -->
         <item name="fontFamily">@font/nanum_gothic_font</item>
         <!-- Progress Bar -->
         <item name="android:progressBarStyleHorizontal">@style/Widget.TripStore.ProgressBar</item>
     </style>
 
     <style name="TripStore.Red" parent="TripStore">
-        <item name="colorPrimary">@color/ts_red_deep</item>
-        <item name="colorPrimaryDark">@color/ts_red_dark</item>
-        <item name="colorAccent">@color/ts_red_light</item>
-        <item name="colorOnPrimary">@color/ts_text_white</item>
+        <item name="colorPrimary">@color/ts_color_primary</item>
+        <item name="colorPrimaryVariant">@color/ts_color_primary_variant</item>
+        <item name="colorSecondary">@color/ts_color_secondary</item>
+        <item name="colorSecondaryVariant">@color/ts_color_secondary_variant</item>
+
+        <item name="android:colorBackground">@color/ts_color_background</item>
+        <item name="colorSurface">@color/ts_color_surface</item>
+        <item name="colorError">@color/ts_color_error</item>
+
+        <item name="colorOnPrimary">@color/ts_color_on_primary</item>
+        <item name="colorOnSecondary">@color/ts_color_on_secondary</item>
+        <item name="colorOnBackground">@color/ts_color_on_background</item>
+        <item name="colorOnSurface">@color/ts_color_on_surface</item>
+        <item name="colorOnError">@color/ts_color_on_error</item>
+
+        <item name="colorPrimaryDark">@color/ts_color_primary_variant</item>
+        <item name="colorAccent">@color/ts_color_secondary</item>
     </style>
 
 </resources>

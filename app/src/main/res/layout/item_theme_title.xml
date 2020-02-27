@@ -12,18 +12,19 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/grid_cell_1"
+        android:layout_height="@dimen/grid_cell_1_5"
         android:layout_margin="1dp">
 
         <TextView
             android:id="@+id/textview_theme_title"
-            style="?attr/textAppearanceSubtitle2"
+            style="?attr/textAppearanceSubtitle1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/grid_title_horizontal_margin"
             android:layout_marginBottom="@dimen/grid_title_vertical_margin"
             android:text="@{item.title}"
-            android:textColor="?attr/colorPrimary"
+            android:textColor="?attr/colorSecondary"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             tools:text="@tools:sample/cities" />

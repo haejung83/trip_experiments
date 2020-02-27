@@ -4,133 +4,102 @@
     <style name="TextAppearance.TripStore.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
         <item name="fontFamily">@font/nanum_gothic_font</item>
         <item name="android:fontFamily">@font/nanum_gothic_font</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textSize">40sp</item>
-        <item name="android:letterSpacing">-0.015625</item>
+        <item name="android:textSize">94sp</item>
     </style>
 
     <style name="TextAppearance.TripStore.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
         <item name="fontFamily">@font/nanum_gothic_font</item>
         <item name="android:fontFamily">@font/nanum_gothic_font</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textSize">34sp</item>
-        <item name="android:letterSpacing">-0.00833333333</item>
+        <item name="android:textSize">59sp</item>
     </style>
 
     <style name="TextAppearance.TripStore.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
         <item name="fontFamily">@font/nanum_gothic_font</item>
         <item name="android:fontFamily">@font/nanum_gothic_font</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textSize">28sp</item>
-        <item name="android:letterSpacing">0</item>
+        <item name="android:textSize">47sp</item>
     </style>
 
     <style name="TextAppearance.TripStore.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
         <item name="fontFamily">@font/nanum_gothic_font</item>
         <item name="android:fontFamily">@font/nanum_gothic_font</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textSize">22sp</item>
-        <item name="android:letterSpacing">0.00735294118</item>
+        <item name="android:textSize">33sp</item>
     </style>
 
     <style name="TextAppearance.TripStore.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
         <item name="fontFamily">@font/nanum_gothic_font</item>
         <item name="android:fontFamily">@font/nanum_gothic_font</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textSize">20sp</item>
-        <item name="android:letterSpacing">0</item>
+        <item name="android:textSize">24sp</item>
     </style>
 
     <style name="TextAppearance.TripStore.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
         <item name="fontFamily">@font/nanum_gothic_font</item>
         <item name="android:fontFamily">@font/nanum_gothic_font</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:letterSpacing">0.0125</item>
+        <item name="android:textSize">20sp</item>
     </style>
 
     <style name="TextAppearance.TripStore.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
         <item name="fontFamily">@font/nanum_gothic_font</item>
         <item name="android:fontFamily">@font/nanum_gothic_font</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textAllCaps">false</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:letterSpacing">0.009375</item>
     </style>
 
     <style name="TextAppearance.TripStore.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
         <item name="fontFamily">@font/nanum_gothic_font</item>
         <item name="android:fontFamily">@font/nanum_gothic_font</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textAllCaps">false</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:letterSpacing">0.00714285714</item>
     </style>
 
-    <style name="TextAppearance.TripStore.Body1" parent="TextAppearance.MaterialComponents.Body2">
+    <style name="TextAppearance.TripStore.Body1" parent="TextAppearance.MaterialComponents.Body1">
         <item name="fontFamily">@font/nanum_gothic_font</item>
         <item name="android:fontFamily">@font/nanum_gothic_font</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textAllCaps">false</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:letterSpacing">0.03125</item>
     </style>
 
     <style name="TextAppearance.TripStore.Body2" parent="TextAppearance.MaterialComponents.Body2">
         <item name="fontFamily">@font/nanum_gothic_font</item>
         <item name="android:fontFamily">@font/nanum_gothic_font</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textAllCaps">false</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:letterSpacing">0.0178571429</item>
     </style>
 
     <style name="TextAppearance.TripStore.Button" parent="TextAppearance.MaterialComponents.Button">
         <item name="fontFamily">@font/nanum_gothic_font</item>
         <item name="android:fontFamily">@font/nanum_gothic_font</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textAllCaps">true</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:letterSpacing">0.0892857143</item>
     </style>
 
     <style name="TextAppearance.TripStore.Caption" parent="TextAppearance.MaterialComponents.Caption">
         <item name="fontFamily">@font/nanum_gothic_font</item>
         <item name="android:fontFamily">@font/nanum_gothic_font</item>
-        <item name="android:textStyle">bold</item>
-        <item name="android:textAllCaps">false</item>
-        <item name="android:textSize">12sp</item>
-        <item name="android:letterSpacing">0.0333333333</item>
-    </style>
-
-    <style name="TextAppearance.TripStore.Small1" parent="TextAppearance.MaterialComponents.Caption">
-        <item name="fontFamily">@font/nanum_gothic_font</item>
-        <item name="android:fontFamily">@font/nanum_gothic_font</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textAllCaps">false</item>
         <item name="android:textSize">12sp</item>
     </style>
 
-    <style name="TextAppearance.TripStore.Small2" parent="TextAppearance.MaterialComponents.Caption">
+    <style name="TextAppearance.TripStore.Overline" parent="TextAppearance.MaterialComponents.Overline">
         <item name="fontFamily">@font/nanum_gothic_font</item>
         <item name="android:fontFamily">@font/nanum_gothic_font</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textAllCaps">false</item>
         <item name="android:textSize">10sp</item>
     </style>
 
-    <style name="TextAppearance.TripStore.Small3" parent="TextAppearance.MaterialComponents.Caption">
+    <style name="TextAppearance.TripStore.Small1" parent="TextAppearance.MaterialComponents.Body2">
         <item name="fontFamily">@font/nanum_gothic_font</item>
         <item name="android:fontFamily">@font/nanum_gothic_font</item>
-        <item name="android:textStyle">normal</item>
-        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.TripStore.Small2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/nanum_gothic_font</item>
+        <item name="android:fontFamily">@font/nanum_gothic_font</item>
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="TextAppearance.TripStore.Small3" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/nanum_gothic_font</item>
+        <item name="android:fontFamily">@font/nanum_gothic_font</item>
         <item name="android:textSize">8sp</item>
+    </style>
+
+    <style name="TextAppearance.TripStore.BottomNavigation" parent="TextAppearance.TripStore.Caption">
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.08</item>
     </style>
 
 </resources>
