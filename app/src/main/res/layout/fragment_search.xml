@@ -13,7 +13,8 @@
         android:id="@+id/constraintlayout_search_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:paddingTopSystemWindowInsets="@{true}">
 
         <TextView
             android:id="@+id/textview_title"

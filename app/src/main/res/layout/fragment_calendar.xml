@@ -18,6 +18,7 @@
         android:layout_height="match_parent"
         android:paddingStart="@dimen/padding_start_fragment"
         android:paddingEnd="@dimen/padding_end_fragment"
+        app:paddingTopSystemWindowInsets="@{true}"
         tools:context="kr.tripstore.proto.presentation.calendar.CalendarFragment">
 
         <TextView

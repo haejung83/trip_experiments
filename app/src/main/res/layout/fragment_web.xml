@@ -19,7 +19,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingStart="@dimen/padding_start_web_fragment"
-        android:paddingEnd="@dimen/padding_end_web_fragment">
+        android:paddingEnd="@dimen/padding_end_web_fragment"
+        app:paddingTopSystemWindowInsets="@{true}">
 
         <TextView
             android:id="@+id/textview_web_title"
