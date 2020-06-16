@@ -33,18 +33,6 @@
         tools:layout="@layout/fragment_search" />
 
     <fragment
-        android:id="@+id/nav_save_fragment"
-        android:name="kr.tripstore.proto.presentation.save.SaveFragment"
-        android:label="SaveFragment"
-        tools:layout="@layout/fragment_save" />
-
-    <fragment
-        android:id="@+id/nav_profile_fragment"
-        android:name="kr.tripstore.proto.presentation.profile.ProfileFragment"
-        android:label="ProfileFragment"
-        tools:layout="@layout/fragment_profile" />
-
-    <fragment
         android:id="@+id/nav_web_fragment"
         android:name="kr.tripstore.proto.presentation.web.WebFragment"
         android:label="WebFragment">

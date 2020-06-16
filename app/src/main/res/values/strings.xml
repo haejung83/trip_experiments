@@ -6,8 +6,6 @@
     <!-- Navigation Menu Values -->
     <string name="menu_trip">여행</string>
     <string name="menu_search">검색</string>
-    <string name="menu_save">저장</string>
-    <string name="menu_profile">내정보</string>
 
     <!-- Default Values -->
     <string name="default_theme_title">테마 제목</string>
