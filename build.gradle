@@ -94,18 +94,18 @@ buildscript {
 
         // Dagger
         dagger_libraries = [
-                'com.google.dagger:dagger-android:2.26',
-                'com.google.dagger:dagger-android-support:2.26'
+                'com.google.dagger:dagger-android:2.28',
+                'com.google.dagger:dagger-android-support:2.28'
         ]
         dagger_kapt_libraries = [
-                'com.google.dagger:dagger-compiler:2.26',
-                'com.google.dagger:dagger-android-processor:2.26'
+                'com.google.dagger:dagger-compiler:2.28',
+                'com.google.dagger:dagger-android-processor:2.28'
         ]
         dagger_kapt_test_libraries = [
-                'com.google.dagger:dagger-compiler:2.26'
+                'com.google.dagger:dagger-compiler:2.28'
         ]
         dagger_kapt_android_test_libraries = [
-                'com.google.dagger:dagger-compiler:2.26'
+                'com.google.dagger:dagger-compiler:2.28'
         ]
 
         // Extra
