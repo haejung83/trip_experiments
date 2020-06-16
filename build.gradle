@@ -76,12 +76,12 @@ buildscript {
 
         // Retrofit
         retrofit_libraries = [
-                'com.squareup.retrofit2:retrofit:2.7.1',
-                'com.squareup.okhttp3:okhttp:4.4.0',
-                'com.squareup.okhttp3:logging-interceptor:4.4.0'
+                'com.squareup.retrofit2:retrofit:2.9.0',
+                'com.squareup.okhttp3:okhttp:4.7.2',
+                'com.squareup.okhttp3:logging-interceptor:4.7.2'
         ]
         retrofit_converter_libraries = [
-                'com.squareup.retrofit2:converter-moshi:2.7.1',
+                'com.squareup.retrofit2:converter-moshi:2.9.0',
         ]
 
         // Glide
