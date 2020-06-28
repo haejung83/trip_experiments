@@ -45,6 +45,8 @@ class TripFragment : DaggerDataBindingFragment<FragmentTripBinding>() {
                         navigateToCalendarFragment(tripLink.parameters)
                     }
                     TripLinkType.THEME_CALENDAR -> {
+                        // FIXME: Use a normal calendar UI for temporary
+                        navigateToCalendarFragment(tripLink.parameters)
                     }
                     else -> {
                     }
