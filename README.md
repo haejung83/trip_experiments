@@ -6,7 +6,7 @@
 
 #### 제한사항
 
-> 민감정보와 상관없는 Guest API만을 사용합니다.
+> 제약이 없는 Guest API만을 사용합니다.
 
 
 
@@ -16,8 +16,9 @@
   * Min API 21
 * Kotlin
   * Corountine
+* Kotlin DSL (Gradle)
 * 패턴
-  * MVVM
+  * Clean Architecture + MVVM
 * AndroidX
 * JetPack
   * ViewModel
