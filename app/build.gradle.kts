@@ -4,6 +4,7 @@ plugins {
     kotlin("android.extensions")
     kotlin("kapt")
     id("androidx.navigation.safeargs.kotlin")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -16,6 +17,12 @@ android {
         versionCode = AppDependencies.Versions.appVersionCode
         versionName = AppDependencies.Versions.appVersionName
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["room.incremental"] = "true"
+            }
+        }
     }
     buildTypes {
         getByName("release") {
@@ -65,11 +72,21 @@ dependencies {
     // Glide
     implementation(AppDependencies.Libs.glideLibraries)
     kapt(AppDependencies.Libs.glideKaptLibraries)
+
     // Dagger
     implementation(AppDependencies.Libs.daggerLibraries)
     kapt(AppDependencies.Libs.daggerKaptLibraries)
     kaptTest(AppDependencies.Libs.daggerKaptTestLibraries)
     kaptAndroidTest(AppDependencies.Libs.daggerKaptAndroidTestLibraries)
+    // Dagger Hilt
+    implementation(AppDependencies.Libs.daggerHiltLibraries)
+    implementation(AppDependencies.Libs.daggerHiltViewModelLibraries)
+    androidTestImplementation(AppDependencies.Libs.daggerHiltTestingLibraries)
+    kapt(AppDependencies.Libs.daggerHiltKaptLibraries)
+    kapt(AppDependencies.Libs.daggerHiltAndroidXKaptLibraries)
+    kaptAndroidTest(AppDependencies.Libs.daggerHiltKaptLibraries)
+    kaptAndroidTest(AppDependencies.Libs.daggerHiltAndroidXKaptLibraries)
+
     // Extra
     implementation(AppDependencies.Libs.thirdPartyLibraries)
 

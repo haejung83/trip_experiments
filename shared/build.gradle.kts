@@ -3,6 +3,7 @@ plugins {
     kotlin("android")
     kotlin("android.extensions")
     kotlin("kapt")
+    id("dagger.hilt.android.plugin")
 }
 
 android {
@@ -16,6 +17,12 @@ android {
 
         buildConfigField("String", "API_HOST", properties["server_v1_host"] as String)
         consumerProguardFiles("consumer-rules.pro")
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["room.incremental"] = "true"
+            }
+        }
     }
     buildTypes {
         getByName("release") {
@@ -56,10 +63,15 @@ dependencies {
     // Retrofit2
     implementation(AppDependencies.Libs.retrofitLibraries)
     implementation(AppDependencies.Libs.retrofitConverterLibraries)
+
     // Dagger
     implementation(AppDependencies.Libs.daggerLibraries)
     kapt(AppDependencies.Libs.daggerKaptLibraries)
     kaptTest(AppDependencies.Libs.daggerKaptTestLibraries)
+    // Dagger Hilt
+    implementation(AppDependencies.Libs.daggerHiltLibraries)
+    kapt(AppDependencies.Libs.daggerHiltKaptLibraries)
+    kaptTest(AppDependencies.Libs.daggerHiltKaptLibraries)
 
     // Unit Testing
     testImplementation(AppDependencies.Libs.unitTestLibraries)

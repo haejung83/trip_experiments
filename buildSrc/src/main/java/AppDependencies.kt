@@ -16,6 +16,8 @@ object AppDependencies {
         // ETC
         const val ANDROID_GRADLE_PLUGIN = "4.0.0"
         const val NAVIGATION = "2.1.0"
+        const val HILT = "2.28-alpha"
+        const val HILT_JETPACK = "1.0.0-alpha01"
     }
 
     object Libs {
@@ -150,6 +152,28 @@ object AppDependencies {
         val daggerKaptAndroidTestLibraries =
             listOf(
                 "com.google.dagger:dagger-compiler:2.28"
+            )
+
+        // Dagger Hilt
+        val daggerHiltLibraries =
+            listOf(
+                "com.google.dagger:hilt-android:${Versions.HILT}"
+            )
+        val daggerHiltKaptLibraries =
+            listOf(
+                "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
+            )
+        val daggerHiltAndroidXKaptLibraries =
+            listOf(
+                "androidx.hilt:hilt-compiler:${Versions.HILT_JETPACK}"
+            )
+        val daggerHiltViewModelLibraries =
+            listOf(
+                "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.HILT_JETPACK}"
+            )
+        val daggerHiltTestingLibraries =
+            listOf(
+                "com.google.dagger:hilt-android-testing:${Versions.HILT}"
             )
 
         // Extra (UI)
