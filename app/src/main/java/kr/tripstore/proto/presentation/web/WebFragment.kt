@@ -3,24 +3,21 @@ package kr.tripstore.proto.presentation.web
 import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import dagger.hilt.android.AndroidEntryPoint
 import kr.tripstore.proto.R
 import kr.tripstore.proto.databinding.FragmentWebBinding
-import kr.tripstore.proto.presentation.base.DaggerDataBindingFragment
-import javax.inject.Inject
+import kr.tripstore.proto.presentation.base.DataBindingFragment
 
-class WebFragment : DaggerDataBindingFragment<FragmentWebBinding>() {
+@AndroidEntryPoint
+class WebFragment : DataBindingFragment<FragmentWebBinding>() {
 
     override val layoutResId: Int
         get() = R.layout.fragment_web
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
     private val args: WebFragmentArgs by navArgs()
 
-    private val viewModel by viewModels<WebViewModel> { viewModelFactory }
+    private val viewModel: WebViewModel by viewModels()
 
     @SuppressLint("SetJavaScriptEnabled")
     override fun onActivityCreated(savedInstanceState: Bundle?) {

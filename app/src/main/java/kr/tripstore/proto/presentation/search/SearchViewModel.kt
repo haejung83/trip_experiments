@@ -1,5 +1,6 @@
 package kr.tripstore.proto.presentation.search
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,9 +9,8 @@ import kotlinx.coroutines.launch
 import kr.tripstore.proto.shared.domain.trip.GetTripPackagePageUseCase
 import kr.tripstore.proto.shared.result.Result
 import timber.log.Timber
-import javax.inject.Inject
 
-class SearchViewModel @Inject constructor(
+class SearchViewModel @ViewModelInject constructor(
     private val getTripPackagePageUseCase: GetTripPackagePageUseCase
 ) : ViewModel() {
 

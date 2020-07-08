@@ -1,18 +1,19 @@
 package kr.tripstore.proto.presentation.resource
 
 import android.content.Context
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.scopes.ActivityScoped
 import kr.tripstore.proto.R
 import kr.tripstore.proto.model.TripLinkType
-import kr.tripstore.proto.shared.di.ActivityScope
 import javax.inject.Inject
 
 interface TripLinkSymbolStringProvider {
     fun getSymbolByTripLinkType(tripLinkType: TripLinkType): String?
 }
 
-@ActivityScope
+@ActivityScoped
 class ContextTripLinkSymbolStringProvider @Inject constructor(
-    context: Context
+    @ApplicationContext context: Context
 ) : TripLinkSymbolStringProvider {
 
     private val cached: Map<TripLinkType, String> = mapOf(

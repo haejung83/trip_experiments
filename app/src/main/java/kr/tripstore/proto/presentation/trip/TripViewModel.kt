@@ -1,6 +1,7 @@
 package kr.tripstore.proto.presentation.trip
 
 import android.view.View
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,9 +21,8 @@ import kr.tripstore.proto.shared.domain.trip.GetTripThemesUseCase
 import kr.tripstore.proto.shared.extension.empty
 import kr.tripstore.proto.shared.result.Result
 import timber.log.Timber
-import javax.inject.Inject
 
-class TripViewModel @Inject constructor(
+class TripViewModel @ViewModelInject constructor(
     private val getTripThemesUseCase: GetTripThemesUseCase,
     private val tripLinkSymbolStringProvider: TripLinkSymbolStringProvider
 ) : ViewModel() {

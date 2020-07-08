@@ -2,6 +2,8 @@ package kr.tripstore.proto.shared.di
 
 import dagger.Module
 import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import kr.tripstore.proto.shared.data.agency.*
 import kr.tripstore.proto.shared.data.airline.AirlineDataSource
 import kr.tripstore.proto.shared.data.airline.AirlineRemoteDataSource
@@ -26,6 +28,7 @@ import kr.tripstore.proto.shared.data.trip.TripRemoteDataSource
 import kr.tripstore.proto.shared.data.trip.TripRepository
 import javax.inject.Singleton
 
+@InstallIn(ApplicationComponent::class)
 @Module
 class SharedModule {
 

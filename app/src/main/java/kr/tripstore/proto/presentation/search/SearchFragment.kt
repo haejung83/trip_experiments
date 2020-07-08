@@ -2,22 +2,19 @@ package kr.tripstore.proto.presentation.search
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
+import dagger.hilt.android.AndroidEntryPoint
 import kr.tripstore.proto.R
 import kr.tripstore.proto.databinding.FragmentSearchBinding
-import kr.tripstore.proto.presentation.base.DaggerDataBindingFragment
+import kr.tripstore.proto.presentation.base.DataBindingFragment
 import timber.log.Timber
-import javax.inject.Inject
 
-class SearchFragment : DaggerDataBindingFragment<FragmentSearchBinding>() {
+@AndroidEntryPoint
+class SearchFragment : DataBindingFragment<FragmentSearchBinding>() {
 
     override val layoutResId: Int
         get() = R.layout.fragment_search
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    private val viewModel by viewModels<SearchViewModel> { viewModelFactory }
+    private val viewModel: SearchViewModel by viewModels()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
@@ -26,10 +23,6 @@ class SearchFragment : DaggerDataBindingFragment<FragmentSearchBinding>() {
         }
         viewDataBinding.lifecycleOwner = viewLifecycleOwner
         viewModel.start()
-    }
-
-    companion object {
-        fun newInstance() = SearchFragment()
     }
 
 }

@@ -2,24 +2,21 @@ package kr.tripstore.proto.presentation.calendar
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
+import dagger.hilt.android.AndroidEntryPoint
 import kr.tripstore.proto.R
 import kr.tripstore.proto.databinding.FragmentCalendarBinding
-import kr.tripstore.proto.presentation.base.DaggerDataBindingFragment
-import javax.inject.Inject
+import kr.tripstore.proto.presentation.base.DataBindingFragment
 
-class CalendarFragment : DaggerDataBindingFragment<FragmentCalendarBinding>() {
+@AndroidEntryPoint
+class CalendarFragment : DataBindingFragment<FragmentCalendarBinding>() {
 
     override val layoutResId: Int
         get() = R.layout.fragment_calendar
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
     private val args: CalendarFragmentArgs by navArgs()
 
-    private val viewModel by viewModels<CalendarViewModel> { viewModelFactory }
+    private val viewModel: CalendarViewModel by viewModels()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)

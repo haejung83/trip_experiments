@@ -2,26 +2,23 @@ package kr.tripstore.proto.presentation.trip
 
 import android.os.Bundle
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import kr.tripstore.proto.R
 import kr.tripstore.proto.databinding.FragmentTripBinding
 import kr.tripstore.proto.model.TripLinkType
 import kr.tripstore.proto.presentation.EventObserver
-import kr.tripstore.proto.presentation.base.DaggerDataBindingFragment
+import kr.tripstore.proto.presentation.base.DataBindingFragment
 import kr.tripstore.proto.shared.extension.splitAndGetIntArrayByComma
 import timber.log.Timber
-import javax.inject.Inject
 
-class TripFragment : DaggerDataBindingFragment<FragmentTripBinding>() {
+@AndroidEntryPoint
+class TripFragment : DataBindingFragment<FragmentTripBinding>() {
 
     override val layoutResId: Int
         get() = R.layout.fragment_trip
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
-
-    private val viewModel by viewModels<TripViewModel> { viewModelFactory }
+    private val viewModel: TripViewModel by viewModels()
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
