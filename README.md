@@ -32,8 +32,7 @@
 * Image
   * Glide
 * DI
-  * Dagger2
-  * Dagger-Android
+  * Dagger-Hilt (alpha01)
 * Material
   * Theme
   * Style
