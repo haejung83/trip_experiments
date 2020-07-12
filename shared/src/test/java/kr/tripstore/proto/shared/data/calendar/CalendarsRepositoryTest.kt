@@ -1,21 +1,23 @@
 package kr.tripstore.proto.shared.data.calendar
 
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kr.tripstore.proto.androidtest.MainCoroutineRule
+import kr.tripstore.proto.androidtest.runBlockingTest
 import kr.tripstore.proto.shared.result.Result
 import kr.tripstore.proto.shared.test.util.assertResult
 import kr.tripstore.proto.test.data.TestData
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsEqual
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
-@ExperimentalCoroutinesApi
 class CalendarsRepositoryTest {
 
     private lateinit var calendarsRemoteDataSource: CalendarsDataSource
 
-    @ExperimentalCoroutinesApi
+    @get:Rule
+    var coroutineRule = MainCoroutineRule()
+
     @Before
     fun setup() {
         calendarsRemoteDataSource =
@@ -24,7 +26,7 @@ class CalendarsRepositoryTest {
 
     @Test
     fun getCalendars_isNotNull() =
-        runBlockingTest {
+        coroutineRule.runBlockingTest {
             val fakePlaceIds = arrayOf(478, 479)
             val fakeCityIds = arrayOf(1)
             val fakeThemeIds = null
@@ -42,7 +44,7 @@ class CalendarsRepositoryTest {
 
     @Test
     fun getCalendars_isSameAsTestData() =
-        runBlockingTest {
+        coroutineRule.runBlockingTest {
             val fakePlaceIds = arrayOf(478, 479)
             val fakeCityIds = arrayOf(1)
             val fakeThemeIds = null

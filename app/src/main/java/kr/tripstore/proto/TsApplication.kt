@@ -1,19 +1,15 @@
 package kr.tripstore.proto
 
-import dagger.android.AndroidInjector
-import dagger.android.DaggerApplication
-import kr.tripstore.proto.di.DaggerAppComponent
+import android.app.Application
+import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
-class TsApplication : DaggerApplication() {
+@HiltAndroidApp
+class TsApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
         setupTimber()
-    }
-
-    override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
-        return DaggerAppComponent.factory().create(this)
     }
 
     private fun setupTimber() {

@@ -1,8 +1,9 @@
 package kr.tripstore.proto.presentation.resource
 
 import android.content.Context
+import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.android.scopes.ActivityScoped
 import kr.tripstore.proto.R
-import kr.tripstore.proto.shared.di.ActivityScope
 import javax.inject.Inject
 
 data class DayOfWeekString(
@@ -14,9 +15,9 @@ interface DayOfWeekStringProvider {
     fun daysOfWeek(): List<DayOfWeekString>
 }
 
-@ActivityScope
+@ActivityScoped
 class ContextDayOfWeekStringProvider @Inject constructor(
-    context: Context
+    @ApplicationContext context: Context
 ) : DayOfWeekStringProvider {
 
     private val cached: List<DayOfWeekString>

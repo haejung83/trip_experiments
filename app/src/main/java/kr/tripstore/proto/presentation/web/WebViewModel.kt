@@ -1,13 +1,13 @@
 package kr.tripstore.proto.presentation.web
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import kr.tripstore.proto.shared.extension.empty
 import timber.log.Timber
-import javax.inject.Inject
 
-class WebViewModel @Inject constructor() : ViewModel(), WebLoadDelegate {
+class WebViewModel @ViewModelInject constructor() : ViewModel(), WebLoadDelegate {
 
     private val _pageTitle = MutableLiveData<String>(String.empty)
     val pageTitle: LiveData<String>

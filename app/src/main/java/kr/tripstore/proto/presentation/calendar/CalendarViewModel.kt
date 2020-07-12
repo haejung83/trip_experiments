@@ -1,6 +1,7 @@
 package kr.tripstore.proto.presentation.calendar
 
 import android.view.View
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -15,9 +16,8 @@ import kr.tripstore.proto.shared.extension.empty
 import kr.tripstore.proto.shared.result.Result
 import timber.log.Timber
 import java.util.*
-import javax.inject.Inject
 
-class CalendarViewModel @Inject constructor(
+class CalendarViewModel @ViewModelInject constructor(
     private val getLowestPriceCalendarUseCase: GetLowestPriceCalendarUseCase,
     private val dayOfWeekStringProvider: DayOfWeekStringProvider
 ) : ViewModel() {

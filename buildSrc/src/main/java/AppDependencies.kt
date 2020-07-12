@@ -16,6 +16,8 @@ object AppDependencies {
         // ETC
         const val ANDROID_GRADLE_PLUGIN = "4.0.0"
         const val NAVIGATION = "2.1.0"
+        const val HILT = "2.28-alpha"
+        const val HILT_JETPACK = "1.0.0-alpha01"
     }
 
     object Libs {
@@ -27,13 +29,13 @@ object AppDependencies {
 
         val kotlinCoroutineLibraries =
             listOf(
-                "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3"
+                "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7"
             )
 
         val kotlinCoroutineUnitTestLibraries =
             listOf(
-                "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3",
-                "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.3"
+                "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7",
+                "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.7"
             )
 
         // Android KTX [Core, Lifecycle, Room, Navigation, UI, etc..]
@@ -132,24 +134,26 @@ object AppDependencies {
                 "com.github.bumptech.glide:compiler:4.11.0"
             )
 
-        // Dagger (Dependency Injection)
-        val daggerLibraries =
+        // Dagger Hilt
+        val daggerHiltLibraries =
             listOf(
-                "com.google.dagger:dagger-android:2.28",
-                "com.google.dagger:dagger-android-support:2.28"
+                "com.google.dagger:hilt-android:${Versions.HILT}"
             )
-        val daggerKaptLibraries =
+        val daggerHiltKaptLibraries =
             listOf(
-                "com.google.dagger:dagger-compiler:2.28",
-                "com.google.dagger:dagger-android-processor:2.28"
+                "com.google.dagger:hilt-android-compiler:${Versions.HILT}"
             )
-        val daggerKaptTestLibraries =
+        val daggerHiltAndroidXKaptLibraries =
             listOf(
-                "com.google.dagger:dagger-compiler:2.28"
+                "androidx.hilt:hilt-compiler:${Versions.HILT_JETPACK}"
             )
-        val daggerKaptAndroidTestLibraries =
+        val daggerHiltViewModelLibraries =
             listOf(
-                "com.google.dagger:dagger-compiler:2.28"
+                "androidx.hilt:hilt-lifecycle-viewmodel:${Versions.HILT_JETPACK}"
+            )
+        val daggerHiltTestingLibraries =
+            listOf(
+                "com.google.dagger:hilt-android-testing:${Versions.HILT}"
             )
 
         // Extra (UI)

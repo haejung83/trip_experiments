@@ -1,21 +1,23 @@
 package kr.tripstore.proto.shared.data.place
 
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kr.tripstore.proto.androidtest.MainCoroutineRule
+import kr.tripstore.proto.androidtest.runBlockingTest
 import kr.tripstore.proto.shared.result.Result
 import kr.tripstore.proto.shared.test.util.assertResult
 import kr.tripstore.proto.test.data.TestData
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsEqual
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
-@ExperimentalCoroutinesApi
 class PlaceRepositoryTest {
 
     private lateinit var placeRemoteDataSource: PlaceDataSource
 
-    @ExperimentalCoroutinesApi
+    @get:Rule
+    var coroutineRule = MainCoroutineRule()
+
     @Before
     fun setup() {
         placeRemoteDataSource = FakePlaceRemoteDataSource()
@@ -23,7 +25,7 @@ class PlaceRepositoryTest {
 
     @Test
     fun getPlaces_isNotNull() =
-        runBlockingTest {
+        coroutineRule.runBlockingTest {
             val fakeDepartureCityIds = arrayOf(1)
             // Given a place data source
             val placeRepository =
@@ -38,7 +40,7 @@ class PlaceRepositoryTest {
 
     @Test
     fun getPlaces_isSameAsTestData() =
-        runBlockingTest {
+        coroutineRule.runBlockingTest {
             val fakeDepartureCityIds = arrayOf(1)
             // Given a place data source
             val placeRepository =

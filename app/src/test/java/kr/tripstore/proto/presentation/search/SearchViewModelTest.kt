@@ -2,9 +2,8 @@ package kr.tripstore.proto.presentation.search
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
 import kr.tripstore.proto.androidtest.MainCoroutineRule
+import kr.tripstore.proto.androidtest.runBlockingTest
 import kr.tripstore.proto.androidtest.util.LiveDataTestUtil
 import kr.tripstore.proto.shared.data.trip.FakeTripDataSource
 import kr.tripstore.proto.shared.data.trip.TripRepository
@@ -16,7 +15,6 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-@ExperimentalCoroutinesApi
 class SearchViewModelTest {
 
     // Executes each task synchronously using Architecture Components.
@@ -26,7 +24,6 @@ class SearchViewModelTest {
     private lateinit var getTripPackagePageUseCase: GetTripPackagePageUseCase
 
     // Set the main coroutines dispatcher for unit testing.
-    @ExperimentalCoroutinesApi
     @get:Rule
     var mainCoroutineRule = MainCoroutineRule()
 
