@@ -73,11 +73,6 @@ dependencies {
     implementation(AppDependencies.Libs.glideLibraries)
     kapt(AppDependencies.Libs.glideKaptLibraries)
 
-    // Dagger
-    implementation(AppDependencies.Libs.daggerLibraries)
-    kapt(AppDependencies.Libs.daggerKaptLibraries)
-    kaptTest(AppDependencies.Libs.daggerKaptTestLibraries)
-    kaptAndroidTest(AppDependencies.Libs.daggerKaptAndroidTestLibraries)
     // Dagger Hilt
     implementation(AppDependencies.Libs.daggerHiltLibraries)
     implementation(AppDependencies.Libs.daggerHiltViewModelLibraries)

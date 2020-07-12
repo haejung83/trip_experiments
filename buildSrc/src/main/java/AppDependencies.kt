@@ -134,26 +134,6 @@ object AppDependencies {
                 "com.github.bumptech.glide:compiler:4.11.0"
             )
 
-        // Dagger (Dependency Injection)
-        val daggerLibraries =
-            listOf(
-                "com.google.dagger:dagger-android:2.28",
-                "com.google.dagger:dagger-android-support:2.28"
-            )
-        val daggerKaptLibraries =
-            listOf(
-                "com.google.dagger:dagger-compiler:2.28",
-                "com.google.dagger:dagger-android-processor:2.28"
-            )
-        val daggerKaptTestLibraries =
-            listOf(
-                "com.google.dagger:dagger-compiler:2.28"
-            )
-        val daggerKaptAndroidTestLibraries =
-            listOf(
-                "com.google.dagger:dagger-compiler:2.28"
-            )
-
         // Dagger Hilt
         val daggerHiltLibraries =
             listOf(

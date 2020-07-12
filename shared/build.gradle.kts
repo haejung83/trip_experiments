@@ -64,10 +64,6 @@ dependencies {
     implementation(AppDependencies.Libs.retrofitLibraries)
     implementation(AppDependencies.Libs.retrofitConverterLibraries)
 
-    // Dagger
-    implementation(AppDependencies.Libs.daggerLibraries)
-    kapt(AppDependencies.Libs.daggerKaptLibraries)
-    kaptTest(AppDependencies.Libs.daggerKaptTestLibraries)
     // Dagger Hilt
     implementation(AppDependencies.Libs.daggerHiltLibraries)
     kapt(AppDependencies.Libs.daggerHiltKaptLibraries)
