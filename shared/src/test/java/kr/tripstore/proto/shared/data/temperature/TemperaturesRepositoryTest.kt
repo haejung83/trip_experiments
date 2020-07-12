@@ -1,33 +1,31 @@
 package kr.tripstore.proto.shared.data.temperature
 
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
-import kr.tripstore.proto.shared.data.temperature.FakeTemperaturesRemoteDataSource
-import kr.tripstore.proto.shared.data.temperature.TemperaturesDataSource
-import kr.tripstore.proto.shared.data.temperature.TemperaturesRepository
+import kr.tripstore.proto.androidtest.MainCoroutineRule
+import kr.tripstore.proto.androidtest.runBlockingTest
 import kr.tripstore.proto.shared.result.Result
 import kr.tripstore.proto.shared.test.util.assertResult
 import kr.tripstore.proto.test.data.TestData
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsEqual
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
-@ExperimentalCoroutinesApi
 class TemperaturesRepositoryTest {
 
     private lateinit var temperaturesRemoteDataSource: TemperaturesDataSource
 
-    @ExperimentalCoroutinesApi
+    @get:Rule
+    var coroutineRule = MainCoroutineRule()
+
     @Before
     fun setup() {
-        temperaturesRemoteDataSource =
-            FakeTemperaturesRemoteDataSource()
+        temperaturesRemoteDataSource = FakeTemperaturesRemoteDataSource()
     }
 
     @Test
     fun getTemperatures_isNotNull() =
-        runBlockingTest {
+        coroutineRule.runBlockingTest {
             val fakePlaceId = 479
             // Given a temperature data source
             val temperaturesRepository =
@@ -42,7 +40,7 @@ class TemperaturesRepositoryTest {
 
     @Test
     fun getTemperatures_isSameAsTestData() =
-        runBlockingTest {
+        coroutineRule.runBlockingTest {
             val fakePlaceId = 479
             // Given a temperature data source
             val temperaturesRepository =

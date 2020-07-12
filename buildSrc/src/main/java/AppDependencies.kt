@@ -29,13 +29,13 @@ object AppDependencies {
 
         val kotlinCoroutineLibraries =
             listOf(
-                "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3"
+                "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7"
             )
 
         val kotlinCoroutineUnitTestLibraries =
             listOf(
-                "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3",
-                "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.3"
+                "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.7",
+                "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.7"
             )
 
         // Android KTX [Core, Lifecycle, Room, Navigation, UI, etc..]

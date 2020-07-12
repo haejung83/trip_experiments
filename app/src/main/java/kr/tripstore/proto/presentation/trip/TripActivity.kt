@@ -18,7 +18,20 @@ class TripActivity : AppCompatActivity() {
         ActivityTripBinding.inflate(LayoutInflater.from(this)).apply {
             setContentView(root)
             setupBottomNavigationWithNavController()
+            setupActivityBySavedInstanceState(savedInstanceState)
         }
+    }
+
+    private fun setupActivityBySavedInstanceState(savedInstanceState: Bundle?) {
+        if (savedInstanceState == null) {
+            if (intent.hasExtra(EXTRA_NAVIGATION_ID)) {
+                val initialNavigationId =
+                    intent.getIntExtra(EXTRA_NAVIGATION_ID, R.id.nav_trip_fragment)
+                val navController = findNavController(R.id.navhostfragment_trip)
+                navController.navigate(initialNavigationId)
+            }
+        }
+        // TODO: If you initialize this activity with savedInstanceState. Add else section here
     }
 
     private fun setupBottomNavigationWithNavController() {
@@ -28,6 +41,10 @@ class TripActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         return findNavController(R.id.navhostfragment_trip).navigateUp()
+    }
+
+    companion object {
+        const val EXTRA_NAVIGATION_ID = "extra_navigation_id"
     }
 
 }

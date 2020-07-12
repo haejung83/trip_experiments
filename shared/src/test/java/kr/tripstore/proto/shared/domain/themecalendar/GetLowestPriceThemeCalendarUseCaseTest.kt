@@ -1,13 +1,13 @@
 package kr.tripstore.proto.shared.domain.themecalendar
 
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kr.tripstore.proto.androidtest.MainCoroutineRule
+import kr.tripstore.proto.androidtest.runBlockingTest
 import kr.tripstore.proto.shared.data.calendar.CalendarsRepository
 import kr.tripstore.proto.shared.data.calendar.FakeCalendarsRemoteDataSource
 import kr.tripstore.proto.shared.data.temperature.FakeTemperaturesRemoteDataSource
-import kr.tripstore.proto.shared.data.themecalendar.FakeThemeCalendarRemoteDataSource
 import kr.tripstore.proto.shared.data.temperature.TemperaturesRepository
+import kr.tripstore.proto.shared.data.themecalendar.FakeThemeCalendarRemoteDataSource
 import kr.tripstore.proto.shared.data.themecalendar.ThemeCalendarRepository
 import kr.tripstore.proto.shared.domain.calendar.GetLowestPriceCalendarUseCase
 import kr.tripstore.proto.shared.result.Result
@@ -15,16 +15,18 @@ import kr.tripstore.proto.shared.test.util.assertResult
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsNot
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
-@ExperimentalCoroutinesApi
 class GetLowestPriceThemeCalendarUseCaseTest {
 
     private lateinit var calendarsRepository: CalendarsRepository
     private lateinit var temperaturesRepository: TemperaturesRepository
     private lateinit var themeCalendarRepository: ThemeCalendarRepository
 
-    @ExperimentalCoroutinesApi
+    @get:Rule
+    var coroutineRule = MainCoroutineRule()
+
     @Before
     fun setup() {
         calendarsRepository = CalendarsRepository(FakeCalendarsRemoteDataSource())
@@ -34,7 +36,7 @@ class GetLowestPriceThemeCalendarUseCaseTest {
 
     @Test
     fun getLowestPriceThemeCalendar_isNotNull() =
-        runBlockingTest {
+        coroutineRule.runBlockingTest {
             val fakeThemeCalendarId = 116
             val fakePlaceId = 9269
             val fakeCityIds = arrayOf(1)
@@ -59,7 +61,7 @@ class GetLowestPriceThemeCalendarUseCaseTest {
 
     @Test
     fun getLowestPriceThemeCalendar_checkResultIsNotEmpty() =
-        runBlockingTest {
+        coroutineRule.runBlockingTest {
             val fakeThemeCalendarId = 116
             val fakePlaceId = 9269
             val fakeCityIds = arrayOf(1)

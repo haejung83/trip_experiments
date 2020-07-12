@@ -16,7 +16,7 @@ android {
         applicationId = "kr.tripstore.proto"
         versionCode = AppDependencies.Versions.appVersionCode
         versionName = AppDependencies.Versions.appVersionName
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "kr.tripstore.proto.tests.TsTestCustomRunner"
 
         javaCompileOptions {
             annotationProcessorOptions {

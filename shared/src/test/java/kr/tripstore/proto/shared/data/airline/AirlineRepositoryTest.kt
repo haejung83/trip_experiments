@@ -1,30 +1,31 @@
 package kr.tripstore.proto.shared.data.airline
 
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
+import kr.tripstore.proto.androidtest.MainCoroutineRule
+import kr.tripstore.proto.androidtest.runBlockingTest
 import kr.tripstore.proto.shared.result.Result
 import kr.tripstore.proto.shared.test.util.assertResult
 import kr.tripstore.proto.test.data.TestData
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsEqual
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
-@ExperimentalCoroutinesApi
 class AirlineRepositoryTest {
 
     private lateinit var airlineRemoteDateSource: AirlineDataSource
 
-    @ExperimentalCoroutinesApi
+    @get:Rule
+    var coroutineRule = MainCoroutineRule()
+
     @Before
     fun setup() {
-        airlineRemoteDateSource =
-            FakeAirlineRemoteDateSource()
+        airlineRemoteDateSource = FakeAirlineRemoteDateSource()
     }
 
     @Test
     fun getAirlines_isNotNull() =
-        runBlockingTest {
+        coroutineRule.runBlockingTest {
             // Given an airline data source
             val airlineRepository = AirlineRepository(airlineRemoteDateSource)
             // When getting a result of airlines
@@ -35,7 +36,7 @@ class AirlineRepositoryTest {
 
     @Test
     fun getAirlines_isSameAsTestData() =
-        runBlockingTest {
+        coroutineRule.runBlockingTest {
             // Given an airline data source
             val airlineRepository = AirlineRepository(airlineRemoteDateSource)
             // When getting a result of airlines

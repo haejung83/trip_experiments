@@ -23,3 +23,15 @@ allprojects {
 task<Delete>("clean") {
     delete(rootProject.buildDir)
 }
+
+subprojects {
+    // TODO: Remove when the Coroutine and Flow APIs leave experimental/internal/preview.
+    tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
+        kotlinOptions.freeCompilerArgs +=
+            "-Xuse-experimental=" +
+                    "kotlin.Experimental," +
+                    "kotlinx.coroutines.ExperimentalCoroutinesApi," +
+                    "kotlinx.coroutines.InternalCoroutinesApi," +
+                    "kotlinx.coroutines.FlowPreview"
+    }
+}

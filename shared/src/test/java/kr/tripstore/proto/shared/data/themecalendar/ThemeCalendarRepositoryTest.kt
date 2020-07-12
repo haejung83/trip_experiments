@@ -1,33 +1,31 @@
 package kr.tripstore.proto.shared.data.themecalendar
 
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
-import kr.tripstore.proto.shared.data.themecalendar.FakeThemeCalendarRemoteDataSource
-import kr.tripstore.proto.shared.data.themecalendar.ThemeCalendarDataSource
-import kr.tripstore.proto.shared.data.themecalendar.ThemeCalendarRepository
+import kr.tripstore.proto.androidtest.MainCoroutineRule
+import kr.tripstore.proto.androidtest.runBlockingTest
 import kr.tripstore.proto.shared.result.Result
 import kr.tripstore.proto.shared.test.util.assertResult
 import kr.tripstore.proto.test.data.TestData
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsEqual
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
-@ExperimentalCoroutinesApi
 class ThemeCalendarRepositoryTest {
 
     private lateinit var themeCalendarsRemoteDataSource: ThemeCalendarDataSource
 
-    @ExperimentalCoroutinesApi
+    @get:Rule
+    var coroutineRule = MainCoroutineRule()
+
     @Before
     fun setup() {
-        themeCalendarsRemoteDataSource =
-            FakeThemeCalendarRemoteDataSource()
+        themeCalendarsRemoteDataSource = FakeThemeCalendarRemoteDataSource()
     }
 
     @Test
     fun getThemeCalendar_isNotNull() =
-        runBlockingTest {
+        coroutineRule.runBlockingTest {
             val fakeThemeCalendarId = 116
             // Given a theme calendar data source
             val themeCalendarRepository =
@@ -42,7 +40,7 @@ class ThemeCalendarRepositoryTest {
 
     @Test
     fun getThemeCalendar_isSameAsTestData() =
-        runBlockingTest {
+        coroutineRule.runBlockingTest {
             val fakeThemeCalendarId = 116
             // Given a theme calendar data source
             val themeCalendarRepository =

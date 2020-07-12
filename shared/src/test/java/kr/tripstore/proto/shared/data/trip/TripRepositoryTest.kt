@@ -1,33 +1,31 @@
 package kr.tripstore.proto.shared.data.trip
 
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.test.runBlockingTest
-import kr.tripstore.proto.shared.data.trip.FakeRemoteTripDataSource
-import kr.tripstore.proto.shared.data.trip.TripDataSource
-import kr.tripstore.proto.shared.data.trip.TripRepository
+import kr.tripstore.proto.androidtest.MainCoroutineRule
+import kr.tripstore.proto.androidtest.runBlockingTest
 import kr.tripstore.proto.shared.result.Result
 import kr.tripstore.proto.shared.test.util.assertResult
 import kr.tripstore.proto.test.data.TestData
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsEqual
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
-@ExperimentalCoroutinesApi
 class TripRepositoryTest {
 
     private lateinit var tripRemoteDataSource: TripDataSource
 
-    @ExperimentalCoroutinesApi
+    @get:Rule
+    var coroutineRule = MainCoroutineRule()
+
     @Before
     fun setup() {
-        tripRemoteDataSource =
-            FakeRemoteTripDataSource()
+        tripRemoteDataSource = FakeRemoteTripDataSource()
     }
 
     @Test
     fun getTripPackagePage_isNotNull() =
-        runBlockingTest {
+        coroutineRule.runBlockingTest {
             // Given a trip data source
             val tripRepository =
                 TripRepository(
@@ -41,7 +39,7 @@ class TripRepositoryTest {
 
     @Test
     fun getTripPackagePage_isSameAsTestData() =
-        runBlockingTest {
+        coroutineRule.runBlockingTest {
             // Given a trip data source
             val tripRepository =
                 TripRepository(

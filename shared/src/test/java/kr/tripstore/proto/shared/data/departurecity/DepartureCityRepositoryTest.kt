@@ -1,21 +1,23 @@
 package kr.tripstore.proto.shared.data.departurecity
 
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
+import kr.tripstore.proto.androidtest.MainCoroutineRule
+import kr.tripstore.proto.androidtest.runBlockingTest
 import kr.tripstore.proto.shared.result.Result
 import kr.tripstore.proto.shared.test.util.assertResult
 import kr.tripstore.proto.test.data.TestData
 import org.hamcrest.MatcherAssert.assertThat
 import org.hamcrest.core.IsEqual
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 
-@ExperimentalCoroutinesApi
 class DepartureCityRepositoryTest {
 
     private lateinit var departureCityRemoteDataSource: DepartureCityDataSource
 
-    @ExperimentalCoroutinesApi
+    @get:Rule
+    var coroutineRule = MainCoroutineRule()
+
     @Before
     fun setup() {
         departureCityRemoteDataSource =
@@ -24,7 +26,7 @@ class DepartureCityRepositoryTest {
 
     @Test
     fun getDepartureCities_isNotNull() =
-        runBlocking {
+        coroutineRule.runBlockingTest {
             // Given a departure city data source
             val departureCityRepository = DepartureCityRepository(departureCityRemoteDataSource)
             // When getting a result of departureCity
@@ -35,7 +37,7 @@ class DepartureCityRepositoryTest {
 
     @Test
     fun getDepartureCities_isSameAsTestData() =
-        runBlocking {
+        coroutineRule.runBlockingTest {
             // Given a departure city data source
             val departureCityRepository = DepartureCityRepository(departureCityRemoteDataSource)
             // When getting a result of departureCity
@@ -47,7 +49,7 @@ class DepartureCityRepositoryTest {
 
     @Test
     fun getDepartureCityById_isNotNull() =
-        runBlocking {
+        coroutineRule.runBlockingTest {
             val fakeDepartureId = 1
             // Given a departure city data source
             val departureCityRepository = DepartureCityRepository(departureCityRemoteDataSource)
@@ -59,7 +61,7 @@ class DepartureCityRepositoryTest {
 
     @Test
     fun getDepartureCityById_isSameAsTestData() =
-        runBlocking {
+        coroutineRule.runBlockingTest {
             val fakeDepartureId = 1
             // Given a departure city data source
             val departureCityRepository = DepartureCityRepository(departureCityRemoteDataSource)
