@@ -9,7 +9,7 @@ import retrofit2.http.GET
 
 interface TripPackagePageAPI {
 
-    @GET("/guest/main/contents?fromApp=true&platform=Android")
+    @GET("/guest/main/contents?fromApp=true&platform=Android&shown=true")
     suspend fun getTripPackagePage(): Response<TripPackagePage>
 
     companion object {
