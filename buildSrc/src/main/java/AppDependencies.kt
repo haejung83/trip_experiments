@@ -14,7 +14,7 @@ object AppDependencies {
         const val TARGET_SDK = 29
 
         // ETC
-        const val ANDROID_GRADLE_PLUGIN = "4.0.0"
+        const val ANDROID_GRADLE_PLUGIN = "4.0.1"
         const val NAVIGATION = "2.1.0"
         const val HILT = "2.28-alpha"
         const val HILT_JETPACK = "1.0.0-alpha01"
